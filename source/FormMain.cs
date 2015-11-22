@@ -24,7 +24,6 @@ namespace SimpleCounter
         bool start = true;
         private string _assemblyVersion;
 
-
         #endregion
 
         #region Constructor
@@ -372,7 +371,7 @@ namespace SimpleCounter
                                                                 int.Parse(xmlFormData.Root.Element("Mainform").Attribute("ucCounterMinimize").Value) == 1 ? true : false,
                                                                 int.Parse(xmlFormData.Root.Element("Mainform").Attribute("ucTimeDirectionMinimize").Value) == 1 ? true : false,
                                                                 int.Parse(xmlFormData.Root.Element("Mainform").Attribute("ucTimeSettingsMinimize").Value) == 1 ? true : false
-                                                                
+
                                                                 );
                     this.Top = tmpFormData.Top;
                     this.Left = tmpFormData.Left;
@@ -392,7 +391,7 @@ namespace SimpleCounter
                 MessageBox.Show(ex.ToString());
             }
         }
-         
+
         private void ReadCounterDataXML()
         {
             try
@@ -400,11 +399,11 @@ namespace SimpleCounter
                 if (File.Exists(savePath + @"\counter.xml"))
                 {
                     XDocument xmlFormData = XDocument.Load(savePath + @"\counter.xml");
-                    
+
                     _counter.Id = int.Parse(xmlFormData.Root.Element("Counter").Attribute("id").Value);
                     _counter.FontSize = int.Parse(xmlFormData.Root.Element("Counter").Attribute("fontsize").Value);
                     _counter.UserTime = int.Parse(xmlFormData.Root.Element("Counter").Attribute("time").Value);
-                    _counter.CurrentMonitor = int.Parse(xmlFormData.Root.Element("Counter").Attribute("currentMonitor").Value) <= (Screen.AllScreens.Length-1) ? int.Parse(xmlFormData.Root.Element("Counter").Attribute("currentMonitor").Value) : 0;
+                    _counter.CurrentMonitor = int.Parse(xmlFormData.Root.Element("Counter").Attribute("currentMonitor").Value) <= (Screen.AllScreens.Length - 1) ? int.Parse(xmlFormData.Root.Element("Counter").Attribute("currentMonitor").Value) : 0;
                     _counter.CounterType = (CounterTypeEnum)int.Parse(xmlFormData.Root.Element("Counter").Attribute("counterType").Value);
                     _counter.Direction = int.Parse(xmlFormData.Root.Element("Counter").Attribute("direction").Value) == 1;
                     _counter.SzovegesOra = int.Parse(xmlFormData.Root.Element("Counter").Attribute("szovegesOra").Value) == 1;
