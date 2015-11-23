@@ -46,11 +46,11 @@ namespace SimpleCounter
 
         public void SetTime()
         {
-           labelTime.Text = _counter.ToString();
+            labelTime.Text = _counter.ToString();
         }
 
         public void setScreen(int screen)
-        {  
+        {
             WindowState = FormWindowState.Normal;
             StartPosition = FormStartPosition.Manual;
             BringToFront();
@@ -71,6 +71,14 @@ namespace SimpleCounter
             _counter.FontColor = Color.WhiteSmoke;
             labelTime.ForeColor = _counter.FontColor;
             _counter.HideText = false;
+        }
+
+        public void SetCounterColor(Color fontColor, Color backColor)
+        {
+            _counter.FontColor = fontColor;
+            _counter.BackColor = backColor;
+            labelTime.ForeColor = _counter.FontColor;
+            labelTime.BackColor = _counter.BackColor;
         }
     }
 }

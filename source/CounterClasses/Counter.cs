@@ -46,6 +46,14 @@ namespace SimpleCounter.CounterClasses
         private int _sec;
         //kijelzés módja
         private bool _szovegesOra;
+        //visszaszámlálásnál megváltozik a színe a számoknak
+        private bool _figylmeztetVisszaszamlalasnal;
+        //mikor kezdjen figyelmeztetni (ha már csak ennyi dő van hátra)
+        private int _figyelmeztetIdo;
+        //villognak a szamok (ha pl. lejárt az idő)
+        private bool _villogasEffect;
+        //villogás sebessége
+        private int _villogasEffectSebesseg;
 
 
         #region constructor
@@ -65,6 +73,10 @@ namespace SimpleCounter.CounterClasses
             _currentMonitor = 0;
             _counterType = CounterTypeEnum.Counter;
             _hideText = false;
+            _figylmeztetVisszaszamlalasnal = false;
+            _villogasEffect = false;
+            _figyelmeztetIdo = 60;
+            _villogasEffectSebesseg = 500;
 
         }
 
@@ -166,6 +178,30 @@ namespace SimpleCounter.CounterClasses
             set { _hideText = value; }
         }
 
+        public bool FigylmeztetVisszaszamlalasnal
+        {
+            get { return _figylmeztetVisszaszamlalasnal; }
+            set { _figylmeztetVisszaszamlalasnal = value; }
+        }
+
+        public bool VillogasEffect
+        {
+            get { return _villogasEffect; }
+            set { _villogasEffect = value; }
+        }
+
+        public int FigyelmeztetIdo
+        {
+            get { return _figyelmeztetIdo; }
+            set { _figyelmeztetIdo = value; }
+        }
+
+        public int VillogasEffectSebesseg
+        {
+            get { return _villogasEffectSebesseg; }
+            set { _villogasEffectSebesseg = value; }
+        }
+
         #endregion
 
         public void Go()
@@ -190,8 +226,6 @@ namespace SimpleCounter.CounterClasses
                 _min = DateTime.Now.Minute;
                 _sec = DateTime.Now.Second;
             }
-
-
 
             string strhour = SzovegesOra ? Math.Abs(_hour).ToString("0") + " óra\r\n" : Math.Abs(_hour).ToString("0");
             string strmin = (_hour == 0) ? Math.Abs(_min).ToString("0") : Math.Abs(_min).ToString("00");

@@ -44,6 +44,8 @@ namespace SimpleCounter
 
             _timerForm1 = new FormTimer(_counter);
             _timerForm1.Hide();
+
+            SetCounterData();
         }
 
         #endregion
@@ -77,6 +79,9 @@ namespace SimpleCounter
             ucCounterTypeChanger1.Counter = _counter;
             ucCounterTypeChanger1.FormTimer = _timerForm1;
             ucCounterTypeChanger1.UcCounter = ucCounter1;
+
+            ucEffectBox1.Counter = _counter;
+            ucEffectBox1.FormTimer = _timerForm1;
         }
 
         private void myControlInit()
@@ -143,6 +148,9 @@ namespace SimpleCounter
 
             ucTimeSettings1.Top = ucCounter1.Top + ucCounter1.Height + defaultSpace;
             ucTimeSettings1.Left = defaultLeft;
+
+            ucEffectBox1.Top = ucTimeSettings1.Top + ucTimeSettings1.Height + defaultSpace;
+            ucEffectBox1.Left = defaultLeft;
 
             panelMainControls.VerticalScroll.Value = 0;
         }
@@ -231,9 +239,7 @@ namespace SimpleCounter
         }
 
         private void timer1_Tick(object sender, EventArgs e)
-        {
-            //if (chbStopZero.Checked && _counter.UserTime == 0 && !_counter.Direction)
-
+        { 
             if (chbStopZero.Checked && (_counter.UserTime == 0 && !start))
             {
                 btnStopStart_Click(sender, new EventArgs());
@@ -244,6 +250,17 @@ namespace SimpleCounter
                 ucCounter1.UpdateTime();
                 _timerForm1.TimerUpdate();
                 start = false;
+
+                //effektek
+
+                if (_counter.FigylmeztetVisszaszamlalasnal && (_counter.UserTime < _counter.FigyelmeztetIdo && _counter.UserTime >= 0) && !_counter.Direction)
+                {
+                    _timerForm1.SetCounterColor(Color.Red, Color.Black);
+                }
+                else
+                {
+                    _timerForm1.SetCounterColor(Color.WhiteSmoke, Color.Black);
+                }
             }
         }
 

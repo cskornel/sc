@@ -74,6 +74,12 @@
     <Compile Include="Controls\UCCounterTypeChanger.Designer.cs">
       <DependentUpon>UCCounterTypeChanger.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\UCEffectBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\UCEffectBox.Designer.cs">
+      <DependentUpon>UCEffectBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\UCFontSizeBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -129,6 +135,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\UCCounterTypeChanger.resx">
       <DependentUpon>UCCounterTypeChanger.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\UCEffectBox.resx">
+      <DependentUpon>UCEffectBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\UCFontSizeBox.resx">
       <DependentUpon>UCFontSizeBox.cs</DependentUpon>
