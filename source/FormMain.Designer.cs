@@ -116,7 +116,7 @@
             this.btnStopStart.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
             this.btnStopStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStopStart.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStopStart.Location = new System.Drawing.Point(5, 6);
+            this.btnStopStart.Location = new System.Drawing.Point(12, 6);
             this.btnStopStart.Name = "btnStopStart";
             this.btnStopStart.Size = new System.Drawing.Size(170, 68);
             this.btnStopStart.TabIndex = 8;
@@ -135,7 +135,7 @@
             this.chbStopZero.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chbStopZero.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.chbStopZero.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.chbStopZero.Location = new System.Drawing.Point(181, 6);
+            this.chbStopZero.Location = new System.Drawing.Point(188, 6);
             this.chbStopZero.Name = "chbStopZero";
             this.chbStopZero.Size = new System.Drawing.Size(85, 68);
             this.chbStopZero.TabIndex = 9;

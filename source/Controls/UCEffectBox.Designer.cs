@@ -65,7 +65,7 @@
             this.labelTitle.Name = "labelTitle";
             this.labelTitle.Size = new System.Drawing.Size(260, 20);
             this.labelTitle.TabIndex = 31;
-            this.labelTitle.Text = "Előnézet";
+            this.labelTitle.Text = "Effektek";
             this.labelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.labelTitle.Click += new System.EventHandler(this.MinimizeMaximize);
             // 
@@ -145,6 +145,7 @@
             0,
             0,
             0});
+            this.nupdSpeed.ValueChanged += new System.EventHandler(this.nupdSpeed_ValueChanged);
             // 
             // label1
             // 
@@ -167,6 +168,10 @@
             this.label2.Size = new System.Drawing.Size(31, 15);
             this.label2.TabIndex = 39;
             this.label2.Text = "Idő:";
+            // 
+            // timerEffect
+            // 
+            this.timerEffect.Tick += new System.EventHandler(this.timerEffect_Tick);
             // 
             // UCEffectBox
             // 

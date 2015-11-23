@@ -96,8 +96,6 @@ namespace SimpleCounter.Controls
             {
                 chbEffectBackCounter.Text = tmpStr + " \r\n( KI )";
             }
-
-
         }
 
         private void chbFlash_CheckedChanged(object sender, EventArgs e)
@@ -109,16 +107,43 @@ namespace SimpleCounter.Controls
             if (chbFlash.Checked)
             {
                 chbFlash.Text = tmpStr + " \r\n( BE )";
+                timerEffect.Interval = _counter.VillogasEffectSebesseg;
+                timerEffect.Enabled = true;
             }
             else
             {
                 chbFlash.Text = tmpStr + " \r\n( KI )";
+                timerEffect.Enabled = false;
+                _formTimer.ShowText();
             }
         }
 
         private void nupdColorEffectTime_ValueChanged(object sender, EventArgs e)
         {
             _counter.FigyelmeztetIdo = (int)nupdColorEffectTime.Value * 60;
+        }
+
+        private void timerEffect_Tick(object sender, EventArgs e)
+        {
+            if (_counter.VillogasEffect && _counter.UserTime == 0 && !_counter.Direction)
+            {
+                _formTimer.SetCounterColor(Color.WhiteSmoke, Color.Red);
+
+                if (_counter.HideText)
+                {
+                    _formTimer.ShowText();
+                }
+                else
+                {
+                    _formTimer.HideText();
+                }
+            }
+        }
+
+        private void nupdSpeed_ValueChanged(object sender, EventArgs e)
+        {
+            _counter.VillogasEffectSebesseg = (int)nupdSpeed.Value;
+            timerEffect.Interval = _counter.VillogasEffectSebesseg;
         }
 
         #endregion
@@ -142,6 +167,8 @@ namespace SimpleCounter.Controls
         }
 
         #endregion
-               
+
+        
+
     }
 }

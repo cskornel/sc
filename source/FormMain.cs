@@ -239,7 +239,7 @@ namespace SimpleCounter
         }
 
         private void timer1_Tick(object sender, EventArgs e)
-        { 
+        {
             if (chbStopZero.Checked && (_counter.UserTime == 0 && !start))
             {
                 btnStopStart_Click(sender, new EventArgs());
@@ -251,16 +251,17 @@ namespace SimpleCounter
                 _timerForm1.TimerUpdate();
                 start = false;
 
-                //effektek
+                //effekt
 
+                //ha a számok elérik a megadott időkorlátot, pirosra változik a színük
                 if (_counter.FigylmeztetVisszaszamlalasnal && (_counter.UserTime < _counter.FigyelmeztetIdo && _counter.UserTime >= 0) && !_counter.Direction)
                 {
                     _timerForm1.SetCounterColor(Color.Red, Color.Black);
                 }
                 else
                 {
-                    _timerForm1.SetCounterColor(Color.WhiteSmoke, Color.Black);
-                }
+                    _timerForm1.SetCounterDefaultColors();
+                } 
             }
         }
 

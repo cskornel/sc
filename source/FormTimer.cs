@@ -80,5 +80,10 @@ namespace SimpleCounter
             labelTime.ForeColor = _counter.FontColor;
             labelTime.BackColor = _counter.BackColor;
         }
+
+        public void SetCounterDefaultColors()
+        {
+            SetCounterColor(Color.WhiteSmoke, Color.Black);
+        }
     }
 }

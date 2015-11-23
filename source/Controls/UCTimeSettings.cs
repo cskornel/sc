@@ -145,9 +145,10 @@ namespace SimpleCounter.Controls
         private void btnReset_Click(object sender, EventArgs e)
         {
             nupdTime.Value = 0;
-            //TODO: if a global settings miatt (csak a numericupdawn értéke legyen nulla vagy a számlálóé is)
+            //TODO: if a global settings miatt (csak a numericupdawn értéke legyen nulla vagy a számlálóé is?)
             _counter.UserTime = ((int)nupdTime.Value * 60);
             _formTimer.TimerUpdate();
+            _formTimer.SetCounterDefaultColors();
             _ucCounter.UpdateTime();
         }
     }
