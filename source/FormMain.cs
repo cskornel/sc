@@ -251,17 +251,24 @@ namespace SimpleCounter
                 _timerForm1.TimerUpdate();
                 start = false;
 
-                //effekt
+                if (_counter.CounterType == CounterTypeEnum.Counter && !_counter.HideText)
+                {  
+                    //effekt
 
-                //ha a számok elérik a megadott időkorlátot, pirosra változik a színük
-                if (_counter.FigylmeztetVisszaszamlalasnal && (_counter.UserTime < _counter.FigyelmeztetIdo && _counter.UserTime >= 0) && !_counter.Direction)
-                {
-                    _timerForm1.SetCounterColor(Color.Red, Color.Black);
+                    //ha a számok elérik a megadott időkorlátot, pirosra változik a színük
+                    if (_counter.FigylmeztetVisszaszamlalasnal &&
+                        _counter.UserTime < _counter.FigyelmeztetIdo &&
+                        _counter.UserTime >= 0 &&
+                        !_counter.Direction
+                        )
+                    {
+                        _timerForm1.SetCounterColor(Color.Red, Color.Black);
+                    }
+                    else
+                    {
+                        _timerForm1.SetCounterDefaultColors();
+                    }
                 }
-                else
-                {
-                    _timerForm1.SetCounterDefaultColors();
-                } 
             }
         }
 
