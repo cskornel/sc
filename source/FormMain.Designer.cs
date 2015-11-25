@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            SimpleCounter.CounterClasses.Counter counter1 = new SimpleCounter.CounterClasses.Counter();
-            SimpleCounter.CounterClasses.Counter counter2 = new SimpleCounter.CounterClasses.Counter();
             SimpleCounter.CounterClasses.Counter counter3 = new SimpleCounter.CounterClasses.Counter();
-            SimpleCounter.CounterClasses.GlobalSettings globalSettings1 = new SimpleCounter.CounterClasses.GlobalSettings();
             SimpleCounter.CounterClasses.Counter counter4 = new SimpleCounter.CounterClasses.Counter();
             SimpleCounter.CounterClasses.Counter counter5 = new SimpleCounter.CounterClasses.Counter();
-            SimpleCounter.CounterClasses.Counter counter6 = new SimpleCounter.CounterClasses.Counter();
             SimpleCounter.CounterClasses.GlobalSettings globalSettings2 = new SimpleCounter.CounterClasses.GlobalSettings();
-            SimpleCounter.CounterClasses.GlobalSettings globalSettings3 = new SimpleCounter.CounterClasses.GlobalSettings();
+            SimpleCounter.CounterClasses.Counter counter1 = new SimpleCounter.CounterClasses.Counter();
             SimpleCounter.CounterClasses.Counter counter7 = new SimpleCounter.CounterClasses.Counter();
+            SimpleCounter.CounterClasses.Counter counter6 = new SimpleCounter.CounterClasses.Counter();
+            SimpleCounter.CounterClasses.GlobalSettings globalSettings3 = new SimpleCounter.CounterClasses.GlobalSettings();
+            SimpleCounter.CounterClasses.GlobalSettings globalSettings1 = new SimpleCounter.CounterClasses.GlobalSettings();
+            SimpleCounter.CounterClasses.Counter counter2 = new SimpleCounter.CounterClasses.Counter();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.checkBoxTopWindow = new System.Windows.Forms.CheckBox();
             this.panelTop = new System.Windows.Forms.Panel();
@@ -157,14 +157,14 @@
             this.panelMainControls.AutoScrollMinSize = new System.Drawing.Size(269, 850);
             this.panelMainControls.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panelMainControls.BackColor = System.Drawing.Color.Black;
+            this.panelMainControls.Controls.Add(this.ucCounter1);
+            this.panelMainControls.Controls.Add(this.ucMonitorPreviewBox1);
             this.panelMainControls.Controls.Add(this.ucEffectBox1);
+            this.panelMainControls.Controls.Add(this.ucMonitorControlBox1);
             this.panelMainControls.Controls.Add(this.ucTimeDirection1);
             this.panelMainControls.Controls.Add(this.ucTimeSettings1);
-            this.panelMainControls.Controls.Add(this.ucCounter1);
-            this.panelMainControls.Controls.Add(this.ucCounterTypeChanger1);
             this.panelMainControls.Controls.Add(this.ucFontSizeBox1);
-            this.panelMainControls.Controls.Add(this.ucMonitorControlBox1);
-            this.panelMainControls.Controls.Add(this.ucMonitorPreviewBox1);
+            this.panelMainControls.Controls.Add(this.ucCounterTypeChanger1);
             this.panelMainControls.Location = new System.Drawing.Point(0, 28);
             this.panelMainControls.MaximumSize = new System.Drawing.Size(400, 5000);
             this.panelMainControls.MinimumSize = new System.Drawing.Size(50, 50);
@@ -177,64 +177,6 @@
             // 
             this.ucEffectBox1.BackColor = System.Drawing.Color.Black;
             this.ucEffectBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            counter1.BackColor = System.Drawing.Color.Black;
-            counter1.CounterType = SimpleCounter.CounterClasses.CounterTypeEnum.Counter;
-            counter1.CurrentMonitor = 0;
-            counter1.Direction = true;
-            counter1.Enabled = false;
-            counter1.FigyelmeztetIdo = 60;
-            counter1.FigylmeztetVisszaszamlalasnal = false;
-            counter1.FontColor = System.Drawing.Color.WhiteSmoke;
-            counter1.FontSize = 219;
-            counter1.HideText = false;
-            counter1.Id = 1;
-            counter1.OnScreen = false;
-            counter1.SzovegesOra = true;
-            counter1.UserTime = 0;
-            counter1.VillogasEffect = false;
-            counter1.VillogasEffectSebesseg = 500;
-            this.ucEffectBox1.Counter = counter1;
-            this.ucEffectBox1.Location = new System.Drawing.Point(7, 1664);
-            this.ucEffectBox1.Maximized = false;
-            this.ucEffectBox1.Minimized = false;
-            this.ucEffectBox1.Name = "ucEffectBox1";
-            this.ucEffectBox1.Size = new System.Drawing.Size(260, 160);
-            this.ucEffectBox1.TabIndex = 32;
-            this.ucEffectBox1.ClientSizeChanged += new System.EventHandler(this.uc_ClientSizeChanged);
-            // 
-            // ucTimeDirection1
-            // 
-            this.ucTimeDirection1.BackColor = System.Drawing.Color.Black;
-            this.ucTimeDirection1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            counter2.BackColor = System.Drawing.Color.Black;
-            counter2.CounterType = SimpleCounter.CounterClasses.CounterTypeEnum.Counter;
-            counter2.CurrentMonitor = 0;
-            counter2.Direction = true;
-            counter2.Enabled = false;
-            counter2.FigyelmeztetIdo = 60;
-            counter2.FigylmeztetVisszaszamlalasnal = false;
-            counter2.FontColor = System.Drawing.Color.WhiteSmoke;
-            counter2.FontSize = 219;
-            counter2.HideText = false;
-            counter2.Id = 1;
-            counter2.OnScreen = false;
-            counter2.SzovegesOra = true;
-            counter2.UserTime = 0;
-            counter2.VillogasEffect = false;
-            counter2.VillogasEffectSebesseg = 500;
-            this.ucTimeDirection1.Counter = counter2;
-            this.ucTimeDirection1.Location = new System.Drawing.Point(7, 1466);
-            this.ucTimeDirection1.Maximized = false;
-            this.ucTimeDirection1.Minimized = false;
-            this.ucTimeDirection1.Name = "ucTimeDirection1";
-            this.ucTimeDirection1.Size = new System.Drawing.Size(260, 49);
-            this.ucTimeDirection1.TabIndex = 28;
-            this.ucTimeDirection1.ClientSizeChanged += new System.EventHandler(this.uc_ClientSizeChanged);
-            // 
-            // ucTimeSettings1
-            // 
-            this.ucTimeSettings1.BackColor = System.Drawing.Color.IndianRed;
-            this.ucTimeSettings1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             counter3.BackColor = System.Drawing.Color.Black;
             counter3.CounterType = SimpleCounter.CounterClasses.CounterTypeEnum.Counter;
             counter3.CurrentMonitor = 0;
@@ -251,22 +193,19 @@
             counter3.UserTime = 0;
             counter3.VillogasEffect = false;
             counter3.VillogasEffectSebesseg = 500;
-            this.ucTimeSettings1.Counter = counter3;
-            globalSettings1.LeptekBetumeretValtoztatashoz = 4;
-            globalSettings1.RagadosAblak = true;
-            this.ucTimeSettings1.GlobalSettings = globalSettings1;
-            this.ucTimeSettings1.Location = new System.Drawing.Point(7, 1521);
-            this.ucTimeSettings1.Maximized = false;
-            this.ucTimeSettings1.Minimized = false;
-            this.ucTimeSettings1.Name = "ucTimeSettings1";
-            this.ucTimeSettings1.Size = new System.Drawing.Size(260, 137);
-            this.ucTimeSettings1.TabIndex = 30;
-            this.ucTimeSettings1.ClientSizeChanged += new System.EventHandler(this.uc_ClientSizeChanged);
+            this.ucEffectBox1.Counter = counter3;
+            this.ucEffectBox1.Location = new System.Drawing.Point(6, 814);
+            this.ucEffectBox1.Maximized = false;
+            this.ucEffectBox1.Minimized = false;
+            this.ucEffectBox1.Name = "ucEffectBox1";
+            this.ucEffectBox1.Size = new System.Drawing.Size(260, 160);
+            this.ucEffectBox1.TabIndex = 32;
+            this.ucEffectBox1.ClientSizeChanged += new System.EventHandler(this.uc_ClientSizeChanged);
             // 
-            // ucCounter1
+            // ucTimeDirection1
             // 
-            this.ucCounter1.BackColor = System.Drawing.Color.Black;
-            this.ucCounter1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ucTimeDirection1.BackColor = System.Drawing.Color.Black;
+            this.ucTimeDirection1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             counter4.BackColor = System.Drawing.Color.Black;
             counter4.CounterType = SimpleCounter.CounterClasses.CounterTypeEnum.Counter;
             counter4.CurrentMonitor = 0;
@@ -283,19 +222,19 @@
             counter4.UserTime = 0;
             counter4.VillogasEffect = false;
             counter4.VillogasEffectSebesseg = 500;
-            this.ucCounter1.Counter = counter4;
-            this.ucCounter1.Location = new System.Drawing.Point(7, 1342);
-            this.ucCounter1.Maximized = false;
-            this.ucCounter1.Minimized = false;
-            this.ucCounter1.Name = "ucCounter1";
-            this.ucCounter1.Size = new System.Drawing.Size(260, 118);
-            this.ucCounter1.TabIndex = 29;
-            this.ucCounter1.ClientSizeChanged += new System.EventHandler(this.uc_ClientSizeChanged);
+            this.ucTimeDirection1.Counter = counter4;
+            this.ucTimeDirection1.Location = new System.Drawing.Point(6, 616);
+            this.ucTimeDirection1.Maximized = false;
+            this.ucTimeDirection1.Minimized = false;
+            this.ucTimeDirection1.Name = "ucTimeDirection1";
+            this.ucTimeDirection1.Size = new System.Drawing.Size(260, 49);
+            this.ucTimeDirection1.TabIndex = 28;
+            this.ucTimeDirection1.ClientSizeChanged += new System.EventHandler(this.uc_ClientSizeChanged);
             // 
-            // ucCounterTypeChanger1
+            // ucTimeSettings1
             // 
-            this.ucCounterTypeChanger1.BackColor = System.Drawing.Color.Black;
-            this.ucCounterTypeChanger1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ucTimeSettings1.BackColor = System.Drawing.Color.IndianRed;
+            this.ucTimeSettings1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             counter5.BackColor = System.Drawing.Color.Black;
             counter5.CounterType = SimpleCounter.CounterClasses.CounterTypeEnum.Counter;
             counter5.CurrentMonitor = 0;
@@ -312,8 +251,69 @@
             counter5.UserTime = 0;
             counter5.VillogasEffect = false;
             counter5.VillogasEffectSebesseg = 500;
-            this.ucCounterTypeChanger1.Counter = counter5;
-            this.ucCounterTypeChanger1.Location = new System.Drawing.Point(6, 1264);
+            this.ucTimeSettings1.Counter = counter5;
+            globalSettings2.LeptekBetumeretValtoztatashoz = 4;
+            globalSettings2.RagadosAblak = true;
+            this.ucTimeSettings1.GlobalSettings = globalSettings2;
+            this.ucTimeSettings1.Location = new System.Drawing.Point(6, 671);
+            this.ucTimeSettings1.Maximized = false;
+            this.ucTimeSettings1.Minimized = false;
+            this.ucTimeSettings1.Name = "ucTimeSettings1";
+            this.ucTimeSettings1.Size = new System.Drawing.Size(260, 137);
+            this.ucTimeSettings1.TabIndex = 30;
+            this.ucTimeSettings1.ClientSizeChanged += new System.EventHandler(this.uc_ClientSizeChanged);
+            // 
+            // ucCounter1
+            // 
+            this.ucCounter1.BackColor = System.Drawing.Color.Black;
+            this.ucCounter1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            counter1.BackColor = System.Drawing.Color.Black;
+            counter1.CounterType = SimpleCounter.CounterClasses.CounterTypeEnum.Counter;
+            counter1.CurrentMonitor = 0;
+            counter1.Direction = true;
+            counter1.Enabled = false;
+            counter1.FigyelmeztetIdo = 60;
+            counter1.FigylmeztetVisszaszamlalasnal = false;
+            counter1.FontColor = System.Drawing.Color.WhiteSmoke;
+            counter1.FontSize = 219;
+            counter1.HideText = false;
+            counter1.Id = 1;
+            counter1.OnScreen = false;
+            counter1.SzovegesOra = true;
+            counter1.UserTime = 0;
+            counter1.VillogasEffect = false;
+            counter1.VillogasEffectSebesseg = 500;
+            this.ucCounter1.Counter = counter1;
+            this.ucCounter1.Location = new System.Drawing.Point(6, 492);
+            this.ucCounter1.Maximized = false;
+            this.ucCounter1.Minimized = false;
+            this.ucCounter1.Name = "ucCounter1";
+            this.ucCounter1.Size = new System.Drawing.Size(260, 118);
+            this.ucCounter1.TabIndex = 29;
+            this.ucCounter1.ClientSizeChanged += new System.EventHandler(this.uc_ClientSizeChanged);
+            // 
+            // ucCounterTypeChanger1
+            // 
+            this.ucCounterTypeChanger1.BackColor = System.Drawing.Color.Black;
+            this.ucCounterTypeChanger1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            counter7.BackColor = System.Drawing.Color.Black;
+            counter7.CounterType = SimpleCounter.CounterClasses.CounterTypeEnum.Counter;
+            counter7.CurrentMonitor = 0;
+            counter7.Direction = true;
+            counter7.Enabled = false;
+            counter7.FigyelmeztetIdo = 60;
+            counter7.FigylmeztetVisszaszamlalasnal = false;
+            counter7.FontColor = System.Drawing.Color.WhiteSmoke;
+            counter7.FontSize = 219;
+            counter7.HideText = false;
+            counter7.Id = 1;
+            counter7.OnScreen = false;
+            counter7.SzovegesOra = true;
+            counter7.UserTime = 0;
+            counter7.VillogasEffect = false;
+            counter7.VillogasEffectSebesseg = 500;
+            this.ucCounterTypeChanger1.Counter = counter7;
+            this.ucCounterTypeChanger1.Location = new System.Drawing.Point(7, 414);
             this.ucCounterTypeChanger1.Minimized = false;
             this.ucCounterTypeChanger1.Name = "ucCounterTypeChanger1";
             this.ucCounterTypeChanger1.Size = new System.Drawing.Size(260, 72);
@@ -342,10 +342,10 @@
             counter6.VillogasEffectSebesseg = 500;
             this.ucFontSizeBox1.Counter = counter6;
             this.ucFontSizeBox1.FormTimer = null;
-            globalSettings2.LeptekBetumeretValtoztatashoz = 4;
-            globalSettings2.RagadosAblak = true;
-            this.ucFontSizeBox1.GlobalSettings = globalSettings2;
-            this.ucFontSizeBox1.Location = new System.Drawing.Point(6, 1181);
+            globalSettings3.LeptekBetumeretValtoztatashoz = 4;
+            globalSettings3.RagadosAblak = true;
+            this.ucFontSizeBox1.GlobalSettings = globalSettings3;
+            this.ucFontSizeBox1.Location = new System.Drawing.Point(6, 331);
             this.ucFontSizeBox1.Name = "ucFontSizeBox1";
             this.ucFontSizeBox1.Size = new System.Drawing.Size(260, 77);
             this.ucFontSizeBox1.TabIndex = 26;
@@ -356,10 +356,10 @@
             this.ucMonitorControlBox1.BackColor = System.Drawing.Color.Black;
             this.ucMonitorControlBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ucMonitorControlBox1.FormTimer = null;
-            globalSettings3.LeptekBetumeretValtoztatashoz = 4;
-            globalSettings3.RagadosAblak = true;
-            this.ucMonitorControlBox1.GlobalSettings = globalSettings3;
-            this.ucMonitorControlBox1.Location = new System.Drawing.Point(2, 1037);
+            globalSettings1.LeptekBetumeretValtoztatashoz = 4;
+            globalSettings1.RagadosAblak = true;
+            this.ucMonitorControlBox1.GlobalSettings = globalSettings1;
+            this.ucMonitorControlBox1.Location = new System.Drawing.Point(7, 187);
             this.ucMonitorControlBox1.Name = "ucMonitorControlBox1";
             this.ucMonitorControlBox1.Size = new System.Drawing.Size(260, 138);
             this.ucMonitorControlBox1.TabIndex = 24;
@@ -370,24 +370,24 @@
             // 
             this.ucMonitorPreviewBox1.BackColor = System.Drawing.Color.Black;
             this.ucMonitorPreviewBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            counter7.BackColor = System.Drawing.Color.Black;
-            counter7.CounterType = SimpleCounter.CounterClasses.CounterTypeEnum.Counter;
-            counter7.CurrentMonitor = 0;
-            counter7.Direction = true;
-            counter7.Enabled = false;
-            counter7.FigyelmeztetIdo = 60;
-            counter7.FigylmeztetVisszaszamlalasnal = false;
-            counter7.FontColor = System.Drawing.Color.WhiteSmoke;
-            counter7.FontSize = 219;
-            counter7.HideText = false;
-            counter7.Id = 1;
-            counter7.OnScreen = false;
-            counter7.SzovegesOra = true;
-            counter7.UserTime = 0;
-            counter7.VillogasEffect = false;
-            counter7.VillogasEffectSebesseg = 500;
-            this.ucMonitorPreviewBox1.Counter = counter7;
-            this.ucMonitorPreviewBox1.Location = new System.Drawing.Point(2, 854);
+            counter2.BackColor = System.Drawing.Color.Black;
+            counter2.CounterType = SimpleCounter.CounterClasses.CounterTypeEnum.Counter;
+            counter2.CurrentMonitor = 0;
+            counter2.Direction = true;
+            counter2.Enabled = false;
+            counter2.FigyelmeztetIdo = 60;
+            counter2.FigylmeztetVisszaszamlalasnal = false;
+            counter2.FontColor = System.Drawing.Color.WhiteSmoke;
+            counter2.FontSize = 219;
+            counter2.HideText = false;
+            counter2.Id = 1;
+            counter2.OnScreen = false;
+            counter2.SzovegesOra = true;
+            counter2.UserTime = 0;
+            counter2.VillogasEffect = false;
+            counter2.VillogasEffectSebesseg = 500;
+            this.ucMonitorPreviewBox1.Counter = counter2;
+            this.ucMonitorPreviewBox1.Location = new System.Drawing.Point(7, 4);
             this.ucMonitorPreviewBox1.Name = "ucMonitorPreviewBox1";
             this.ucMonitorPreviewBox1.Size = new System.Drawing.Size(260, 177);
             this.ucMonitorPreviewBox1.TabIndex = 27;
