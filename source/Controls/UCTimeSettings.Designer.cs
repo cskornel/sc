@@ -36,6 +36,7 @@
             this.btnSetTime = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.labelMinimizeMaximize = new System.Windows.Forms.Label();
+            this.btnMinussz = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nupdTime)).BeginInit();
             this.SuspendLayout();
             // 
@@ -81,7 +82,7 @@
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnAdd.Location = new System.Drawing.Point(3, 24);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(77, 109);
+            this.btnAdd.Size = new System.Drawing.Size(77, 52);
             this.btnAdd.TabIndex = 27;
             this.btnAdd.Text = "+";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -140,12 +141,25 @@
             this.labelMinimizeMaximize.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.labelMinimizeMaximize.Click += new System.EventHandler(this.MinimizeMaximize);
             // 
+            // btnMinussz
+            // 
+            this.btnMinussz.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMinussz.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnMinussz.Location = new System.Drawing.Point(3, 81);
+            this.btnMinussz.Name = "btnMinussz";
+            this.btnMinussz.Size = new System.Drawing.Size(77, 52);
+            this.btnMinussz.TabIndex = 32;
+            this.btnMinussz.Text = "-";
+            this.btnMinussz.UseVisualStyleBackColor = true;
+            this.btnMinussz.Click += new System.EventHandler(this.btnMinussz_Click);
+            // 
             // UCTimeSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.IndianRed;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.btnMinussz);
             this.Controls.Add(this.labelMinimizeMaximize);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.btnTimeDown);
@@ -171,5 +185,6 @@
         private System.Windows.Forms.Button btnSetTime;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label labelMinimizeMaximize;
+        private System.Windows.Forms.Button btnMinussz;
     }
 }

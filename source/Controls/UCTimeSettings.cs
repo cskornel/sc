@@ -157,5 +157,12 @@ namespace SimpleCounter.Controls
 
             _ucCounter.UpdateTime();
         }
+
+        private void btnMinussz_Click(object sender, EventArgs e)
+        {
+            _counter.UserTime -= ((int)nupdTime.Value * 60);
+            _formTimer.TimerUpdate();
+            _ucCounter.UpdateTime();
+        }
     }
 }
