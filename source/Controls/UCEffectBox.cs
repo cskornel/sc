@@ -125,7 +125,7 @@ namespace SimpleCounter.Controls
 
         private void timerEffect_Tick(object sender, EventArgs e)
         {
-            if (_counter.VillogasEffect && _counter.UserTime == 0 && !_counter.Direction)
+            if (_counter.VillogasEffect && _counter.UserTime == 0 && !_counter.Direction && _counter.CounterType == CounterTypeEnum.Counter)
             {
                 _formTimer.SetCounterColor(Color.WhiteSmoke, Color.Red);
 

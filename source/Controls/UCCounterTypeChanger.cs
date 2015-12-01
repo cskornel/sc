@@ -129,6 +129,7 @@ namespace SimpleCounter.Controls
             {
                 _counter.CounterType = CounterTypeEnum.DigitalClock;
                 _formTimer.TimerUpdate();
+                _formTimer.SetCounterDefaultColors();
                 _ucCounter.UpdateTime();
                 timer1.Enabled = true;
             }
