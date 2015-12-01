@@ -149,6 +149,12 @@ namespace SimpleCounter.Controls
             _counter.UserTime = ((int)nupdTime.Value * 60);
             _formTimer.TimerUpdate();
             _formTimer.SetCounterDefaultColors();
+
+            if (_counter.HideText)
+            {
+                _formTimer.HideText();                
+            } 
+
             _ucCounter.UpdateTime();
         }
     }
