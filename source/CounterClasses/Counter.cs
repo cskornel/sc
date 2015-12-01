@@ -204,6 +204,8 @@ namespace SimpleCounter.CounterClasses
 
         #endregion
 
+        #region Public Methods
+
         public void Go()
         {
             if (_direction)
@@ -233,7 +235,7 @@ namespace SimpleCounter.CounterClasses
 
             string strTime = (_hour == 0) ? (strmin + " : " + strsec) : (SzovegesOra ? (strhour + strmin + " : " + strsec) : (strhour + " : " + strmin + " : " + strsec));
 
-            strTime = (_userTime < 0) ? "- " + strTime : strTime;
+            strTime = (_userTime < 0 && _counterType == CounterTypeEnum.Counter) ? "- " + strTime : strTime;
 
             return strTime;
         }
@@ -264,5 +266,6 @@ namespace SimpleCounter.CounterClasses
             return tmpxml;
         }
 
+        #endregion
     }
 }
