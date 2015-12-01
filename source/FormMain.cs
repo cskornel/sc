@@ -240,33 +240,36 @@ namespace SimpleCounter
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (chbStopZero.Checked && (_counter.UserTime == 0 && !start))
-            {
-                btnStopStart_Click(sender, new EventArgs());
-            }
-            else
-            {
-                _counter.Go();
-                ucCounter1.UpdateTime();
-                _timerForm1.TimerUpdate();
-                start = false;
+            //csak akkor megy a számláló, ha számláló típus van beálllítva
+            if (_counter.CounterType == CounterTypeEnum.Counter)
+            {   if (chbStopZero.Checked && (_counter.UserTime == 0 && !start))
+                {
+                    btnStopStart_Click(sender, new EventArgs());
+                }
+                else
+                {
+                    _counter.Go();
+                    ucCounter1.UpdateTime();
+                    _timerForm1.TimerUpdate();
+                    start = false;
 
-                if (_counter.CounterType == CounterTypeEnum.Counter && !_counter.HideText)
-                {  
-                    //effekt
+                    if (_counter.CounterType == CounterTypeEnum.Counter && !_counter.HideText)
+                    {
+                        //effekt
 
-                    //ha a számok elérik a megadott időkorlátot, pirosra változik a színük
-                    if (_counter.FigylmeztetVisszaszamlalasnal &&
-                        _counter.UserTime < _counter.FigyelmeztetIdo &&
-                        _counter.UserTime >= 0 &&
-                        !_counter.Direction
-                        )
-                    {
-                        _timerForm1.SetCounterColor(Color.Red, Color.Black);
-                    }
-                    else
-                    {
-                        _timerForm1.SetCounterDefaultColors();
+                        //ha a számok elérik a megadott időkorlátot, pirosra változik a színük
+                        if (_counter.FigylmeztetVisszaszamlalasnal &&
+                            _counter.UserTime < _counter.FigyelmeztetIdo &&
+                            _counter.UserTime >= 0 &&
+                            !_counter.Direction
+                            )
+                        {
+                            _timerForm1.SetCounterColor(Color.Red, Color.Black);
+                        }
+                        else
+                        {
+                            _timerForm1.SetCounterDefaultColors();
+                        }
                     }
                 }
             }

@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.rbtnDigitalClock = new System.Windows.Forms.RadioButton();
             this.rbtnCounter = new System.Windows.Forms.RadioButton();
             this.labelTitle = new System.Windows.Forms.Label();
             this.labelMinimizeMaximize = new System.Windows.Forms.Label();
             this.rbtnAnalogClock = new System.Windows.Forms.RadioButton();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // rbtnDigitalClock
@@ -114,6 +116,11 @@
             this.rbtnAnalogClock.UseVisualStyleBackColor = false;
             this.rbtnAnalogClock.CheckedChanged += new System.EventHandler(this.CounterType_CheckedChanged);
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // UCCounterTypeChanger
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -138,5 +145,6 @@
         private System.Windows.Forms.Label labelTitle;
         private System.Windows.Forms.Label labelMinimizeMaximize;
         private System.Windows.Forms.RadioButton rbtnAnalogClock;
+        private System.Windows.Forms.Timer timer1;
     }
 }

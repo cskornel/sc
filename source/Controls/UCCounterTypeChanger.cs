@@ -122,6 +122,7 @@ namespace SimpleCounter.Controls
                 _counter.CounterType = CounterTypeEnum.Counter;
                 _formTimer.TimerUpdate();
                 _ucCounter.UpdateTime();
+                timer1.Enabled = false;
 
             }
             else
@@ -129,7 +130,17 @@ namespace SimpleCounter.Controls
                 _counter.CounterType = CounterTypeEnum.DigitalClock;
                 _formTimer.TimerUpdate();
                 _ucCounter.UpdateTime();
+                timer1.Enabled = true;
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (_counter.CounterType == CounterTypeEnum.DigitalClock)
+            {
+                _ucCounter.UpdateTime();
+                _formTimer.TimerUpdate();
+            }            
         }
 
     }
