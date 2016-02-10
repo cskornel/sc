@@ -10,20 +10,23 @@ namespace SimpleCounter.CounterClasses
     {
         public bool RagadosAblak { get; set; }
         public int LeptekBetumeretValtoztatashoz { get; set; }
-
+        public bool UCMonitorPreviewBoxAutostrtVideo { get; set; }
 
         public GlobalSettings()
         {
             ////Főablak beállításai
 
-            //a főablak a képernyő széléhez közeledve egy bizonyos távolságról odaugrik a képernyő széléhez
+            // a főablak a képernyő széléhez közeledve egy bizonyos távolságról odaugrik a képernyő széléhez
             RagadosAblak = true;
 
 
             ////UCFontSizeBox beállításai
 
-            //a gobokra kattintva ennyivel növeli vagy csökkenti a betűméretet
+            // a gobokra kattintva ennyivel növeli vagy csökkenti a betűméretet
             LeptekBetumeretValtoztatashoz = 4;
+
+            // UCMonitorPreviewBox-on a program indulásakor egyből legyen monitorkép, ne gombnyomásra induljon
+            UCMonitorPreviewBoxAutostrtVideo = true;
 
         }
 

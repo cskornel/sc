@@ -75,6 +75,7 @@ namespace SimpleCounter
             ucTimeSettings1.UcCounter = ucCounter1;
 
             ucMonitorPreviewBox1.Counter = _counter;
+            ucFontSizeBox1.GlobalSettings = _globalSettings;
 
             ucCounterTypeChanger1.Counter = _counter;
             ucCounterTypeChanger1.FormTimer = _timerForm1;

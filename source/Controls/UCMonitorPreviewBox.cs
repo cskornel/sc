@@ -17,6 +17,7 @@ namespace SimpleCounter.Controls
         private static Bitmap bmpScreenshot;
         private static Graphics gfxScreenshot;
         private Image currentImage;
+        private GlobalSettings _globalSettings;
 
         int _maxHeight = 177;
         int _minHeight = 22;
@@ -33,6 +34,7 @@ namespace SimpleCounter.Controls
         {
             InitializeComponent();
             Counter = new Counter();
+            GlobalSettings = new GlobalSettings();
             //_boxSizeChanged = false;
         }
 
@@ -52,6 +54,31 @@ namespace SimpleCounter.Controls
         {
             get { return _counter; }
             set { _counter = value; }
+        }
+
+        public GlobalSettings GlobalSettings
+        {
+            get
+            {
+                return _globalSettings;
+            }
+
+            set
+            {
+                _globalSettings = value;
+
+                if (_globalSettings.UCMonitorPreviewBoxAutostrtVideo)
+                {
+                    btnScreenshot.Visible = false;
+                    checkBoxScreenVideo.Checked = true;
+                    checkBoxScreenVideo.Visible = false;
+                    pictureBoxPreview.Top = 25;
+                    pictureBoxPreview.Left = 5;
+                    pictureBoxPreview.Height = pictureBoxPreview.Height + 20;
+                    pictureBoxPreview.Width = pictureBoxPreview.Width + 38;
+
+                }
+            }
         }
 
         //public bool BoxSizeChanged
