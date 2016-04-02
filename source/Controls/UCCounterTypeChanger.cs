@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using SimpleCounter.CounterClasses;
 
@@ -17,7 +10,8 @@ namespace SimpleCounter.Controls
 
         //a control használata előtt be kell állítani ezeket a változókat
         private Counter _counter;
-        private FormTimer _formTimer;
+        private FormTimer _formTimer1;
+        private FormTimer _formTimer2;
         private UCCounter _ucCounter;
 
 
@@ -35,8 +29,10 @@ namespace SimpleCounter.Controls
         {
             InitializeComponent();
             _counter = new Counter();
-            FormTimer = new FormTimer(_counter);
-            FormTimer.Hide();
+            FormTimer1 = new FormTimer(_counter);
+            FormTimer1.Hide();
+            FormTimer2 = new FormTimer(_counter);
+            FormTimer2.Hide();
             UcCounter = new UCCounter();
         }
 
@@ -58,12 +54,6 @@ namespace SimpleCounter.Controls
             }
         }
 
-        public FormTimer FormTimer
-        {
-            get { return _formTimer; }
-            set { _formTimer = value; }
-        }
-
         public UCCounter UcCounter
         {
             get { return _ucCounter; }
@@ -74,6 +64,32 @@ namespace SimpleCounter.Controls
         {
             get { return _minimized; }
             set { _minimized = value; }
+        }
+
+        public FormTimer FormTimer1
+        {
+            get
+            {
+                return _formTimer1;
+            }
+
+            set
+            {
+                _formTimer1 = value;
+            }
+        }
+
+        public FormTimer FormTimer2
+        {
+            get
+            {
+                return _formTimer2;
+            }
+
+            set
+            {
+                _formTimer2 = value;
+            }
         }
 
         #endregion
@@ -120,7 +136,8 @@ namespace SimpleCounter.Controls
             if (rbtnCounter.Checked)
             {
                 _counter.CounterType = CounterTypeEnum.Counter;
-                _formTimer.TimerUpdate();
+                _formTimer1.TimerUpdate();
+                _formTimer2.TimerUpdate();
                 _ucCounter.UpdateTime();
                 timer1.Enabled = false;
 
@@ -128,8 +145,10 @@ namespace SimpleCounter.Controls
             else
             {
                 _counter.CounterType = CounterTypeEnum.DigitalClock;
-                _formTimer.TimerUpdate();
-                _formTimer.SetCounterDefaultColors();
+                _formTimer1.TimerUpdate();
+                _formTimer1.SetCounterDefaultColors();
+                _formTimer2.TimerUpdate();
+                _formTimer2.SetCounterDefaultColors();
                 _ucCounter.UpdateTime();
                 timer1.Enabled = true;
             }
@@ -140,7 +159,8 @@ namespace SimpleCounter.Controls
             if (_counter.CounterType == CounterTypeEnum.DigitalClock)
             {
                 _ucCounter.UpdateTime();
-                _formTimer.TimerUpdate();
+                _formTimer1.TimerUpdate();
+                _formTimer2.TimerUpdate();
             }            
         }
 

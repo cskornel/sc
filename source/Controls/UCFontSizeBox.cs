@@ -39,7 +39,8 @@ namespace SimpleCounter.Controls
             _formTimer.Hide();
             _globalSettings = new GlobalSettings();
 
-            nupdFontSize.Value = _counter.FontSize;
+            //nupdFontSize.Value = _counter.FontSize;
+            nupdFontSize.Value = 219;
         }
 
         public bool Minimized
@@ -60,7 +61,7 @@ namespace SimpleCounter.Controls
             set
             {
                 _counter = value;
-                nupdFontSize.Value = _counter.FontSize;
+                //nupdFontSize.Value = _counter.FontSize;
             }
         }
 
@@ -114,10 +115,10 @@ namespace SimpleCounter.Controls
         }
 
         private void nupdFontSize_ValueChanged(object sender, EventArgs e)
-        {
-            Counter.FontSize = (int)nupdFontSize.Value;
+        {           
             if (_formTimer!=null)
             {
+                _formTimer.FontSize = (int)nupdFontSize.Value;
                 _formTimer.TimerUpdate();  
             }
             

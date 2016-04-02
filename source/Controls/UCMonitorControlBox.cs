@@ -134,21 +134,22 @@ namespace SimpleCounter.Controls
 
         private void rbtnShow_Click(object sender, EventArgs e)
         {
-            if (!_counter.OnScreen)
+            if (!_formTimer.OnScreen)
             {
                 _formTimer.Show();
                 _formTimer.TimerUpdate();
-                _formTimer.setScreen(_counter.CurrentMonitor);
-                _counter.OnScreen = true;
+                //_formTimer.setScreen(_counter.CurrentMonitor);
+                _formTimer.setScreen((int)nupdMonitor.Value-1);
+                _formTimer.OnScreen = true;
             }
         }
 
         private void rbtnHide_Click(object sender, EventArgs e)
         {
-            if (_counter.OnScreen)
+            if (_formTimer.OnScreen)
             {
                 _formTimer.Hide();
-                _counter.OnScreen = false;
+                _formTimer.OnScreen = false;
             }
         }
 

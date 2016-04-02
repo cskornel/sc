@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Net.WebSockets;
 using System.Reflection;
 using System.Windows.Forms;
 using System.Xml.Linq;
-using Microsoft.SqlServer.Server;
 using SimpleCounter.CounterClasses;
 
 namespace SimpleCounter
@@ -16,6 +13,7 @@ namespace SimpleCounter
         #region Declaration
 
         private FormTimer _timerForm1;
+        private FormTimer _timerForm2;
         private Counter _counter;
         private MainFormData formData;
         private const int SnapDist = 200;
@@ -43,6 +41,7 @@ namespace SimpleCounter
             myControlInit();
 
             _timerForm1 = new FormTimer(_counter);
+            _timerForm2 = new FormTimer(_counter);
             _timerForm1.Hide();
 
             SetCounterData();
@@ -75,14 +74,30 @@ namespace SimpleCounter
             ucTimeSettings1.UcCounter = ucCounter1;
 
             ucMonitorPreviewBox1.Counter = _counter;
-            ucFontSizeBox1.GlobalSettings = _globalSettings;
+            ucMonitorPreviewBox1.GlobalSettings = _globalSettings;
+            ucMonitorPreviewBox1.StartVideo();
 
             ucCounterTypeChanger1.Counter = _counter;
-            ucCounterTypeChanger1.FormTimer = _timerForm1;
+            ucCounterTypeChanger1.FormTimer1 = _timerForm1;
+            ucCounterTypeChanger1.FormTimer2 = _timerForm2;
             ucCounterTypeChanger1.UcCounter = ucCounter1;
 
             ucEffectBox1.Counter = _counter;
             ucEffectBox1.FormTimer = _timerForm1;
+
+            // 2-es kimenet
+
+            ucMonitorPreviewBox2.Counter = _counter;
+            ucMonitorPreviewBox2.GlobalSettings = _globalSettings;
+            ucMonitorPreviewBox2.StopVideo();
+
+            ucMonitorControlBox2.Counter = _counter;
+            ucMonitorControlBox2.FormTimer = _timerForm2;
+
+            ucFontSizeBox2.Counter = _counter;
+            ucFontSizeBox2.FormTimer = _timerForm2;
+            ucFontSizeBox2.GlobalSettings = _globalSettings;
+
         }
 
         private void myControlInit()
@@ -243,7 +258,8 @@ namespace SimpleCounter
         {
             //csak akkor megy a számláló, ha számláló típus van beálllítva
             if (_counter.CounterType == CounterTypeEnum.Counter)
-            {   if (chbStopZero.Checked && (_counter.UserTime == 0 && !start))
+            {
+                if (chbStopZero.Checked && (_counter.UserTime == 0 && !start))
                 {
                     btnStopStart_Click(sender, new EventArgs());
                 }
@@ -252,6 +268,7 @@ namespace SimpleCounter
                     _counter.Go();
                     ucCounter1.UpdateTime();
                     _timerForm1.TimerUpdate();
+                    _timerForm2.TimerUpdate();
                     start = false;
 
                     if (_counter.CounterType == CounterTypeEnum.Counter && !_counter.HideText)
@@ -326,6 +343,21 @@ namespace SimpleCounter
             {
                 chbStopZero.Text = tmpStr + " \r\n( KI )";
             }
+        }
+
+        private void buttonMainPage_Click(object sender, EventArgs e)
+        {
+            customTabControlMain.SelectedIndex = 0;
+        }
+
+        private void buttonSecondPage_Click(object sender, EventArgs e)
+        {
+            customTabControlMain.SelectedIndex = 1;
+        }
+
+        private void buttonMainSettings_Click(object sender, EventArgs e)
+        {
+            customTabControlMain.SelectedIndex = 2;
         }
 
         #endregion
@@ -430,7 +462,7 @@ namespace SimpleCounter
                     XDocument xmlFormData = XDocument.Load(savePath + @"\counter.xml");
 
                     _counter.Id = int.Parse(xmlFormData.Root.Element("Counter").Attribute("id").Value);
-                    _counter.FontSize = int.Parse(xmlFormData.Root.Element("Counter").Attribute("fontsize").Value);
+                    //_counter.FontSize = int.Parse(xmlFormData.Root.Element("Counter").Attribute("fontsize").Value);
                     _counter.UserTime = int.Parse(xmlFormData.Root.Element("Counter").Attribute("time").Value);
                     _counter.CurrentMonitor = int.Parse(xmlFormData.Root.Element("Counter").Attribute("currentMonitor").Value) <= (Screen.AllScreens.Length - 1) ? int.Parse(xmlFormData.Root.Element("Counter").Attribute("currentMonitor").Value) : 0;
                     _counter.CounterType = (CounterTypeEnum)int.Parse(xmlFormData.Root.Element("Counter").Attribute("counterType").Value);
@@ -445,8 +477,40 @@ namespace SimpleCounter
             }
         }
 
+
+
         #endregion
+        
+        private void radioButtonTabControl_CheckedChanged(object sender, EventArgs e)
+        {
+            int index = 0;
+            index = radioButtonMainPage.Checked ? index + 0 : index;
+            index = radioButtonSecondPage.Checked ? index + 1 : index;
+            index = radioButtonMainSettings.Checked ? index + 2 : index;
 
+            customTabControlMain.SelectedIndex = index;
 
+            switch (index)
+            {
+                case 0:
+                    customTabControlMain.SelectedIndex = index;
+                    ucMonitorPreviewBox1.StartVideo();
+                    ucMonitorPreviewBox2.StopVideo();
+                    break;
+                case 1:
+                    customTabControlMain.SelectedIndex = index;
+                    ucMonitorPreviewBox1.StopVideo();
+                    ucMonitorPreviewBox2.StartVideo();
+                    break;
+                case 2:
+                    customTabControlMain.SelectedIndex = index;
+                    ucMonitorPreviewBox1.StopVideo();
+                    ucMonitorPreviewBox2.StopVideo();
+                    break;
+
+                default:
+                    break;
+            }
+        }
     }
 }

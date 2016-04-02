@@ -21,7 +21,7 @@ namespace SimpleCounter.CounterClasses
         //számláló betűszíne
         private Color _fontColor;
         //betüméret a száámlálón
-        private int _fontSize;
+        // private int _fontSize; //több kijelző miatt törölve innen
         //a számláló aktuális értéke
         private int _userTime;
         //true=számol, false=áll
@@ -29,7 +29,7 @@ namespace SimpleCounter.CounterClasses
         //true= előre számol, false=visszafelé
         private bool _direction;
         //true=számláló megjelenítve, false=számláló elrejtve
-        private bool _onScreen;
+        //private bool _onScreen;
         //szöveg elrejtése a monitoron
         private bool _hideText;
         //monitor darabszám
@@ -63,11 +63,11 @@ namespace SimpleCounter.CounterClasses
             _id = 1;
             _backColor = Color.Black;
             _fontColor = Color.WhiteSmoke;
-            _fontSize = 219;
+            //_fontSize = 219;
             _userTime = 0;
             _enabled = false;
             _direction = true;
-            _onScreen = false;
+            //_onScreen = false;
             SzovegesOra = true;
             _monitorQuantity = Screen.AllScreens.Length;
             _currentMonitor = 0;
@@ -106,11 +106,11 @@ namespace SimpleCounter.CounterClasses
             set { _id = value; }
         }
 
-        public int FontSize
-        {
-            get { return _fontSize; }
-            set { _fontSize = value; }
-        }
+        //public int FontSize
+        //{
+        //    get { return _fontSize; }
+        //    set { _fontSize = value; }
+        //}
 
         public int UserTime
         {
@@ -136,11 +136,11 @@ namespace SimpleCounter.CounterClasses
             set { _szovegesOra = value; }
         }
 
-        public bool OnScreen
-        {
-            get { return _onScreen; }
-            set { _onScreen = value; }
-        }
+        //public bool OnScreen
+        //{
+        //    get { return _onScreen; }
+        //    set { _onScreen = value; }
+        //}
 
         public Color BackColor
         {
@@ -245,7 +245,7 @@ namespace SimpleCounter.CounterClasses
         {
             XElement tmpxml = new XElement("Counter");
             XAttribute id = new XAttribute("id", this.Id);
-            XAttribute fontsize = new XAttribute("fontsize", this.FontSize);
+            //XAttribute fontsize = new XAttribute("fontsize", this.FontSize);
             XAttribute time = new XAttribute("time", this._userTime);
             XAttribute currentMonitor = new XAttribute("currentMonitor", this._currentMonitor);
             XAttribute counterType = new XAttribute("counterType", (int)this._counterType);
@@ -255,7 +255,7 @@ namespace SimpleCounter.CounterClasses
 
 
             tmpxml.Add(id);
-            tmpxml.Add(fontsize);
+            //tmpxml.Add(fontsize);
             tmpxml.Add(time);
             tmpxml.Add(currentMonitor);
             tmpxml.Add(counterType);

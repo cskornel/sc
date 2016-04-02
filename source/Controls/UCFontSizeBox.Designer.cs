@@ -94,7 +94,7 @@
             this.nupdFontSize.Size = new System.Drawing.Size(67, 29);
             this.nupdFontSize.TabIndex = 17;
             this.nupdFontSize.Value = new decimal(new int[] {
-            210,
+            219,
             0,
             0,
             0});

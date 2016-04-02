@@ -196,5 +196,14 @@ namespace SimpleCounter.Controls
 
         #endregion
 
+        public void StartVideo() {
+            timer1.Enabled = true;
+        }
+
+        public void StopVideo()
+        {
+            timer1.Enabled = false;
+        }
+
     }
 }

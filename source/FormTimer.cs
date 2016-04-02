@@ -8,6 +8,34 @@ namespace SimpleCounter
     {
 
         private Counter _counter;
+        private int _fontSize;
+        private bool _onScreen;
+
+        public int FontSize
+        {
+            get
+            {
+                return _fontSize;
+            }
+
+            set
+            {
+                _fontSize = value;
+            }
+        }
+
+        public bool OnScreen
+        {
+            get
+            {
+                return _onScreen;
+            }
+
+            set
+            {
+                _onScreen = value;
+            }
+        }
 
         public FormTimer()
         {
@@ -33,13 +61,15 @@ namespace SimpleCounter
             FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
             _counter = counter;
+            _onScreen = false;
             labelTime.Text = "";
+            FontSize = 219;
         }
 
 
         public void TimerUpdate()
         {
-            labelTime.Font = new Font(FontFamily.GenericSansSerif, _counter.FontSize);
+            labelTime.Font = new Font(FontFamily.GenericSansSerif, FontSize);
             labelTime.ForeColor = _counter.FontColor;
             labelTime.Text = _counter.ToString();
         }

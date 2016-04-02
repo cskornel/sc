@@ -26,7 +26,12 @@ namespace SimpleCounter.CounterClasses
             LeptekBetumeretValtoztatashoz = 4;
 
             // UCMonitorPreviewBox-on a program indulásakor egyből legyen monitorkép, ne gombnyomásra induljon
+#if DEBUG
+            UCMonitorPreviewBoxAutostrtVideo = false;
+#else
             UCMonitorPreviewBoxAutostrtVideo = true;
+#endif
+
 
         }
 
