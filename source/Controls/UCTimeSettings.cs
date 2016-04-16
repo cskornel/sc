@@ -19,6 +19,7 @@ namespace SimpleCounter.Controls
         //a control használata előtt be kell állítani ezeket a változókat
         private Counter _counter;
         private FormTimer _formTimer;
+        private FormTimer _formTimer2;
         private GlobalSettings _globalSettings;
         private UCCounter _ucCounter;
 
@@ -36,8 +37,10 @@ namespace SimpleCounter.Controls
         {
             InitializeComponent();
             Counter = new Counter();
-            FormTimer = new FormTimer(Counter);
-            FormTimer.Hide();
+            _formTimer = new FormTimer(Counter);
+            _formTimer.Hide();
+            _formTimer2 = new FormTimer(Counter);
+            _formTimer2.Hide();
             GlobalSettings = new GlobalSettings();
             UcCounter = new UCCounter();
 
@@ -77,6 +80,19 @@ namespace SimpleCounter.Controls
         {
             get { return _ucCounter; }
             set { _ucCounter = value; }
+        }
+
+        public FormTimer FormTimer2
+        {
+            get
+            {
+                return _formTimer2;
+            }
+
+            set
+            {
+                _formTimer2 = value;
+            }
         }
 
         #endregion
@@ -132,6 +148,7 @@ namespace SimpleCounter.Controls
         {
             _counter.UserTime += ((int)nupdTime.Value * 60);
             _formTimer.TimerUpdate();
+            _formTimer2.TimerUpdate();
             _ucCounter.UpdateTime();
         }
 
@@ -139,6 +156,7 @@ namespace SimpleCounter.Controls
         {
             _counter.UserTime = ((int)nupdTime.Value * 60);
             _formTimer.TimerUpdate();
+            _formTimer2.TimerUpdate();
             _ucCounter.UpdateTime();
         }
 
@@ -148,11 +166,14 @@ namespace SimpleCounter.Controls
             //TODO: if a global settings miatt (csak a numericupdawn értéke legyen nulla vagy a számlálóé is?)
             _counter.UserTime = ((int)nupdTime.Value * 60);
             _formTimer.TimerUpdate();
+            _formTimer2.TimerUpdate();
             _formTimer.SetCounterDefaultColors();
+            _formTimer2.SetCounterDefaultColors();
 
             if (_counter.HideText)
             {
-                _formTimer.HideText();                
+                _formTimer.HideText();
+                _formTimer2.HideText();
             } 
 
             _ucCounter.UpdateTime();
@@ -162,6 +183,7 @@ namespace SimpleCounter.Controls
         {
             _counter.UserTime -= ((int)nupdTime.Value * 60);
             _formTimer.TimerUpdate();
+            _formTimer2.TimerUpdate();
             _ucCounter.UpdateTime();
         }
     }

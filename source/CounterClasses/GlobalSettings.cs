@@ -16,8 +16,12 @@ namespace SimpleCounter.CounterClasses
         {
             ////Főablak beállításai
 
+#if DEBUG
             // a főablak a képernyő széléhez közeledve egy bizonyos távolságról odaugrik a képernyő széléhez
+            RagadosAblak = false;
+#else
             RagadosAblak = true;
+#endif
 
 
             ////UCFontSizeBox beállításai
@@ -29,7 +33,7 @@ namespace SimpleCounter.CounterClasses
 #if DEBUG
             UCMonitorPreviewBoxAutostrtVideo = false;
 #else
-            UCMonitorPreviewBoxAutostrtVideo = true;
+            UCMonitorPreviewBoxAutostrtVideo = false;
 #endif
 
 

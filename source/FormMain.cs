@@ -42,6 +42,7 @@ namespace SimpleCounter
 
             _timerForm1 = new FormTimer(_counter);
             _timerForm2 = new FormTimer(_counter);
+            _timerForm2.Formatum = 1;
             _timerForm1.Hide();
 
             SetCounterData();
@@ -70,6 +71,7 @@ namespace SimpleCounter
 
             ucTimeSettings1.Counter = _counter;
             ucTimeSettings1.FormTimer = _timerForm1;
+            ucTimeSettings1.FormTimer2 = _timerForm2;
             ucTimeSettings1.GlobalSettings = _globalSettings;
             ucTimeSettings1.UcCounter = ucCounter1;
 

@@ -74,7 +74,7 @@ namespace SimpleCounter.Controls
                     checkBoxScreenVideo.Visible = false;
                     pictureBoxPreview.Top = 25;
                     pictureBoxPreview.Left = 5;
-                    pictureBoxPreview.Height = pictureBoxPreview.Height + 20;
+                    pictureBoxPreview.Height = pictureBoxPreview.Height + 15;
                     pictureBoxPreview.Width = pictureBoxPreview.Width + 38;
 
                 }

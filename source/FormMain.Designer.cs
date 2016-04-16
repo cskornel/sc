@@ -258,8 +258,10 @@
             counter1.FigylmeztetVisszaszamlalasnal = false;
             counter1.FontColor = System.Drawing.Color.WhiteSmoke;
             counter1.HideText = false;
+            counter1.Hour = 0;
             counter1.Id = 1;
-            //counter1.OnScreen = false;
+            counter1.Min = 0;
+            counter1.Sec = 0;
             counter1.SzovegesOra = true;
             counter1.UserTime = 0;
             counter1.VillogasEffect = false;
@@ -288,8 +290,10 @@
             counter2.FigylmeztetVisszaszamlalasnal = false;
             counter2.FontColor = System.Drawing.Color.WhiteSmoke;
             counter2.HideText = false;
+            counter2.Hour = 0;
             counter2.Id = 1;
-            //counter2.OnScreen = false;
+            counter2.Min = 0;
+            counter2.Sec = 0;
             counter2.SzovegesOra = true;
             counter2.UserTime = 0;
             counter2.VillogasEffect = false;
@@ -316,8 +320,10 @@
             counter3.FigylmeztetVisszaszamlalasnal = false;
             counter3.FontColor = System.Drawing.Color.WhiteSmoke;
             counter3.HideText = false;
+            counter3.Hour = 0;
             counter3.Id = 1;
-            //counter3.OnScreen = false;
+            counter3.Min = 0;
+            counter3.Sec = 0;
             counter3.SzovegesOra = true;
             counter3.UserTime = 0;
             counter3.VillogasEffect = false;
@@ -360,8 +366,10 @@
             counter4.FigylmeztetVisszaszamlalasnal = false;
             counter4.FontColor = System.Drawing.Color.WhiteSmoke;
             counter4.HideText = false;
+            counter4.Hour = 0;
             counter4.Id = 1;
-            //counter4.OnScreen = false;
+            counter4.Min = 0;
+            counter4.Sec = 0;
             counter4.SzovegesOra = true;
             counter4.UserTime = 0;
             counter4.VillogasEffect = false;
@@ -388,8 +396,10 @@
             counter5.FigylmeztetVisszaszamlalasnal = false;
             counter5.FontColor = System.Drawing.Color.WhiteSmoke;
             counter5.HideText = false;
+            counter5.Hour = 0;
             counter5.Id = 1;
-            //counter5.OnScreen = false;
+            counter5.Min = 0;
+            counter5.Sec = 0;
             counter5.SzovegesOra = true;
             counter5.UserTime = 0;
             counter5.VillogasEffect = false;
@@ -420,8 +430,10 @@
             counter6.FigylmeztetVisszaszamlalasnal = false;
             counter6.FontColor = System.Drawing.Color.WhiteSmoke;
             counter6.HideText = false;
+            counter6.Hour = 0;
             counter6.Id = 1;
-            //counter6.OnScreen = false;
+            counter6.Min = 0;
+            counter6.Sec = 0;
             counter6.SzovegesOra = true;
             counter6.UserTime = 0;
             counter6.VillogasEffect = false;
@@ -451,8 +463,10 @@
             counter7.FigylmeztetVisszaszamlalasnal = false;
             counter7.FontColor = System.Drawing.Color.WhiteSmoke;
             counter7.HideText = false;
+            counter7.Hour = 0;
             counter7.Id = 1;
-            //counter7.OnScreen = false;
+            counter7.Min = 0;
+            counter7.Sec = 0;
             counter7.SzovegesOra = true;
             counter7.UserTime = 0;
             counter7.VillogasEffect = false;
@@ -481,7 +495,7 @@
             // 
             // label1
             // 
-            this.label1.BackColor = System.Drawing.Color.IndianRed;
+            this.label1.BackColor = System.Drawing.Color.SeaGreen;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label1.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.label1.Location = new System.Drawing.Point(11, 7);
@@ -504,8 +518,10 @@
             counter8.FigylmeztetVisszaszamlalasnal = false;
             counter8.FontColor = System.Drawing.Color.WhiteSmoke;
             counter8.HideText = false;
+            counter8.Hour = 0;
             counter8.Id = 1;
-            //counter8.OnScreen = false;
+            counter8.Min = 0;
+            counter8.Sec = 0;
             counter8.SzovegesOra = true;
             counter8.UserTime = 0;
             counter8.VillogasEffect = false;
@@ -546,8 +562,10 @@
             counter9.FigylmeztetVisszaszamlalasnal = false;
             counter9.FontColor = System.Drawing.Color.WhiteSmoke;
             counter9.HideText = false;
+            counter9.Hour = 0;
             counter9.Id = 1;
-            //counter9.OnScreen = false;
+            counter9.Min = 0;
+            counter9.Sec = 0;
             counter9.SzovegesOra = true;
             counter9.UserTime = 0;
             counter9.VillogasEffect = false;

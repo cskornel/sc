@@ -10,6 +10,7 @@ namespace SimpleCounter
         private Counter _counter;
         private int _fontSize;
         private bool _onScreen;
+        private int _formatum;
 
         public int FontSize
         {
@@ -34,6 +35,19 @@ namespace SimpleCounter
             set
             {
                 _onScreen = value;
+            }
+        }
+
+        public int Formatum
+        {
+            get
+            {
+                return _formatum;
+            }
+
+            set
+            {
+                _formatum = value;
             }
         }
 
@@ -64,19 +78,38 @@ namespace SimpleCounter
             _onScreen = false;
             labelTime.Text = "";
             FontSize = 219;
+            Formatum = 0;
         }
 
 
         public void TimerUpdate()
         {
-            labelTime.Font = new Font(FontFamily.GenericSansSerif, FontSize);
-            labelTime.ForeColor = _counter.FontColor;
-            labelTime.Text = _counter.ToString();
+            if (_formatum != 0 && _counter.CounterType != CounterTypeEnum.Counter)
+            {
+                labelTime.Font = new Font(FontFamily.GenericSansSerif, FontSize);
+                labelTime.ForeColor = _counter.FontColor;
+                labelTime.Text = _counter.StringFormat2();
+            }
+            else
+            {
+                labelTime.Font = new Font(FontFamily.GenericSansSerif, FontSize);
+                labelTime.ForeColor = _counter.FontColor;
+                labelTime.Text = _counter.ToString();
+            }
+
         }
 
         public void SetTime()
         {
-            labelTime.Text = _counter.ToString();
+            if (_formatum != 0 && _counter.CounterType != CounterTypeEnum.Counter)
+            {
+                labelTime.Text = _counter.StringFormat2();
+            }
+            else
+            {
+                labelTime.Text = _counter.ToString();
+            }
+
         }
 
         public void setScreen(int screen)
@@ -113,7 +146,15 @@ namespace SimpleCounter
 
         public void SetCounterDefaultColors()
         {
-            SetCounterColor(Color.WhiteSmoke, Color.Black);
+            if (_counter.CounterType == CounterTypeEnum.Counter)
+            {
+                SetCounterColor(Color.SpringGreen, Color.Black);
+            }
+            else
+            {
+                SetCounterColor(Color.WhiteSmoke, Color.Black);
+            }
+            
         }
     }
 }

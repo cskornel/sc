@@ -202,6 +202,45 @@ namespace SimpleCounter.CounterClasses
             set { _villogasEffectSebesseg = value; }
         }
 
+        public int Hour
+        {
+            get
+            {
+                return _hour;
+            }
+
+            set
+            {
+                _hour = value;
+            }
+        }
+
+        public int Min
+        {
+            get
+            {
+                return _min;
+            }
+
+            set
+            {
+                _min = value;
+            }
+        }
+
+        public int Sec
+        {
+            get
+            {
+                return _sec;
+            }
+
+            set
+            {
+                _sec = value;
+            }
+        }
+
         #endregion
 
         #region Public Methods
@@ -218,22 +257,48 @@ namespace SimpleCounter.CounterClasses
         {
             if (_counterType == CounterTypeEnum.Counter)
             {
-                _hour = (_userTime / 3600);
-                _min = (_userTime / 60) - _hour * 60;
-                _sec = _userTime - (_min * 60) - (_hour * 3600);
+                Hour = (_userTime / 3600);
+                Min = (_userTime / 60) - Hour * 60;
+                Sec = _userTime - (Min * 60) - (Hour * 3600);
             }
             else
             {
-                _hour = DateTime.Now.Hour;
-                _min = DateTime.Now.Minute;
-                _sec = DateTime.Now.Second;
+                Hour = DateTime.Now.Hour;
+                Min = DateTime.Now.Minute;
+                Sec = DateTime.Now.Second;
             }
 
-            string strhour = SzovegesOra ? Math.Abs(_hour).ToString("0") + " óra\r\n" : Math.Abs(_hour).ToString("0");
-            string strmin = (_hour == 0) ? Math.Abs(_min).ToString("0") : Math.Abs(_min).ToString("00");
-            string strsec = Math.Abs(_sec).ToString("00");
+            string strhour = SzovegesOra ? Math.Abs(Hour).ToString("0") + " óra\r\n" : Math.Abs(Hour).ToString("0");
+            string strmin = (Hour == 0) ? Math.Abs(Min).ToString("0") : Math.Abs(Min).ToString("00");
+            string strsec = Math.Abs(Sec).ToString("00");
 
-            string strTime = (_hour == 0) ? (strmin + " : " + strsec) : (SzovegesOra ? (strhour + strmin + " : " + strsec) : (strhour + " : " + strmin + " : " + strsec));
+            string strTime = (Hour == 0) ? (strmin + " : " + strsec) : (SzovegesOra ? (strhour + strmin + " : " + strsec) : (strhour + " : " + strmin + " : " + strsec));
+
+            strTime = (_userTime < 0 && _counterType == CounterTypeEnum.Counter) ? "- " + strTime : strTime;
+
+            return strTime;
+        }
+
+        public string StringFormat2()
+        {
+            if (_counterType == CounterTypeEnum.Counter)
+            {
+                Hour = (_userTime / 3600);
+                Min = (_userTime / 60) - Hour * 60;
+                Sec = _userTime - (Min * 60) - (Hour * 3600);
+            }
+            else
+            {
+                Hour = DateTime.Now.Hour;
+                Min = DateTime.Now.Minute;
+                Sec = DateTime.Now.Second;
+            }
+
+            string strhour = Math.Abs(Hour).ToString("0");
+            string strmin = (Hour == 0) ? Math.Abs(Min).ToString("0") : Math.Abs(Min).ToString("00");
+            string strsec = Math.Abs(Sec).ToString("00");
+
+            string strTime = (Hour == 0) ? (strmin + " : " + strsec) : (" óra\r\n" + strhour + " : " + strmin);
 
             strTime = (_userTime < 0 && _counterType == CounterTypeEnum.Counter) ? "- " + strTime : strTime;
 
