@@ -1,0 +1,1343 @@
+MakeNSIS v2.46.3-Unicode - Copyright 1995-2009 Contributors
+See the file COPYING for license details.
+Credits can be found in the Users Manual.
+
+Command line defined: "OS64"
+Processing config: 
+Processing plugin dlls: "c:\Program Files (x86)\NSISUnicode\Plugins\*.dll"
+ - AdvSplash::show
+ - Banner::destroy
+ - Banner::getWindow
+ - Banner::show
+ - BgImage::AddImage
+ - BgImage::AddText
+ - BgImage::Clear
+ - BgImage::Destroy
+ - BgImage::Redraw
+ - BgImage::SetBg
+ - BgImage::SetReturn
+ - BgImage::Sound
+ - Dialer::AttemptConnect
+ - Dialer::AutodialHangup
+ - Dialer::AutodialOnline
+ - Dialer::AutodialUnattended
+ - Dialer::GetConnectedState
+ - InstallOptions::dialog
+ - InstallOptions::initDialog
+ - InstallOptions::show
+ - LangDLL::LangDialog
+ - MSSQL_OLEDB::SQL_Execute
+ - MSSQL_OLEDB::SQL_ExecuteScript
+ - MSSQL_OLEDB::SQL_GetError
+ - MSSQL_OLEDB::SQL_GetRow
+ - MSSQL_OLEDB::SQL_Logon
+ - MSSQL_OLEDB::SQL_Logout
+ - Math::Script
+ - NSISdl::download
+ - NSISdl::download_quiet
+ - ShellLink::GetShortCutArgs
+ - ShellLink::GetShortCutDescription
+ - ShellLink::GetShortCutHotkey
+ - ShellLink::GetShortCutIconIndex
+ - ShellLink::GetShortCutIconLocation
+ - ShellLink::GetShortCutShowMode
+ - ShellLink::GetShortCutTarget
+ - ShellLink::GetShortCutWorkingDirectory
+ - ShellLink::SetRunAsAdministrator
+ - ShellLink::SetShortCutArgs
+ - ShellLink::SetShortCutDescription
+ - ShellLink::SetShortCutHotkey
+ - ShellLink::SetShortCutIconIndex
+ - ShellLink::SetShortCutIconLocation
+ - ShellLink::SetShortCutShowMode
+ - ShellLink::SetShortCutTarget
+ - ShellLink::SetShortCutWorkingDirectory
+ - Splash::show
+ - StartMenu::Init
+ - StartMenu::Select
+ - StartMenu::Show
+ - System::Alloc
+ - System::Call
+ - System::Copy
+ - System::Free
+ - System::Get
+ - System::Int64Op
+ - System::Store
+ - System::StrAlloc
+ - TypeLib::GetLibVersion
+ - TypeLib::Register
+ - TypeLib::UnRegister
+ - UMSSQL_OLEDB::SQL_Execute
+ - UMSSQL_OLEDB::SQL_ExecuteScript
+ - UMSSQL_OLEDB::SQL_GetError
+ - UMSSQL_OLEDB::SQL_GetRow
+ - UMSSQL_OLEDB::SQL_Logon
+ - UMSSQL_OLEDB::SQL_Logout
+ - UserInfo::GetAccountType
+ - UserInfo::GetName
+ - UserInfo::GetOriginalAccountType
+ - VPatch::GetFileCRC32
+ - VPatch::GetFileMD5
+ - VPatch::vpatchfile
+ - execDos::exec
+ - execDos::isdone
+ - execDos::wait
+ - inetc::get
+ - inetc::head
+ - inetc::post
+ - inetc::put
+ - nsDialogs::Create
+ - nsDialogs::CreateControl
+ - nsDialogs::CreateItem
+ - nsDialogs::CreateTimer
+ - nsDialogs::GetUserData
+ - nsDialogs::KillTimer
+ - nsDialogs::OnBack
+ - nsDialogs::OnChange
+ - nsDialogs::OnClick
+ - nsDialogs::OnNotify
+ - nsDialogs::SelectFileDialog
+ - nsDialogs::SelectFolderDialog
+ - nsDialogs::SetRTL
+ - nsDialogs::SetUserData
+ - nsDialogs::Show
+ - nsExec::Exec
+ - nsExec::ExecToLog
+ - nsExec::ExecToStack
+
+!define: "MUI_INSERT_NSISCONF"=""
+
+Changing directory to: "d:\munka\whminstaller\whm\installer"
+
+Processing script file: "d:\munka\whminstaller\whm\installer\setup.nsi"
+!define: "OLEDB"="UMSSQL_OLEDB"
+!include: "c:\Program Files (x86)\NSISUnicode\Include\nsDialogs.nsh"
+!define: "NSDIALOGS_INCLUDED"=""
+!include: closed: "c:\Program Files (x86)\NSISUnicode\Include\nsDialogs.nsh"
+!include: "c:\Program Files (x86)\NSISUnicode\Include\LogicLib.nsh"
+!include: closed: "c:\Program Files (x86)\NSISUnicode\Include\LogicLib.nsh"
+!include: "c:\Program Files (x86)\NSISUnicode\Include\Sections.nsh"
+!include: closed: "c:\Program Files (x86)\NSISUnicode\Include\Sections.nsh"
+!include: "c:\Program Files (x86)\NSISUnicode\Include\MUI2.nsh"
+!include: "c:\Program Files (x86)\NSISUnicode\Contrib\Modern UI 2\MUI2.nsh"
+NSIS Modern User Interface version 2.0 - © 2002-2009 Joost Verburg (c:\Program Files (x86)\NSISUnicode\Contrib\Modern UI 2\MUI2.nsh:8)
+!define: "MUI_INCLUDED"=""
+!define: "MUI_SYSVERSION"="2.0"
+!define: "MUI_VERBOSE"="3"
+!include: closed: "c:\Program Files (x86)\NSISUnicode\Contrib\Modern UI 2\MUI2.nsh"
+!include: closed: "c:\Program Files (x86)\NSISUnicode\Include\MUI2.nsh"
+!include: "ReplaceInFile.nsh"
+!include: "StrRep.nsh"
+!define: "StrRep"="!insertmacro StrRep"
+!insertmacro: Func_StrRep
+Function: "StrRep"
+Exch($R2,0)
+Exch(st(1),0)
+Exch($R1,0)
+Exch(st(2),0)
+Exch($R0,0)
+Push: $R3
+Push: $R4
+Push: $R5
+Push: $R6
+Push: $R7
+Push: $R8
+Push: $R9
+StrCpy $R3 "0" () ()
+StrLen $R4 "$R1"
+StrLen $R6 "$R0"
+StrLen $R9 "$R2"
+StrCpy $R5 "$R0" ($R4) ($R3)
+StrCmp "$R5" "$R1" equal=found, nonequal=
+StrCmp "$R3" "$R6" equal=done, nonequal=
+IntOp: $R3=$R3+1
+Goto: loop
+StrCpy $R5 "$R0" ($R3) ()
+IntOp: $R8=$R3+$R4
+StrCpy $R7 "$R0" () ($R8)
+StrCpy $R0 "$R5$R2$R7" () ()
+StrLen $R6 "$R0"
+IntOp: $R3=$R3+$R9
+Goto: loop
+Pop: $R9
+Pop: $R8
+Pop: $R7
+Pop: $R6
+Pop: $R5
+Pop: $R4
+Pop: $R3
+Push: $R0
+Push: $R1
+Pop: $R0
+Pop: $R1
+Pop: $R0
+Pop: $R2
+Exch($R1,0)
+FunctionEnd
+!insertmacro: end of Func_StrRep
+!insertmacro: Func_StrRep
+Function: "un.StrRep"
+Exch($R2,0)
+Exch(st(1),0)
+Exch($R1,0)
+Exch(st(2),0)
+Exch($R0,0)
+Push: $R3
+Push: $R4
+Push: $R5
+Push: $R6
+Push: $R7
+Push: $R8
+Push: $R9
+StrCpy $R3 "0" () ()
+StrLen $R4 "$R1"
+StrLen $R6 "$R0"
+StrLen $R9 "$R2"
+StrCpy $R5 "$R0" ($R4) ($R3)
+StrCmp "$R5" "$R1" equal=found, nonequal=
+StrCmp "$R3" "$R6" equal=done, nonequal=
+IntOp: $R3=$R3+1
+Goto: loop
+StrCpy $R5 "$R0" ($R3) ()
+IntOp: $R8=$R3+$R4
+StrCpy $R7 "$R0" () ($R8)
+StrCpy $R0 "$R5$R2$R7" () ()
+StrLen $R6 "$R0"
+IntOp: $R3=$R3+$R9
+Goto: loop
+Pop: $R9
+Pop: $R8
+Pop: $R7
+Pop: $R6
+Pop: $R5
+Pop: $R4
+Pop: $R3
+Push: $R0
+Push: $R1
+Pop: $R0
+Pop: $R1
+Pop: $R0
+Pop: $R2
+Exch($R1,0)
+FunctionEnd
+!insertmacro: end of Func_StrRep
+!include: closed: "StrRep.nsh"
+Function: "RIF"
+ClearErrors
+Exch($0,0)
+Exch(st(1),0)
+Exch($1,0)
+Exch(st(2),0)
+Exch($2,0)
+Push: $R0
+Push: $R1
+Push: $R2
+Push: $R3
+Push: $R4
+IfFileExists: "$2" ? +1 : RIF_error
+FileOpen: $2 as r -> $R0
+GetTempFileName -> $R2
+FileOpen: $R2 as w -> $R1
+FileRead: $R0->$R3 (max:)
+IfErrors ?RIF_leaveloop:
+Push: $R3
+Push: $1
+Push: $0
+Call "StrRep"
+StrCpy $R4 "$R3" () ()
+Pop: $R3
+StrCmp "$R3" "$R4" equal=+1, nonequal=RIF_sar
+FileWrite: $R3->$R1
+Goto: RIF_loop
+FileClose: $R1
+FileClose: $R0
+Delete: "$2.old"
+Rename: $2->$2.old
+Rename: $R2->$2
+ClearErrors
+Goto: RIF_out
+SetErrors
+Pop: $R4
+Pop: $R3
+Pop: $R2
+Pop: $R1
+Pop: $R0
+Pop: $2
+Pop: $0
+Pop: $1
+FunctionEnd
+!include: closed: "ReplaceInFile.nsh"
+!include: "custom_components.nsh"
+Var: "SelectCPDialog"
+Var: "SelectCPLabel"
+Var: "SelectCPStandalone"
+Var: "SelectCPClient"
+Var: "SelectCPServer"
+Function: "SelectComponentsEnter"
+Var: "InstallableComponents"
+!insertmacro: MUI_HEADER_TEXT
+!insertmacro: end of MUI_HEADER_TEXT
+GetDlgItem: output=$0 dialog=$HWNDPARENT item=1
+EnableWindow: handle=$0 enable=0
+File: "nsDialogs.dll"->"$PLUGINSDIR\nsDialogs.dll" [compress] 4629/9728 bytes
+Plugin Command: Create 1018
+Pop: $SelectCPDialog
+!insertmacro: _If
+!insertmacro: end of _If
+Abort: ""
+!insertmacro: _EndIf
+!insertmacro: end of _EndIf
+File: "nsDialogs.dll"->"$PLUGINSDIR\nsDialogs.dll" [compress] 0/9728 bytes
+Plugin Command: CreateControl STATIC 0x40000000|0x10000000|0x04000000|0x00000100 0x00000020 0 5 640 12u Valássza ki a telepítend? összetev?ket:
+Pop: $SelectCPLabel
+Plugin Command: CreateControl BUTTON 0x40000000|0x10000000|0x04000000|0x00010000|0x00000000|0x00000C00|0x00000009|0x00002000 0 40 40 440 12u Egygépes változat
+Pop: $SelectCPStandalone
+!insertmacro: __NSD_OnControlEvent
+Push: $0
+Push: $1
+StrCpy $1 "$SelectCPStandalone" () ()
+GetFunctionAddress: $0 StandaloneClickedFile: "nsDialogs.dll"->"$PLUGINSDIR\nsDialogs.dll" [compress] 0/9728 bytes
+Plugin Command: OnClick $1 $0
+Pop: $1
+Pop: $0
+!insertmacro: end of __NSD_OnControlEvent
+Plugin Command: CreateControl STATIC 0x40000000|0x10000000|0x04000000|0x00000100 0x00000020 56 60 440 12u Önálló rendszerként, egyéni felhasználóknak ajánlott.
+Plugin Command: CreateControl BUTTON 0x40000000|0x10000000|0x04000000|0x00010000|0x00000000|0x00000C00|0x00000009|0x00002000 0 40 80 440 12u Kliens program
+Pop: $SelectCPClient
+!insertmacro: __NSD_OnControlEvent
+Push: $0
+Push: $1
+StrCpy $1 "$SelectCPClient" () ()
+GetFunctionAddress: $0 ClientClickedPlugin Command: OnClick $1 $0
+Pop: $1
+Pop: $0
+!insertmacro: end of __NSD_OnControlEvent
+Plugin Command: CreateControl BUTTON 0x40000000|0x10000000|0x04000000|0x00010000|0x00000000|0x00000C00|0x00000009|0x00002000 0 40 120 440 12u Alkalmazásszerver
+Pop: $SelectCPServer
+!insertmacro: __NSD_OnControlEvent
+Push: $0
+Push: $1
+StrCpy $1 "$SelectCPServer" () ()
+GetFunctionAddress: $0 ServerClickedPlugin Command: OnClick $1 $0
+Pop: $1
+Pop: $0
+!insertmacro: end of __NSD_OnControlEvent
+File: "nsDialogs.dll"->"$PLUGINSDIR\nsDialogs.dll" [compress] 0/9728 bytes
+Plugin Command: Show
+FunctionEnd
+Function: "SelectComponentsLeave"
+FunctionEnd
+Function: "StandaloneClicked"
+StrCpy $InstallableComponents "A" () ()
+GetDlgItem: output=$0 dialog=$HWNDPARENT item=1
+EnableWindow: handle=$0 enable=1
+FunctionEnd
+Function: "ClientClicked"
+StrCpy $InstallableComponents "C" () ()
+GetDlgItem: output=$0 dialog=$HWNDPARENT item=1
+EnableWindow: handle=$0 enable=1
+FunctionEnd
+Function: "ServerClicked"
+StrCpy $InstallableComponents "S" () ()
+GetDlgItem: output=$0 dialog=$HWNDPARENT item=1
+EnableWindow: handle=$0 enable=1
+FunctionEnd
+!include: closed: "custom_components.nsh"
+!include: "custom_ipaddress.nsh"
+Var: "SetIPDialog"
+Var: "SetIPLabel"
+Var: "SetIPText"
+Var: "SetIPButton"
+Function: "SetIPAddressEnter"
+!insertmacro: _If
+!insertmacro: end of _If
+Abort: ""
+!insertmacro: _EndIf
+!insertmacro: end of _EndIf
+!insertmacro: MUI_HEADER_TEXT
+!insertmacro: end of MUI_HEADER_TEXT
+Plugin Command: Create 1018
+Pop: $SetIPDialog
+!insertmacro: _If
+!insertmacro: end of _If
+Abort: ""
+!insertmacro: _EndIf
+!insertmacro: end of _EndIf
+Plugin Command: CreateControl STATIC 0x40000000|0x10000000|0x04000000|0x00000100 0x00000020 0 5 140 12u Adja meg a szerver IP címét
+Pop: $SetIPLabel
+Plugin Command: CreateControl EDIT 0x40000000|0x10000000|0x04000000|0x00010000|0x00000080 0x00000100|0x00000200 145 2 100 20 localhost
+Pop: $SetIPText
+Plugin Command: CreateControl BUTTON 0x40000000|0x10000000|0x04000000|0x00010000 0 255 0 90 24 Szerver teszt
+Pop: $SetIPButton
+!insertmacro: __NSD_OnControlEvent
+Push: $0
+Push: $1
+StrCpy $1 "$SetIPButton" () ()
+GetFunctionAddress: $0 TestIPAddressPlugin Command: OnClick $1 $0
+Pop: $1
+Pop: $0
+!insertmacro: end of __NSD_OnControlEvent
+Plugin Command: Show
+FunctionEnd
+Var: "TestWCFAddress"
+Function: "TestIPAddress"
+!insertmacro: __NSD_GetText
+File: "System.dll"->"$PLUGINSDIR\System.dll" [compress] 6396/11264 bytes
+Plugin Command: Call user32::GetWindowText(i$SetIPText,t.s,i8196)
+Pop: $0
+!insertmacro: end of __NSD_GetText
+StrCpy $TestWCFAddress "http://$0:8541/KodtarWCFService" () ()
+File: "inetc.dll"->"$PLUGINSDIR\inetc.dll" [compress] 10579/20992 bytes
+Plugin Command: get /caption WHM Szerver Teszt /popup  $TestWCFAddress temp.temp /end
+Pop: $0
+!insertmacro: _If
+!insertmacro: end of _If
+MessageBox: 0: "Teszt sikeresen lefutott, az alkalmazásszerver elérthet?."
+!insertmacro: _Else
+!insertmacro: end of _Else
+MessageBox: 0: "Szerver nem elérhet?. Hibaüzenet: $0"
+!insertmacro: _EndIf
+!insertmacro: end of _EndIf
+FunctionEnd
+Function: "SetIPAddressLeave"
+!insertmacro: __NSD_GetText
+Plugin Command: Call user32::GetWindowText(i$SetIPText,t.s,i8196)
+Pop: $0
+!insertmacro: end of __NSD_GetText
+!insertmacro: ReplaceInFile
+Push: $INSTDIR\Webhazmester.Shell.exe.config
+Push: localhost
+Push: $0
+Call "RIF"
+!insertmacro: end of ReplaceInFile
+FunctionEnd
+!include: closed: "custom_ipaddress.nsh"
+!include: "custom_database.nsh"
+Function: "AttachDB"
+File: "UMSSQL_OLEDB.dll"->"$PLUGINSDIR\UMSSQL_OLEDB.dll" [compress] 58359/122880 bytes
+Plugin Command: SQL_Logon .\SQLEXPRESS  
+Pop: $0
+DetailPrint: "$0"
+Pop: $0
+DetailPrint: "$0"
+File: "UMSSQL_OLEDB.dll"->"$PLUGINSDIR\UMSSQL_OLEDB.dll" [compress] 0/122880 bytes
+Plugin Command: SQL_GetError
+Pop: $0
+DetailPrint: "$0"
+Pop: $0
+DetailPrint: "$0"
+File: "UMSSQL_OLEDB.dll"->"$PLUGINSDIR\UMSSQL_OLEDB.dll" [compress] 0/122880 bytes
+Plugin Command: SQL_Execute EXEC sp_detach_db 'Webhazmester', 'true'
+DetailPrint: "EXEC sp_detach_db 'Webhazmester', 'true'"
+Pop: $0
+DetailPrint: "$0"
+Pop: $0
+DetailPrint: "$0"
+Plugin Command: SQL_GetError
+Pop: $0
+DetailPrint: "$0"
+Pop: $0
+DetailPrint: "$0"
+Plugin Command: SQL_Execute CREATE DATABASE [Webhazmester] ON ( FILENAME = N'$INSTDIR\Webhazmester_log.ldf' ), ( FILENAME = N'$INSTDIR\Webhazmester.mdf' ) FOR ATTACH
+DetailPrint: "CREATE DATABASE [Webhazmester] ON ( FILENAME = N'$INSTDIR\Webhazmester_log.ldf' ), ( FILENAME = N'$INSTDIR\Webhazmester.mdf' ) FOR ATTACH"
+Pop: $0
+DetailPrint: "$0"
+Pop: $0
+DetailPrint: "$0"
+Plugin Command: SQL_GetError
+Pop: $0
+DetailPrint: "$0"
+Pop: $0
+DetailPrint: "$0"
+FunctionEnd
+!include: closed: "custom_database.nsh"
+!include: "custom_prerequisites.nsh"
+Var: "PreDialog"
+Var: "SQLLink"
+Var: "NETLink"
+Var: "SP3Link"
+Function: "PrerequisitesEnter"
+!insertmacro: MUI_HEADER_TEXT
+!insertmacro: end of MUI_HEADER_TEXT
+Plugin Command: Create 1018
+Pop: $PreDialog
+Plugin Command: CreateControl BUTTON 0x40000000|0x10000000|0x04000000|0x00010000 0 10 16 100 12u Telepítés
+Pop: $SP3Link
+!insertmacro: __NSD_OnControlEvent
+Push: $0
+Push: $1
+StrCpy $1 "$NETLink" () ()
+GetFunctionAddress: $0 SP3LinkClickedPlugin Command: OnClick $1 $0
+Pop: $1
+Pop: $0
+!insertmacro: end of __NSD_OnControlEvent
+Plugin Command: CreateControl STATIC 0x40000000|0x10000000|0x04000000|0x00000100 0x00000020 140 20 640 12u Microsoft Windows XP Service Pack 3
+Plugin Command: CreateControl BUTTON 0x40000000|0x10000000|0x04000000|0x00010000 0 10 56 100 12u Telepítés
+Pop: $NETLink
+!insertmacro: __NSD_OnControlEvent
+Push: $0
+Push: $1
+StrCpy $1 "$NETLink" () ()
+GetFunctionAddress: $0 NETLinkClickedPlugin Command: OnClick $1 $0
+Pop: $1
+Pop: $0
+!insertmacro: end of __NSD_OnControlEvent
+Plugin Command: CreateControl STATIC 0x40000000|0x10000000|0x04000000|0x00000100 0x00000020 140 60 640 12u Microsoft .NET 3.5 keretrendszer
+Plugin Command: CreateControl BUTTON 0x40000000|0x10000000|0x04000000|0x00010000 0 10 96 100 12u Telepítés
+Pop: $SQLLink
+!insertmacro: __NSD_OnControlEvent
+Push: $0
+Push: $1
+StrCpy $1 "$SQLLink" () ()
+GetFunctionAddress: $0 SQLLinkClickedPlugin Command: OnClick $1 $0
+Pop: $1
+Pop: $0
+!insertmacro: end of __NSD_OnControlEvent
+Plugin Command: CreateControl STATIC 0x40000000|0x10000000|0x04000000|0x00000100 0x00000020 140 100 640 12u Microsoft SQL Server 2008 (Express) R2
+Plugin Command: CreateControl STATIC 0x40000000|0x10000000|0x04000000|0x00000100 0x00000020 140 116 640 12u Alkalmazásszerver telepítése esetén.
+!insertmacro: _If
+!insertmacro: end of _If
+Abort: ""
+!insertmacro: _EndIf
+!insertmacro: end of _EndIf
+Call "NeedNETInstallation"
+Pop: $0
+EnableWindow: handle=$NETLink enable=$0
+Call "NeedSQLInstallation"
+Pop: $0
+EnableWindow: handle=$SQLLink enable=$0
+Call "NeedSP3Installation"
+Pop: $0
+EnableWindow: handle=$SP3Link enable=$0
+!insertmacro: _If
+!insertmacro: end of _If
+EnableWindow: handle=$SQLLink enable=0
+!insertmacro: _EndIf
+!insertmacro: end of _EndIf
+Plugin Command: Show
+FunctionEnd
+Function: "PrerequisitesLeave"
+FunctionEnd
+Function: "SQLLinkClicked"
+Call "BatchSqlInstall32bit"
+FunctionEnd
+Function: "NETLinkClicked"
+Push: http://download.microsoft.com/download/2/0/e/20e90413-712f-438c-988e-fdaa79a8ac3d/dotnetfx35.exe
+Call "openLink"
+FunctionEnd
+Function: "SP3LinkClicked"
+Push: http://www.microsoft.com/download/en/details.aspx?id=24
+Call "openLink"
+FunctionEnd
+Function: "NeedSQLInstallation"
+ClearErrors
+ReadRegStr $0 HKLM\SOFTWARE\Microsoft\Microsoft SQL Server\100\Bootstrap R2\CurrentVersion\Version
+IfErrors ?SQLServerNotFound:SQLServerFound
+Push: 0
+Goto: ExitSQLDetector
+Push: 1
+FunctionEnd
+Function: "NeedNETInstallation"
+ClearErrors
+ReadRegStr $0 HKLM\SOFTWARE\Microsoft\NET Framework Setup\NDP\v3.5\Version
+IfErrors ?NETServerNotFound:NETServerFound
+Push: 0
+Goto: ExitNETDetector
+Push: 1
+FunctionEnd
+Function: "NeedSP3Installation"
+Push: 0
+FunctionEnd
+Function: "openLink"
+Exch($R1,0)
+Exec: "rundll32 url.dll,FileProtocolHandler $R1" (->)
+FunctionEnd
+!include: closed: "custom_prerequisites.nsh"
+!include: "batch_install_management.nsh"
+Var: "batchFileName"
+Var: "LogFileName"
+Var: "br"
+Var: "SQLInstaller"
+Var: "SQLInstansename"
+Var: "SQLPassword"
+Function: "BatchCheck64bit"
+StrCpy $BatchFileName "check64bit.cmd" () ()
+StrCpy $LogFileName "3264.log" () ()
+StrCpy $br "
+" () ()
+!appendfile: "C:\Users\cskornel\AppData\Local\Temp\$BatchFileName" ""
+!delfile: "C:\Users\cskornel\AppData\Local\Temp\$BatchFileName"
+!delfile: deleted "C:\Users\cskornel\AppData\Local\Temp\$BatchFileName"
+!appendfile: "C:\Users\cskornel\AppData\Local\Temp\$BatchFileName" ""
+FileOpen: $BatchFileName as w -> $9
+FileWrite: @ECHO off->$9
+FileWrite: $brif defined ProgramFiles(x86) (->$9
+FileWrite: $brSET RESULT= 1->$9
+FileWrite: $br) else (->$9
+FileWrite: $brSET RESULT= 0->$9
+FileWrite: $br)->$9
+FileWrite: $br@echo Exit value: %RESULT%->$9
+FileWrite: $br@exit %RESULT%->$9
+FileWrite: $br->$9
+FileClose: $9
+File: "nsExec.dll"->"$PLUGINSDIR\nsExec.dll" [compress] 3378/6144 bytes
+Plugin Command: Exec $BatchFileName
+FileOpen: $BatchFileName as w -> $9
+FileWrite:  ->$9
+FileClose: $9
+Delete: "$BatchFileName"
+FunctionEnd
+Function: "BatchOpenPort"
+StrCpy $BatchFileName "openport.cmd" () ()
+StrCpy $LogFileName "port.log" () ()
+StrCpy $br "
+" () ()
+!appendfile: "C:\Users\cskornel\AppData\Local\Temp\$BatchFileName" ""
+!delfile: "C:\Users\cskornel\AppData\Local\Temp\$BatchFileName"
+!delfile: deleted "C:\Users\cskornel\AppData\Local\Temp\$BatchFileName"
+!appendfile: "C:\Users\cskornel\AppData\Local\Temp\$BatchFileName" ""
+FileOpen: $BatchFileName as w -> $9
+FileWrite: @ECHO off->$9
+FileWrite: $brnetsh http delete urlacl url=http://+:8541/->$9
+FileWrite: $brnetsh http add urlacl url=http://+:8541/ sddl="O:BU"->$9
+FileWrite: $br@echo Exit value: %ERRORLEVEL%->$9
+FileWrite: $br@exit %ERRORLEVEL%->$9
+FileWrite: $br->$9
+FileClose: $9
+File: "nsExec.dll"->"$PLUGINSDIR\nsExec.dll" [compress] 0/6144 bytes
+Plugin Command: Exec $BatchFileName
+FileOpen: $BatchFileName as w -> $9
+FileWrite:  ->$9
+FileClose: $9
+Delete: "$BatchFileName"
+FunctionEnd
+Function: "BatchWindowsVersion"
+StrCpy $BatchFileName "getOsVer.cmd" () ()
+StrCpy $LogFileName "winVer.log" () ()
+StrCpy $br "
+" () ()
+!appendfile: "C:\Users\cskornel\AppData\Local\Temp\$BatchFileName" ""
+!delfile: "C:\Users\cskornel\AppData\Local\Temp\$BatchFileName"
+!delfile: deleted "C:\Users\cskornel\AppData\Local\Temp\$BatchFileName"
+!appendfile: "C:\Users\cskornel\AppData\Local\Temp\$BatchFileName" ""
+FileOpen: $BatchFileName as w -> $9
+FileWrite: @ECHO off->$9
+FileWrite: $brFOR /F "tokens=*" %%A IN ('wmic os get Caption /value ^| FIND /C "7"') DO SET intWin7Ok=%%A->$9
+FileWrite: $brFOR /F "tokens=*" %%A IN ('wmic os get CSDVersion /value ^| FIND /C "1"') DO SET intSP1Ok=%%A->$9
+FileWrite: $brIf %intWin7Ok% EQU 1 (->$9
+FileWrite: $brIf %intSP1Ok% EQU 1 ( SET RESULT= 710 ) Else ( SET RESULT= 700 )->$9
+FileWrite: $br) Else (->$9
+FileWrite: $brSET RESULT= -1->$9
+FileWrite: $br)->$9
+FileWrite: $br@echo Exit value: %RESULT%->$9
+FileWrite: $br@exit %RESULT%->$9
+FileWrite: $br->$9
+FileClose: $9
+File: "nsExec.dll"->"$PLUGINSDIR\nsExec.dll" [compress] 0/6144 bytes
+Plugin Command: Exec $BatchFileName
+FileOpen: $BatchFileName as w -> $9
+FileWrite:  ->$9
+FileClose: $9
+Delete: "$BatchFileName"
+!insertmacro: _If
+!insertmacro: end of _If
+Delete: "TempWmicBatchFile.bat"
+!insertmacro: _EndIf
+!insertmacro: end of _EndIf
+FunctionEnd
+Function: "BatchSqlInstall32bit"
+StrCpy $SQLInstaller "SQLEXPR32_x86_ENU.exe" () ()
+StrCpy $SQLInstansename "SQLEXPRESS" () ()
+StrCpy $SQLPassword "abc123ABC" () ()
+!insertmacro: _If
+!insertmacro: end of _If
+StrCpy $BatchFileName "installr2.cmd" () ()
+StrCpy $LogFileName "sql.log" () ()
+StrCpy $br "
+" () ()
+!appendfile: "C:\Users\cskornel\AppData\Local\Temp\$BatchFileName" ""
+!delfile: "C:\Users\cskornel\AppData\Local\Temp\$BatchFileName"
+!delfile: deleted "C:\Users\cskornel\AppData\Local\Temp\$BatchFileName"
+!appendfile: "C:\Users\cskornel\AppData\Local\Temp\$BatchFileName" ""
+FileOpen: $BatchFileName as w -> $9
+FileWrite: @ECHO off->$9
+FileWrite: $brecho Installing SQL Server 2008 R2->$9
+FileWrite: $br$SQLInstaller /QS /ACTION=Install /FEATURES=SQL /INSTANCENAME=%1 /AGTSVCACCOUNT="NT AUTHORITY\Network Service" /IACCEPTSQLSERVERLICENSETERMS /SAPWD="%2" /SECURITYMODE=SQL->$9
+FileWrite: $br@echo Exit value: %ERRORLEVEL%->$9
+FileWrite: $br@exit %ERRORLEVEL%->$9
+FileWrite: $br->$9
+FileClose: $9
+File: "nsExec.dll"->"$PLUGINSDIR\nsExec.dll" [compress] 0/6144 bytes
+Plugin Command: Exec $BatchFileName $SQLInstansename $SQLPassword
+Pop: $0
+FileOpen: $BatchFileName as w -> $9
+FileWrite:  ->$9
+FileClose: $9
+Delete: "$BatchFileName"
+!insertmacro: _If
+!insertmacro: end of _If
+MessageBox: 0: "SQL szerver telepítése sikeres!"
+!insertmacro: _Else
+!insertmacro: end of _Else
+MessageBox: 0: "Hiba történt az SQL szerver telepítése során!$br (Exit code: $0)"
+!insertmacro: _EndIf
+!insertmacro: end of _EndIf
+!insertmacro: _Else
+!insertmacro: end of _Else
+MessageBox: 0: "Az SQL telepít? ($SQLInstaller) nem található!"
+!insertmacro: _EndIf
+!insertmacro: end of _EndIf
+FunctionEnd
+!include: closed: "batch_install_management.nsh"
+!include: "custom_portopener.nsh"
+Var: "PortOpenerDialog"
+Var: "PortOpenerLabel"
+Function: "PortOpenerEnter"
+!insertmacro: _If
+!insertmacro: end of _If
+Abort: ""
+!insertmacro: _EndIf
+!insertmacro: end of _EndIf
+!insertmacro: MUI_HEADER_TEXT
+!insertmacro: end of MUI_HEADER_TEXT
+Plugin Command: Create 1018
+Pop: $PortOpenerDialog
+!insertmacro: _If
+!insertmacro: end of _If
+Abort: ""
+!insertmacro: _EndIf
+!insertmacro: end of _EndIf
+Plugin Command: CreateControl STATIC 0x40000000|0x10000000|0x04000000|0x00000100 0x00000020 0 5 240 12u Port megnyitásához kattintson a tovább gombra.
+Pop: $PortOpenerLabel
+Plugin Command: Show
+FunctionEnd
+Function: "PortOpenerLeave"
+ReadRegStr $1 HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\CurrentVersion
+!insertmacro: _Switch
+!insertmacro: end of _Switch
+!insertmacro: _Case
+!insertmacro: end of _Case
+MessageBox: 0: "Windows 2000:
+Az automatikus portnyitás ezen a rendszeren nem lehetséges.
+Kérem nyissa meg a t?zfalon a 8541-es http portot."
+!insertmacro: _Goto
+!insertmacro: end of _Goto
+!insertmacro: _Case
+!insertmacro: end of _Case
+MessageBox: 0: "Windows XP:
+Az automatikus portnyitás ezen a rendszeren nem lehetséges.
+Kérem nyissa meg a t?zfalon a 8541-es http portot."
+!insertmacro: _Goto
+!insertmacro: end of _Goto
+!insertmacro: _Case
+!insertmacro: end of _Case
+MessageBox: 0: "Windows 2003:
+Az automatikus portnyitás ezen a rendszeren nem lehetséges.
+Kérem nyissa meg a t?zfalon a 8541-es http portot."
+!insertmacro: _Goto
+!insertmacro: end of _Goto
+!insertmacro: _Case
+!insertmacro: end of _Case
+Call "BatchOpenPort"
+Pop: $0
+!insertmacro: _If
+!insertmacro: end of _If
+MessageBox: 0: "Az automatikus portnyitás nem sikerült! 
+Kérem nyissa meg a t?zfalon a 8541-es http portot."
+!insertmacro: _EndIf
+!insertmacro: end of _EndIf
+!insertmacro: _Goto
+!insertmacro: end of _Goto
+!insertmacro: _Case
+!insertmacro: end of _Case
+Call "BatchOpenPort"
+Pop: $0
+!insertmacro: _If
+!insertmacro: end of _If
+MessageBox: 0: "Az automatikus portnyitás nem sikerült! 
+Kérem nyissa meg a t?zfalon a 8541-es http portot."
+!insertmacro: _EndIf
+!insertmacro: end of _EndIf
+!insertmacro: _Goto
+!insertmacro: end of _Goto
+!insertmacro: _CaseElse
+!insertmacro: end of _CaseElse
+MessageBox: 0: "Ismeretlen Operációs rendszer!
+Az automatikus portnyitás ezen a rendszeren nem lehetséges.
+Kérem nyissa meg a t?zfalon a 8541-es http portot."
+!insertmacro: _Goto
+!insertmacro: end of _Goto
+!insertmacro: _EndSwitch
+!insertmacro: end of _EndSwitch
+FunctionEnd
+!include: closed: "custom_portopener.nsh"
+Name: "Webházmester"
+Var: "StartMenuGroup"
+Var: "OpSysErrorMessage"
+!define: "REGKEY"="SOFTWARE\$(^Name)"
+!define: "VERSION"="BETA"
+!define: "COMPANY"="Magicom"
+!define: "URL"="www.magicom.hu"
+!define: "MUI_ICON"="c:\Program Files (x86)\NSISUnicode\Contrib\Graphics\Icons\modern-install-colorful.ico"
+!define: "MUI_FINISHPAGE_NOAUTOCLOSE"=""
+!define: "MUI_STARTMENUPAGE_REGISTRY_ROOT"="HKLM"
+!define: "MUI_STARTMENUPAGE_NODISABLE"=""
+!define: "MUI_STARTMENUPAGE_REGISTRY_KEY"="SOFTWARE\$(^Name)"
+!define: "MUI_STARTMENUPAGE_REGISTRY_VALUENAME"="StartMenuGroup"
+!define: "MUI_STARTMENUPAGE_DEFAULTFOLDER"="Webhazmester"
+!define: "MUI_UNICON"="c:\Program Files (x86)\NSISUnicode\Contrib\Graphics\Icons\modern-uninstall-colorful.ico"
+!define: "MUI_UNFINISHPAGE_NOAUTOCLOSE"=""
+ReserveFile: "AdvSplash.dll" [compress] 2706/5632 bytes
+!insertmacro: MUI_PAGE_WELCOME
+!insertmacro: end of MUI_PAGE_WELCOME
+!insertmacro: MUI_PAGE_LICENSE
+!insertmacro: end of MUI_PAGEDECLARATION_LICENSE
+!insertmacro: end of MUI_PAGE_LICENSE
+Page: custom (creator:SelectComponentsEnter) (leave:SelectComponentsLeave)
+Page: custom (creator:PrerequisitesEnter) (leave:PrerequisitesLeave)
+Page: custom (creator:PortOpenerEnter) (leave:PortOpenerLeave)
+!insertmacro: MUI_PAGE_DIRECTORY
+!insertmacro: end of MUI_PAGE_DIRECTORY
+!insertmacro: MUI_PAGE_STARTMENU
+!insertmacro: end of MUI_PAGE_STARTMENU
+!insertmacro: MUI_PAGE_INSTFILES
+!insertmacro: end of MUI_PAGE_INSTFILES
+Page: custom (creator:SetIPAddressEnter) (leave:SetIPAddressLeave)
+!insertmacro: MUI_PAGE_FINISH
+!insertmacro: end of MUI_PAGE_FINISH
+!insertmacro: MUI_UNPAGE_CONFIRM
+!insertmacro: end of MUI_UNPAGE_CONFIRM
+!insertmacro: MUI_UNPAGE_INSTFILES
+!insertmacro: end of MUI_UNPAGE_INSTFILES
+!insertmacro: MUI_LANGUAGE
+!insertmacro: end of MUI_LANGUAGE
+OutFile: "setupDeveloper.exe"
+OutFile: "setup64.exe"
+InstallDir: "C:\Webhazmester"
+CRCCheck: on
+XPStyle: on
+ShowInstDetails: show
+VIAddVersionKey: "ProductName" "Webházmester"
+VIAddVersionKey: "ProductVersion" "BETA"
+VIAddVersionKey: "CompanyName" "Magicom"
+VIAddVersionKey: "CompanyWebsite" "www.magicom.hu"
+VIAddVersionKey: "FileVersion" "BETA"
+VIAddVersionKey: "FileDescription" ""
+VIAddVersionKey: "LegalCopyright" ""
+InstallRegKey: "HKLM\SOFTWARE\$(^Name)\Path"
+ShowUninstDetails: show
+Section: "-Main" ->(SEC0000)
+SetOutPath: "$INSTDIR"
+SetOverwrite: on
+!insertmacro: _If
+!insertmacro: end of _If
+File: "BindingSourceFilters.dll" [compress] 8554/14336 bytes
+File: "BusinessLayer.Bankok.dll" [compress] 4916/12288 bytes
+File: "BusinessLayer.FelhasznaloiNaplok.dll" [compress] 2647/6144 bytes
+File: "BusinessLayer.Tarsashazak.dll" [compress] 3428/8192 bytes
+File: "CheckableDateTimePicker.dll" [compress] 3038/7680 bytes
+File: "DataAccessLayer.Albetetek.dll" [compress] 16180/46592 bytes
+File: "DataAccessLayer.Bankok.dll" [compress] 10492/28672 bytes
+File: "DataAccessLayer.Common.dll" [compress] 90394/312832 bytes
+File: "DataAccessLayer.FelhasznaloiNaplok.dll" [compress] 2082/5632 bytes
+File: "DataAccessLayer.Folyoszamla.dll" [compress] 16045/49664 bytes
+File: "DataAccessLayer.Kodtar.dll" [compress] 23824/83968 bytes
+File: "DataAccessLayer.Szamlak.dll" [compress] 18514/71680 bytes
+File: "DataAccessLayer.Tarsashazak.dll" [compress] 11088/35328 bytes
+File: "FileHelpers.dll" [compress] 58314/159744 bytes
+File: "FileHelpers.xml" [compress] 26770/293385 bytes
+File: "Microsoft.Practices.CompositeUI.WinForms.dll" [compress] 26403/74872 bytes
+File: "Microsoft.Practices.CompositeUI.dll" [compress] 74464/189560 bytes
+File: "Microsoft.Practices.EnterpriseLibrary.Common.dll" [compress] 71812/187272 bytes
+File: "Microsoft.Practices.EnterpriseLibrary.Common.xml" [compress] 51808/557757 bytes
+File: "Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging.dll" [compress] 13714/39816 bytes
+File: "Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll" [compress] 32030/88968 bytes
+File: "Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.xml" [compress] 16501/208911 bytes
+File: "Microsoft.Practices.EnterpriseLibrary.Logging.dll" [compress] 87739/248712 bytes
+File: "Microsoft.Practices.ObjectBuilder.dll" [compress] 24875/64352 bytes
+File: "Microsoft.Practices.ObjectBuilder2.dll" [compress] 30394/76680 bytes
+File: "Microsoft.Practices.Unity.dll" [compress] 29242/76680 bytes
+File: "ProfileCatalog.xml" [compress] 370/1736 bytes
+File: "Shared.Albetetek.dll" [compress] 11853/35840 bytes
+File: "Shared.Bankok.dll" [compress] 6570/17920 bytes
+File: "Shared.Eloirasok.dll" [compress] 8888/24576 bytes
+File: "Shared.FelhasznaloiNaplok.dll" [compress] 2048/5632 bytes
+File: "Shared.Folyoszamla.dll" [compress] 3804/10240 bytes
+File: "Shared.Infrastructure.dll" [compress] 8574/19456 bytes
+File: "Shared.Jogosultsagok.dll" [compress] 6510/15872 bytes
+File: "Shared.Kodtarak.dll" [compress] 13116/37376 bytes
+File: "Shared.Listak.dll" [compress] 2459/6656 bytes
+File: "Shared.Meroorak.dll" [compress] 6618/17920 bytes
+File: "Shared.Penztarak.dll" [compress] 6865/18432 bytes
+File: "Shared.Sablonok.dll" [compress] 11167/33280 bytes
+File: "Shared.Szamlak.dll" [compress] 9056/26112 bytes
+File: "Shared.Tarsashazak.dll" [compress] 7479/22016 bytes
+File: "Shared.Vegyes.dll" [compress] 5312/13824 bytes
+File: "TreeNavigator.dll" [compress] 4510/10240 bytes
+File: "Webhazmester.Infrastructure.Interface.dll" [compress] 8249/18432 bytes
+File: "Webhazmester.Infrastructure.Layout.dll" [compress] 94178/496640 bytes
+File: "Webhazmester.Infrastructure.Library.dll" [compress] 39955/87040 bytes
+File: "Webhazmester.Infrastructure.Module.dll" [compress] 2419/6144 bytes
+File: "Webhazmester.Module.Albetetek.Interface.dll" [compress] 3275/8704 bytes
+File: "Webhazmester.Module.Albetetek.dll" [compress] 49542/156160 bytes
+File: "Webhazmester.Module.Albetetek.dll.config" [compress] 672/2986 bytes
+File: "Webhazmester.Module.Bank.Interface.dll" [compress] 2995/7680 bytes
+File: "Webhazmester.Module.Bank.dll" [compress] 47341/137216 bytes
+File: "Webhazmester.Module.Bank.dll.config" [compress] 621/1617 bytes
+File: "Webhazmester.Module.Common.dll" [compress] 29769/60416 bytes
+File: "Webhazmester.Module.Eloirasok.Interface.dll" [compress] 2943/9216 bytes
+File: "Webhazmester.Module.Eloirasok.dll" [compress] 51444/176128 bytes
+File: "Webhazmester.Module.Eloirasok.dll.config" [compress] 625/1637 bytes
+File: "Webhazmester.Module.Jogosultsagok.Interface.dll" [compress] 2463/7168 bytes
+File: "Webhazmester.Module.Jogosultsagok.dll" [compress] 36256/108544 bytes
+File: "Webhazmester.Module.Jogosultsagok.dll.config" [compress] 628/1676 bytes
+File: "Webhazmester.Module.Kodtar.Interface.dll" [compress] 4787/16896 bytes
+File: "Webhazmester.Module.Kodtar.dll" [compress] 74233/302592 bytes
+File: "Webhazmester.Module.Kodtar.dll.config" [compress] 663/1749 bytes
+File: "Webhazmester.Module.Konyveles.Interface.dll" [compress] 2094/6144 bytes
+File: "Webhazmester.Module.Konyveles.dll" [compress] 5241/21504 bytes
+File: "Webhazmester.Module.Konyveles.dll.config" [compress] 627/1664 bytes
+File: "Webhazmester.Module.Lista.Interface.dll" [compress] 2103/5632 bytes
+File: "Webhazmester.Module.Lista.dll" [compress] 52012/288768 bytes
+File: "Webhazmester.Module.Lista.dll.config" [compress] 888/3427 bytes
+File: "Webhazmester.Module.Meroorak.Interface.dll" [compress] 2723/8704 bytes
+File: "Webhazmester.Module.Meroorak.dll" [compress] 40198/143360 bytes
+File: "Webhazmester.Module.Meroorak.dll.config" [compress] 662/1609 bytes
+File: "Webhazmester.Module.Penztar.Interface.dll" [compress] 3194/8704 bytes
+File: "Webhazmester.Module.Penztar.dll" [compress] 44039/137728 bytes
+File: "Webhazmester.Module.Penztar.dll.config" [compress] 850/3211 bytes
+File: "Webhazmester.Module.Sablongyar.Interface.dll" [compress] 4566/13824 bytes
+File: "Webhazmester.Module.Sablongyar.dll" [compress] 55937/218624 bytes
+File: "Webhazmester.Module.Sablongyar.dll.config" [compress] 623/1629 bytes
+File: "Webhazmester.Module.Szamlak.Interface.dll" [compress] 2761/8704 bytes
+File: "Webhazmester.Module.Szamlak.dll" [compress] 55201/231424 bytes
+File: "Webhazmester.Module.Szamlak.dll.config" [compress] 623/1629 bytes
+File: "Webhazmester.Module.Szinkronizacio.Interface.dll" [compress] 1886/5120 bytes
+File: "Webhazmester.Module.Szinkronizacio.dll" [compress] 14292/29184 bytes
+File: "Webhazmester.Module.Szinkronizacio.dll.config" [compress] 631/1694 bytes
+File: "Webhazmester.Module.Tarsashaz.Interface.dll" [compress] 2682/8704 bytes
+File: "Webhazmester.Module.Tarsashaz.dll" [compress] 54346/203264 bytes
+File: "Webhazmester.Module.Tarsashaz.dll.config" [compress] 627/1664 bytes
+File: "Webhazmester.Module.Vegyes.Interface.dll" [compress] 2231/6656 bytes
+File: "Webhazmester.Module.Vegyes.dll" [compress] 35754/117760 bytes
+File: "Webhazmester.Module.Vegyes.dll.config" [compress] 623/1629 bytes
+File: "Webhazmester.Shell.exe" [compress] 14580/53760 bytes
+File: "Webhazmester.Shell.exe.config" [compress] 2886/25484 bytes
+File: "Webhazmester.Shell.vshost.exe" [compress] 7288/14328 bytes
+File: "Webhazmester.Shell.vshost.exe.config" [compress] 0/25484 bytes
+File: "Webhazmester.Shell.vshost.exe.manifest" [compress] 262/490 bytes
+File: "log4net.config" [compress] 404/879 bytes
+File: "log4net.dll" [compress] 90185/249856 bytes
+File: "log4net.xml" [compress] 143005/1287495 bytes
+File: "start.bat" [compress] 128/187 bytes
+File: "webhazmester.client.log" [compress] 373/1855 bytes
+File: "webhazmester.client.log20110427" [compress] 1254/4823 bytes
+File: "webhazmester.client.log20110428" [compress] 131/383 bytes
+File: "webhazmester.client.log20110503" [compress] 99/191 bytes
+File: "webhazmester.client.log20110504" [compress] 121/320 bytes
+File: "webhazmester.client.log20110505" [compress] 84/128 bytes
+File: "webhazmester.client.log20110511" [compress] 997/3702 bytes
+File: "webhazmester.client.log20110512" [compress] 115/256 bytes
+File: "webhazmester.client.log20110518" [compress] 1030/4361 bytes
+File: "webhazmester.client.log20110519" [compress] 174/640 bytes
+File: "webhazmester.client.log20110530" [compress] 387/1935 bytes
+File: "webhazmester.client.log20110531" [compress] 179/644 bytes
+File: "webhazmester.client.log20110601" [compress] 114/257 bytes
+File: "webhazmester.client.log20110615" [compress] 1066/7176 bytes
+File: "webhazmester.client.log20110616" [compress] 146/448 bytes
+File: "webhazmester.client.log20110621" [compress] 114/256 bytes
+File: "webhazmester.client.log20110622" [compress] 101/192 bytes
+File: "webhazmester.client.log20110627" [compress] 64 bytes
+File: "webhazmester.client.log20110628" [compress] 910/8368 bytes
+File: "webhazmester.client.log20110629" [compress] 488/2221 bytes
+File: "webhazmester.client.log20110704" [compress] 64 bytes
+File: "webhazmester.client.log20110709" [compress] 208/895 bytes
+File: "webhazmester.client.log20110710" [compress] 239/1088 bytes
+File: "webhazmester.client.log20110711" [compress] 100/192 bytes
+File: "webhazmester.client.log20110719" [compress] 64 bytes
+File: "webhazmester.client.log20110720" [compress] 158/512 bytes
+File: "webhazmester.client.log20110721" [compress] 132/384 bytes
+File: "webhazmester.client.log20110729" [compress] 143/448 bytes
+File: "webhazmester.client.log20110730" [compress] 83/128 bytes
+File: "webhazmester.client.log20110731" [compress] 896/2908 bytes
+File: "webhazmester.client.log20110803" [compress] 85/128 bytes
+File: "webhazmester.client.log20110804" [compress] 86/130 bytes
+File: "webhazmester.client.log20110810" [compress] 520/2893 bytes
+File: "webhazmester.client.log20110811" [compress] 200/772 bytes
+File: "webhazmester.client.log20110824" [compress] 454/2430 bytes
+File: "webhazmester.client.log20110825" [compress] 346/1532 bytes
+File: "webhazmester.client.log20110901" [compress] 242/1030 bytes
+File: "webhazmester.client.log20110908" [compress] 164/576 bytes
+File: "webhazmester.client.log20110914" [compress] 64 bytes
+File: "webhazmester.client.log20110928" [compress] 629/4054 bytes
+File: "webhazmester.client.log20110929" [compress] 762/3142 bytes
+File: "webhazmester.client.log20111003" [compress] 116/259 bytes
+File: "webhazmester.client.log20111005" [compress] 472/2142 bytes
+File: "webhazmester.client.log20111006" [compress] 264/1214 bytes
+File: "webhazmester.client.log20111012" [compress] 582/1707 bytes
+File: "webhazmester.client.log20111017" [compress] 251/1151 bytes
+File: "webhazmester.client.log20111019" [compress] 1080/5556 bytes
+File: "webhazmester.client.log20111020" [compress] 611/1862 bytes
+File: "webhazmester.client.log20111025" [compress] 1871/10120 bytes
+File: "webhazmester.client.log20111026" [compress] 2061/12581 bytes
+File: "webhazmester.client.log20111027" [compress] 337/1728 bytes
+File: "webhazmester.client.log20111102" [compress] 943/3378 bytes
+File: "webhazmester.client.log20111103" [compress] 733/2459 bytes
+File: "webhazmester.client.log20111109" [compress] 1660/13843 bytes
+File: "webhazmester.client.log20111110" [compress] 226/1022 bytes
+File: "webhazmester.client.log20111116" [compress] 397/2112 bytes
+File: "webhazmester.client.log20111117" [compress] 148/511 bytes
+File: "webhazmester.client.log20111123" [compress] 1309/7254 bytes
+File: "webhazmester.client.log20111124" [compress] 595/1927 bytes
+File: "webhazmester.client.log20111130" [compress] 832/3336 bytes
+File: "webhazmester.client.log20111201" [compress] 135/384 bytes
+File: "webhazmester.client.log20111205" [compress] 1461/6232 bytes
+File: "webhazmester.client.log20111206" [compress] 177/642 bytes
+File: "webhazmester.client.log20111212" [compress] 1738/30329 bytes
+File: "webhazmester.client.log20120103" [compress] 559/2804 bytes
+File: "webhazmester.client.log20120117" [compress] 64 bytes
+File: "webhazmester.client.log20120119" [compress] 1076/4953 bytes
+File: "webhazmester.client.log20120120" [compress] 248/1152 bytes
+File: "webhazmester.client.log20120125" [compress] 576/3198 bytes
+File: "webhazmester.client.log20120201" [compress] 355/1791 bytes
+File: "webhazmester.client.log20120202" [compress] 1507/20058 bytes
+File: "webhazmester.client.log20120206" [compress] 380/1984 bytes
+File: "webhazmester.client.log20120207" [compress] 718/2635 bytes
+!insertmacro: _EndIf
+!insertmacro: end of _EndIf
+!insertmacro: _If
+!insertmacro: end of _If
+IfFileExists: "$INSTDIR\Webhazmester_log.ldf" ? askForDatabaseCopy : justCopyDatabase
+MessageBox: 68: "Megtartsam az eddig felvitt adatokat?" (on IDYES goto skipDatabaseCopy)
+File: "Webhazmester.mdf" [compress] 224/288 bytes
+File: "Webhazmester_log.ldf" [compress] 0/288 bytes
+Call "AttachDB"
+File: Descending to: "..\Service\Hosts\WebhazmesterService\bin\Release\"
+File: "WebhazmesterService.exe" [compress] 2021/5120 bytes
+File: Returning to: "..\Service\Hosts\WebhazmesterService\bin"
+Call "BatchCheckLicServer"
+Pop: $0
+!insertmacro: _If
+!insertmacro: end of _If
+ExecWait: "$INSTDIR\whm_licserver.exe /uninstall /silent" (->)
+Sleep: 8000 ms
+!insertmacro: _EndIf
+!insertmacro: end of _EndIf
+File: "whm_licserver.exe" [compress] 375044/688640 bytes
+!insertmacro: _EndIf
+!insertmacro: end of _EndIf
+WriteRegStr: HKLM\SOFTWARE\$(^Name)\Components\Main=1
+SectionEnd
+!insertmacro: MACRO_BatchCheckLicServer
+Function: "BatchCheckLicServer"
+StrCpy $BatchFileName "CheckLicServer.cmd" () ()
+StrCpy $LogFileName "lic.log" () ()
+StrCpy $br "
+" () ()
+!appendfile: "C:\Users\cskornel\AppData\Local\Temp\$BatchFileName" ""
+!delfile: "C:\Users\cskornel\AppData\Local\Temp\$BatchFileName"
+!delfile: deleted "C:\Users\cskornel\AppData\Local\Temp\$BatchFileName"
+!appendfile: "C:\Users\cskornel\AppData\Local\Temp\$BatchFileName" ""
+FileOpen: $BatchFileName as w -> $9
+FileWrite: @ECHO off->$9
+FileWrite: $brFOR /F "tokens=*" %%A IN ('sc query "whmLicenszSzerver" ^| FIND /C "STATE"') DO SET RESULT=%%A->$9
+FileWrite: $br@echo Exit value: %RESULT%->$9
+FileWrite: $br@exit %RESULT%->$9
+FileWrite: $br->$9
+FileClose: $9
+File: "nsExec.dll"->"$PLUGINSDIR\nsExec.dll" [compress] 0/6144 bytes
+Plugin Command: Exec $BatchFileName
+FileOpen: $BatchFileName as w -> $9
+FileWrite:  ->$9
+FileClose: $9
+Delete: "$BatchFileName"
+FunctionEnd
+!insertmacro: end of MACRO_BatchCheckLicServer
+!insertmacro: MACRO_BatchCheckLicServer
+Function: "un.BatchCheckLicServer"
+StrCpy $BatchFileName "CheckLicServer.cmd" () ()
+StrCpy $LogFileName "lic.log" () ()
+StrCpy $br "
+" () ()
+!appendfile: "C:\Users\cskornel\AppData\Local\Temp\$BatchFileName" ""
+!delfile: "C:\Users\cskornel\AppData\Local\Temp\$BatchFileName"
+!delfile: deleted "C:\Users\cskornel\AppData\Local\Temp\$BatchFileName"
+!appendfile: "C:\Users\cskornel\AppData\Local\Temp\$BatchFileName" ""
+FileOpen: $BatchFileName as w -> $9
+FileWrite: @ECHO off->$9
+FileWrite: $brFOR /F "tokens=*" %%A IN ('sc query "whmLicenszSzerver" ^| FIND /C "STATE"') DO SET RESULT=%%A->$9
+FileWrite: $br@echo Exit value: %RESULT%->$9
+FileWrite: $br@exit %RESULT%->$9
+FileWrite: $br->$9
+FileClose: $9
+File: "nsExec.dll"->"$PLUGINSDIR\nsExec.dll" [compress] 3378/6144 bytes
+Plugin Command: Exec $BatchFileName
+FileOpen: $BatchFileName as w -> $9
+FileWrite:  ->$9
+FileClose: $9
+Delete: "$BatchFileName"
+FunctionEnd
+!insertmacro: end of MACRO_BatchCheckLicServer
+!insertmacro: MACRO_BatchIsRuningClient
+Function: "BatchIsRuningClient"
+StrCpy $BatchFileName "isRuning.cmd" () ()
+StrCpy $br "
+" () ()
+!appendfile: "C:\Users\cskornel\AppData\Local\Temp\$BatchFileName" ""
+!delfile: "C:\Users\cskornel\AppData\Local\Temp\$BatchFileName"
+!delfile: deleted "C:\Users\cskornel\AppData\Local\Temp\$BatchFileName"
+!appendfile: "C:\Users\cskornel\AppData\Local\Temp\$BatchFileName" ""
+FileOpen: $BatchFileName as w -> $9
+FileWrite: @ECHO off->$9
+FileWrite: $brFOR /F "tokens=*" %%A IN ('tasklist ^| FIND /C "Webhazmester.Shell.exe"') DO SET RESULT=%%A->$9
+FileWrite: $br@echo Exit value: %RESULT%->$9
+FileWrite: $br@exit %RESULT%->$9
+FileWrite: $br->$9
+FileClose: $9
+File: "nsExec.dll"->"$PLUGINSDIR\nsExec.dll" [compress] 0/6144 bytes
+Plugin Command: Exec $BatchFileName
+FileOpen: $BatchFileName as w -> $9
+FileWrite:  ->$9
+FileClose: $9
+Delete: "$BatchFileName"
+FunctionEnd
+!insertmacro: end of MACRO_BatchIsRuningClient
+!insertmacro: MACRO_BatchIsRuningClient
+Function: "un.BatchIsRuningClient"
+StrCpy $BatchFileName "isRuning.cmd" () ()
+StrCpy $br "
+" () ()
+!appendfile: "C:\Users\cskornel\AppData\Local\Temp\$BatchFileName" ""
+!delfile: "C:\Users\cskornel\AppData\Local\Temp\$BatchFileName"
+!delfile: deleted "C:\Users\cskornel\AppData\Local\Temp\$BatchFileName"
+!appendfile: "C:\Users\cskornel\AppData\Local\Temp\$BatchFileName" ""
+FileOpen: $BatchFileName as w -> $9
+FileWrite: @ECHO off->$9
+FileWrite: $brFOR /F "tokens=*" %%A IN ('tasklist ^| FIND /C "Webhazmester.Shell.exe"') DO SET RESULT=%%A->$9
+FileWrite: $br@echo Exit value: %RESULT%->$9
+FileWrite: $br@exit %RESULT%->$9
+FileWrite: $br->$9
+FileClose: $9
+File: "nsExec.dll"->"$PLUGINSDIR\nsExec.dll" [compress] 0/6144 bytes
+Plugin Command: Exec $BatchFileName
+FileOpen: $BatchFileName as w -> $9
+FileWrite:  ->$9
+FileClose: $9
+Delete: "$BatchFileName"
+FunctionEnd
+!insertmacro: end of MACRO_BatchIsRuningClient
+Section: "-post" ->(SEC0001)
+WriteRegStr: HKLM\SOFTWARE\$(^Name)\Path=$INSTDIR
+SetOutPath: "$INSTDIR"
+WriteUninstaller: "$INSTDIR\uninstall.exe"
+!insertmacro: MUI_STARTMENU_WRITE_BEGIN
+!insertmacro: end of MUI_STARTMENU_WRITE_BEGIN
+SetOutPath: "$SMPROGRAMS\$StartMenuGroup"
+CreateShortCut: "$SMPROGRAMS\$StartMenuGroup\$(^UninstallLink).lnk"->"$INSTDIR\uninstall.exe"  icon:,0, showmode=0x0, hotkey=0x0, comment=
+SetOutPath: "$INSTDIR"
+CreateShortCut: "$SMPROGRAMS\$StartMenuGroup\Webhazmester.lnk"->"$INSTDIR\start.bat"  icon:$INSTDIR\Webhazmester.Shell.exe,0, showmode=0x0, hotkey=0x0, comment=
+File: "ShellLink.dll"->"$PLUGINSDIR\ShellLink.dll" [compress] 1937/4608 bytes
+Plugin Command: SetShortCutWorkingDirectory $SMPROGRAMS\$StartMenuGroup\Webhazmester.lnk $INSTDIR
+CreateShortCut: "$DESKTOP\Webhazmester.lnk"->"$INSTDIR\start.bat"  icon:$INSTDIR\Webhazmester.Shell.exe,0, showmode=0x0, hotkey=0x0, comment=
+Plugin Command: SetShortCutWorkingDirectory $SMPROGRAMS\$StartMenuGroup\Webhazmester.lnk $INSTDIR
+!insertmacro: MUI_STARTMENU_WRITE_END
+!insertmacro: end of MUI_STARTMENU_WRITE_END
+WriteRegStr: HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)\DisplayName=$(^Name)
+WriteRegStr: HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)\DisplayVersion=BETA
+WriteRegStr: HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)\Publisher=Magicom
+WriteRegStr: HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)\URLInfoAbout=www.magicom.hu
+WriteRegStr: HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)\DisplayIcon=$INSTDIR\uninstall.exe
+WriteRegStr: HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)\UninstallString=$INSTDIR\uninstall.exe
+WriteRegDWORD: HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)\NoModify=1
+WriteRegDWORD: HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)\NoRepair=1
+Call "BatchCheckLicServer"
+Pop: $0
+!insertmacro: _If
+!insertmacro: end of _If
+!insertmacro: _If
+!insertmacro: end of _If
+File: "nsExec.dll"->"$PLUGINSDIR\nsExec.dll" [compress] 0/6144 bytes
+Plugin Command: Exec $INSTDIR\whm_licserver.exe /install /silent
+!insertmacro: _Else
+!insertmacro: end of _Else
+MessageBox: 0: "Licserver install hiba: $INSTDIR\whm_licserver.exe nem létezik!"
+!insertmacro: _EndIf
+!insertmacro: end of _EndIf
+!insertmacro: _EndIf
+!insertmacro: end of _EndIf
+SectionEnd
+Function: ".onInit"
+InitPluginsDir
+Push: $R1
+File: "splash.bmp"->"$PLUGINSDIR\spltmp.bmp" [compress] 55519/449384 bytes
+File: "AdvSplash.dll"->"$PLUGINSDIR\AdvSplash.dll" [compress] 0/5632 bytes
+Plugin Command: show 1000 600 400 -1 $PLUGINSDIR\spltmp
+Pop: $R1
+Pop: $R1
+Call "BatchIsRuningClient"
+Pop: $0
+!insertmacro: _If
+!insertmacro: end of _If
+MessageBox: 0: "A Webházmester jelenleg is fut!
+Kérem állítsa le a programot és indítsa újra a telepít?t."
+Quit
+!insertmacro: _EndIf
+!insertmacro: end of _EndIf
+Call "BatchCheck64bit"
+Pop: $0
+!insertmacro: _If
+!insertmacro: end of _If
+MessageBox: 0: "Ez egy 64 bites telepít?, az Ön rendszere pedig 32 bites.
+Kérem töltse le a megfelel? telepít?t!"
+Quit
+!insertmacro: _EndIf
+!insertmacro: end of _EndIf
+ReadRegStr $1 HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\CurrentVersion
+StrCpy $OpSysErrorMessage "Ez a telepít? Windows Vista / Server 2008 / Windows 7 / Server 2008 R2  operációs rendszerekre készült.
+Lehetséges, hogy az Ön rendszerén nem tudja feltelepíteni a programot." () ()
+!insertmacro: _Switch
+!insertmacro: end of _Switch
+!insertmacro: _Case
+!insertmacro: end of _Case
+MessageBox: 0: "$OpSysErrorMessage"
+!insertmacro: _Goto
+!insertmacro: end of _Goto
+!insertmacro: _Case
+!insertmacro: end of _Case
+MessageBox: 0: "$OpSysErrorMessage"
+!insertmacro: _Goto
+!insertmacro: end of _Goto
+!insertmacro: _Case
+!insertmacro: end of _Case
+MessageBox: 0: "$OpSysErrorMessage"
+!insertmacro: _Goto
+!insertmacro: end of _Goto
+!insertmacro: _Case
+!insertmacro: end of _Case
+!insertmacro: _Goto
+!insertmacro: end of _Goto
+!insertmacro: _Case
+!insertmacro: end of _Case
+!insertmacro: _Goto
+!insertmacro: end of _Goto
+!insertmacro: _CaseElse
+!insertmacro: end of _CaseElse
+MessageBox: 0: "$OpSysErrorMessage"
+!insertmacro: _Goto
+!insertmacro: end of _Goto
+!insertmacro: _EndSwitch
+!insertmacro: end of _EndSwitch
+FunctionEnd
+Section: "-un.Main" ->(UNSEC0000)
+Call "un.BatchIsRuningClient"
+Pop: $0
+!insertmacro: _If
+!insertmacro: end of _If
+MessageBox: 0: "A Webházmester jelenleg is fut!
+Kérem állítsa le a programot miel?tt törli."
+Quit
+!insertmacro: _EndIf
+!insertmacro: end of _EndIf
+Call "un.BatchCheckLicServer"
+Pop: $0
+!insertmacro: _If
+!insertmacro: end of _If
+!insertmacro: _If
+!insertmacro: end of _If
+File: "nsExec.dll"->"$PLUGINSDIR\nsExec.dll" [compress] 0/6144 bytes
+Plugin Command: Exec $INSTDIR\whm_licserver.exe /uninstall /silent
+!insertmacro: _Else
+!insertmacro: end of _Else
+MessageBox: 0: "Licserver uninstall hiba: $INSTDIR\whm_licserver.exe nem létezik!"
+!insertmacro: _EndIf
+!insertmacro: end of _EndIf
+!insertmacro: _EndIf
+!insertmacro: end of _EndIf
+Delete: /REBOOTOK "$INSTDIR\*.dll"
+Delete: /REBOOTOK "$INSTDIR\Release\*"
+Delete: /REBOOTOK "$INSTDIR\*.config"
+Delete: /REBOOTOK "$INSTDIR\*.xml"
+Delete: /REBOOTOK "$INSTDIR\*.bat"
+Delete: /REBOOTOK "$INSTDIR\*.exe"
+Delete: /REBOOTOK "$INSTDIR\*.manifest"
+DeleteRegValue: HKLM\SOFTWARE\$(^Name)\Components\Main
+SectionEnd
+Section: "-un.post" ->(UNSEC0001)
+DeleteRegKey: HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)
+Delete: /REBOOTOK "$SMPROGRAMS\$StartMenuGroup\$(^UninstallLink).lnk"
+Delete: /REBOOTOK "$SMPROGRAMS\$StartMenuGroup\Webhazmester.lnk"
+Delete: /REBOOTOK "$DESKTOP\Webhazmester.lnk"
+Delete: /REBOOTOK "$INSTDIR\uninstall.exe"
+DeleteRegValue: HKLM\SOFTWARE\$(^Name)\StartMenuGroup
+DeleteRegValue: HKLM\SOFTWARE\$(^Name)\Path
+DeleteRegKey: HKLM\SOFTWARE\$(^Name)\Components
+DeleteRegKey: HKLM\SOFTWARE\$(^Name)
+RMDir: /REBOOTOK "$SMPROGRAMS\$StartMenuGroup"
+RMDir: /r /REBOOTOK "$INSTDIR\Release"
+SectionEnd
+Function: "un.onInit"
+ReadRegStr $INSTDIR HKLM\SOFTWARE\$(^Name)\Path
+!insertmacro: MUI_STARTMENU_GETFOLDER
+!insertmacro: end of MUI_STARTMENU_GETFOLDER
+!insertmacro: SELECT_UNSECTION
+Push: $R0
+ReadRegStr $R0 HKLM\SOFTWARE\$(^Name)\Components\Main
+StrCmp "$R0" "1" equal=0, nonequal=next0
+!insertmacro: SelectSection
+Push: $0
+Push: $1
+StrCpy $1 "0" () ()
+SectionGetFlags: $1->$0
+IntOp: $0=$0|1
+SectionSetFlags: $1->$0
+Pop: $1
+Pop: $0
+!insertmacro: end of SelectSection
+Goto: done0
+!insertmacro: UnselectSection
+Push: $0
+Push: $1
+StrCpy $1 "0" () ()
+SectionGetFlags: $1->$0
+IntOp: $0=$0&0xFFFFFFFE
+SectionSetFlags: $1->$0
+Pop: $1
+Pop: $0
+!insertmacro: end of UnselectSection
+Pop: $R0
+!insertmacro: end of SELECT_UNSECTION
+FunctionEnd
+LangString: "^UninstallLink" 1038 "Uninstall $(^Name)"
+
+Processed 1 file, writing output:
+Adding plug-ins initializing function... Done!
+warning: uninstall function "un.StrRep" not referenced - zeroing code (0-51) out
+
+warning: install function "BatchWindowsVersion" not referenced - zeroing code (613-641) out
+
+Processing pages... Done!
+Removing unused resources... Done!
+Generating language tables... Done!
+Generating uninstaller... Done!
+
+Output: "d:\munka\whminstaller\whm\installer\setup64.exe"
+Install: 11 pages (704 bytes), 2 sections (1 required) (32832 bytes), 1512 instructions (42336 bytes), 585 strings (29544 bytes), 1 language table (334 bytes).
+Uninstall: 3 pages (192 bytes), 
+2 sections (1 required) (32832 bytes), 216 instructions (6048 bytes), 153 strings (5084 bytes), 1 language table (258 bytes).
+Datablock optimizer saved 173103 bytes (~6.1%).
+
+Using zlib compression.
+
+EXE header size:               74752 / 51200 bytes
+Install code:                  12838 / 106126 bytes
+Install data:                2533590 / 9960019 bytes
+Uninstall code+data:           22502 / 29978 bytes
+CRC (0x7A45C051):                  4 / 4 bytes
+
+Total size:                  2643686 / 10147327 bytes (26.0%)
+
+2 warnings:
+  uninstall function "un.StrRep" not referenced - zeroing code (0-51) out
+
+  install function "BatchWindowsVersion" not referenced - zeroing code (613-641) out
+
