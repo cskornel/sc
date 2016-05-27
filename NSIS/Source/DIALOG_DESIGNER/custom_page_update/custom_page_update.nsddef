@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--
+This file was created by NSISDialogDesigner 1.1.1.0
+http://coolsoft.altervista.org/nsisdialogdesigner
+Do not edit manually!
+-->
+<Dialog Name="custom_page_update" Title="Dialog title..." Subtitle="Dialog subtitle...">
+  <Bitmap Name="BitmapFriss" Location="0, 0" Size="160, 230" ImageFilename="X:\dev\GitRepo\SimpleCounter\NSIS\Source\DIALOG_DESIGNER\custom_page_update\update.bmp" TabIndex="0" />
+  <Label Name="Label1" Location="178, 13" Size="250, 23" Text="Érzékelt telepítési könyvtár:" Font="Microsoft Sans Serif, 9pt, style=Bold" TabIndex="1" />
+  <Label Name="Label2" Location="178, 90" Size="160, 23" Text="Jelenlegi programverzió:" Font="Microsoft Sans Serif, 8.25pt, style=Bold" TabIndex="2" />
+  <Label Name="Label3" Location="178, 124" Size="160, 23" Text="Frissítés utáni verzió:" Font="Microsoft Sans Serif, 8.25pt, style=Bold" TabIndex="3" />
+  <Label Name="LabelTelepitettVerzio" Location="344, 90" Text="1.0.0.0" Font="DejaVu Sans Condensed, 9pt, style=Bold" ForeColor="Black" TabIndex="4" />
+  <Label Name="LabelFrissVerzio" Location="344, 124" Text="1.0.0.1" Font="DejaVu Sans Condensed, 9pt, style=Bold" ForeColor="IndianRed" TabIndex="5" />
+  <TextBox Name="TextBoxUpdatePath" Location="178, 40" Size="266, 20" Text="c:\Program Files\Simple Counter" ReadOnly="True" TabIndex="6" />
+</Dialog>
