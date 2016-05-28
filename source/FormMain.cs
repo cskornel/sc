@@ -500,11 +500,13 @@ namespace SimpleCounter
             {
                 case 0:
                     customTabControlMain.SelectedIndex = index;
+                    ucMonitorControlBox1.SetCurrentMonitor();
                     ucMonitorPreviewBox1.StartVideo();
                     ucMonitorPreviewBox2.StopVideo();
                     break;
                 case 1:
                     customTabControlMain.SelectedIndex = index;
+                    ucMonitorControlBox2.SetCurrentMonitor();
                     ucMonitorPreviewBox1.StopVideo();
                     ucMonitorPreviewBox2.StartVideo();
                     break;

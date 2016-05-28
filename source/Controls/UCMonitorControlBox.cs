@@ -186,6 +186,11 @@ namespace SimpleCounter.Controls
             labelMinimizeMaximize.Text = " ˅ ";
         }
 
+        public int SetCurrentMonitor() {
+            _counter.CurrentMonitor = (int)nupdMonitor.Value - 1;
+            return _counter.CurrentMonitor;
+        }
+
         #endregion
 
         private void nupdMonitor_ValueChanged(object sender, EventArgs e)
