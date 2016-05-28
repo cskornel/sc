@@ -535,5 +535,21 @@ namespace SimpleCounter
         {
             System.Diagnostics.Process.Start("https://github.com/cskornel/sc/tree/master/public_release");
         }
+
+        private void checkBoxMonitorAutostart_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxMonitorAutostart.Checked)
+            {
+                _globalSettings.UCMonitorPreviewBoxAutostrtVideo = true;
+                ucMonitorPreviewBox1.RefreshGlobalSettings();
+                ucMonitorPreviewBox2.RefreshGlobalSettings();
+            }
+            else
+            {
+                _globalSettings.UCMonitorPreviewBoxAutostrtVideo = false;
+                ucMonitorPreviewBox1.RefreshGlobalSettings();
+                ucMonitorPreviewBox2.RefreshGlobalSettings();
+            }
+        }
     }
 }

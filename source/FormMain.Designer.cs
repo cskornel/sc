@@ -57,6 +57,7 @@
             this.chbStopZero = new System.Windows.Forms.CheckBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.toolTipSettings = new System.Windows.Forms.ToolTip(this.components);
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.customTabControlMain = new SimpleCounter.Controls.CustomTabControl();
             this.tabPageMain = new System.Windows.Forms.TabPage();
             this.panelMainControls = new System.Windows.Forms.Panel();
@@ -80,10 +81,10 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabPageAbout = new System.Windows.Forms.TabPage();
             this.label3 = new System.Windows.Forms.Label();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.labelAboutDate = new System.Windows.Forms.Label();
             this.labelAboutVer = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.checkBoxMonitorAutostart = new System.Windows.Forms.CheckBox();
             this.panelTop.SuspendLayout();
             this.panelStopStart.SuspendLayout();
             this.customTabControlMain.SuspendLayout();
@@ -244,6 +245,20 @@
             // 
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.linkLabel1.LinkColor = System.Drawing.Color.IndianRed;
+            this.linkLabel1.Location = new System.Drawing.Point(23, 185);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(182, 13);
+            this.linkLabel1.TabIndex = 3;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "https://github.com/.../public_release";
+            this.toolTipSettings.SetToolTip(this.linkLabel1, "https://github.com/cskornel/sc/tree/master/public_release");
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // customTabControlMain
             // 
@@ -633,6 +648,7 @@
             // tabPageSettings
             // 
             this.tabPageSettings.BackColor = System.Drawing.Color.Black;
+            this.tabPageSettings.Controls.Add(this.checkBoxMonitorAutostart);
             this.tabPageSettings.Controls.Add(this.checkBoxTopWindow);
             this.tabPageSettings.Controls.Add(this.btnSetPozition);
             this.tabPageSettings.Location = new System.Drawing.Point(4, 22);
@@ -649,7 +665,7 @@
             this.checkBoxTopWindow.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxTopWindow.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.checkBoxTopWindow.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.checkBoxTopWindow.Location = new System.Drawing.Point(11, 6);
+            this.checkBoxTopWindow.Location = new System.Drawing.Point(5, 6);
             this.checkBoxTopWindow.Name = "checkBoxTopWindow";
             this.checkBoxTopWindow.Size = new System.Drawing.Size(173, 19);
             this.checkBoxTopWindow.TabIndex = 1;
@@ -660,7 +676,8 @@
             // btnSetPozition
             // 
             this.btnSetPozition.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSetPozition.Location = new System.Drawing.Point(6, 31);
+            this.btnSetPozition.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnSetPozition.Location = new System.Drawing.Point(6, 109);
             this.btnSetPozition.Name = "btnSetPozition";
             this.btnSetPozition.Size = new System.Drawing.Size(83, 32);
             this.btnSetPozition.TabIndex = 5;
@@ -716,20 +733,6 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Letöltés:";
             // 
-            // linkLabel1
-            // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.linkLabel1.LinkColor = System.Drawing.Color.IndianRed;
-            this.linkLabel1.Location = new System.Drawing.Point(23, 185);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(182, 13);
-            this.linkLabel1.TabIndex = 3;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "https://github.com/.../public_release";
-            this.toolTipSettings.SetToolTip(this.linkLabel1, "https://github.com/cskornel/sc/tree/master/public_release");
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
             // labelAboutDate
             // 
             this.labelAboutDate.AutoSize = true;
@@ -762,6 +765,19 @@
             this.label2.Size = new System.Drawing.Size(230, 33);
             this.label2.TabIndex = 0;
             this.label2.Text = "Simple Counter";
+            // 
+            // checkBoxMonitorAutostart
+            // 
+            this.checkBoxMonitorAutostart.AutoSize = true;
+            this.checkBoxMonitorAutostart.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.checkBoxMonitorAutostart.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.checkBoxMonitorAutostart.Location = new System.Drawing.Point(6, 31);
+            this.checkBoxMonitorAutostart.Name = "checkBoxMonitorAutostart";
+            this.checkBoxMonitorAutostart.Size = new System.Drawing.Size(242, 17);
+            this.checkBoxMonitorAutostart.TabIndex = 6;
+            this.checkBoxMonitorAutostart.Text = "Monitor előnézet automatikus indítása";
+            this.checkBoxMonitorAutostart.UseVisualStyleBackColor = true;
+            this.checkBoxMonitorAutostart.CheckedChanged += new System.EventHandler(this.checkBoxMonitorAutostart_CheckedChanged);
             // 
             // FormMain
             // 
@@ -840,6 +856,7 @@
         private System.Windows.Forms.Label labelAboutDate;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.CheckBox checkBoxMonitorAutostart;
     }
 }
 

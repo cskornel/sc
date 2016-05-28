@@ -154,12 +154,30 @@ namespace SimpleCounter.Controls
 
         private void btnGetPreview_Click(object sender, EventArgs e)
         {
-            setPicture(_counter.CurrentMonitor);
+            try
+            {
+                setPicture(_counter.CurrentMonitor);
+            }
+            catch (Exception)
+            {
+
+                //throw;
+            }
+            
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            setPicture(_counter.CurrentMonitor);
+            try
+            {
+                setPicture(_counter.CurrentMonitor);
+            }
+            catch (Exception )
+            {
+                //MessageBox("Valami hiba: ");
+                //throw;
+            }
+            
         }
 
         //Videó mód be/kikapcsolás
@@ -205,5 +223,10 @@ namespace SimpleCounter.Controls
             timer1.Enabled = false;
         }
 
+        public void RefreshGlobalSettings()
+        {
+            GlobalSettings = _globalSettings;
+
+        }
     }
 }
