@@ -108,6 +108,8 @@ namespace SimpleCounter
             DateTime lastModified = new FileInfo(Assembly.GetExecutingAssembly().Location).LastWriteTime;
             _assemblyVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
             Text = "Counter " + _assemblyVersion + " (" + lastModified.Date.ToString("yyyy.MM.dd") + ")";
+            labelAboutVer.Text = "Verzió: " + _assemblyVersion;
+            labelAboutDate.Text = "Kiadás dátuma: " + lastModified.Date.ToString("yyyy.MM.dd");
 
             //csatlakoztatott monitorok számának lekérése
             //nupdMonitor.Minimum = 1;
@@ -489,6 +491,8 @@ namespace SimpleCounter
             index = radioButtonMainPage.Checked ? index + 0 : index;
             index = radioButtonSecondPage.Checked ? index + 1 : index;
             index = radioButtonMainSettings.Checked ? index + 2 : index;
+            index = radioButtonLog.Checked ? index + 3 : index;
+            index = radioButtonAbout.Checked ? index + 4 : index;
 
             customTabControlMain.SelectedIndex = index;
 
@@ -509,10 +513,25 @@ namespace SimpleCounter
                     ucMonitorPreviewBox1.StopVideo();
                     ucMonitorPreviewBox2.StopVideo();
                     break;
+                case 3:
+                    customTabControlMain.SelectedIndex = index;
+                    ucMonitorPreviewBox1.StopVideo();
+                    ucMonitorPreviewBox2.StopVideo();
+                    break;
+                case 4:
+                    customTabControlMain.SelectedIndex = index;
+                    ucMonitorPreviewBox1.StopVideo();
+                    ucMonitorPreviewBox2.StopVideo();
+                    break;
 
                 default:
                     break;
             }
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/cskornel/sc/tree/master/public_release");
         }
     }
 }

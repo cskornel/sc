@@ -47,6 +47,8 @@
             SimpleCounter.CounterClasses.GlobalSettings globalSettings7 = new SimpleCounter.CounterClasses.GlobalSettings();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.panelTop = new System.Windows.Forms.Panel();
+            this.radioButtonAbout = new System.Windows.Forms.RadioButton();
+            this.radioButtonLog = new System.Windows.Forms.RadioButton();
             this.radioButtonMainSettings = new System.Windows.Forms.RadioButton();
             this.radioButtonSecondPage = new System.Windows.Forms.RadioButton();
             this.radioButtonMainPage = new System.Windows.Forms.RadioButton();
@@ -74,6 +76,14 @@
             this.tabPageSettings = new System.Windows.Forms.TabPage();
             this.checkBoxTopWindow = new System.Windows.Forms.CheckBox();
             this.btnSetPozition = new System.Windows.Forms.Button();
+            this.tabPageLog = new System.Windows.Forms.TabPage();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tabPageAbout = new System.Windows.Forms.TabPage();
+            this.label3 = new System.Windows.Forms.Label();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.labelAboutDate = new System.Windows.Forms.Label();
+            this.labelAboutVer = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.panelTop.SuspendLayout();
             this.panelStopStart.SuspendLayout();
             this.customTabControlMain.SuspendLayout();
@@ -81,11 +91,15 @@
             this.panelMainControls.SuspendLayout();
             this.tabPageSecond.SuspendLayout();
             this.tabPageSettings.SuspendLayout();
+            this.tabPageLog.SuspendLayout();
+            this.tabPageAbout.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelTop
             // 
             this.panelTop.BackColor = System.Drawing.Color.DimGray;
+            this.panelTop.Controls.Add(this.radioButtonAbout);
+            this.panelTop.Controls.Add(this.radioButtonLog);
             this.panelTop.Controls.Add(this.radioButtonMainSettings);
             this.panelTop.Controls.Add(this.radioButtonSecondPage);
             this.panelTop.Controls.Add(this.radioButtonMainPage);
@@ -95,6 +109,40 @@
             this.panelTop.Size = new System.Drawing.Size(287, 30);
             this.panelTop.TabIndex = 12;
             // 
+            // radioButtonAbout
+            // 
+            this.radioButtonAbout.Appearance = System.Windows.Forms.Appearance.Button;
+            this.radioButtonAbout.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.radioButtonAbout.FlatAppearance.CheckedBackColor = System.Drawing.Color.IndianRed;
+            this.radioButtonAbout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.radioButtonAbout.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.radioButtonAbout.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.radioButtonAbout.Location = new System.Drawing.Point(260, 3);
+            this.radioButtonAbout.Name = "radioButtonAbout";
+            this.radioButtonAbout.Size = new System.Drawing.Size(23, 23);
+            this.radioButtonAbout.TabIndex = 9;
+            this.radioButtonAbout.Text = "N";
+            this.radioButtonAbout.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.radioButtonAbout.UseVisualStyleBackColor = true;
+            this.radioButtonAbout.CheckedChanged += new System.EventHandler(this.radioButtonTabControl_CheckedChanged);
+            // 
+            // radioButtonLog
+            // 
+            this.radioButtonLog.Appearance = System.Windows.Forms.Appearance.Button;
+            this.radioButtonLog.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.radioButtonLog.FlatAppearance.CheckedBackColor = System.Drawing.Color.IndianRed;
+            this.radioButtonLog.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.radioButtonLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.radioButtonLog.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.radioButtonLog.Location = new System.Drawing.Point(231, 3);
+            this.radioButtonLog.Name = "radioButtonLog";
+            this.radioButtonLog.Size = new System.Drawing.Size(23, 23);
+            this.radioButtonLog.TabIndex = 8;
+            this.radioButtonLog.Text = "L";
+            this.radioButtonLog.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.radioButtonLog.UseVisualStyleBackColor = true;
+            this.radioButtonLog.CheckedChanged += new System.EventHandler(this.radioButtonTabControl_CheckedChanged);
+            // 
             // radioButtonMainSettings
             // 
             this.radioButtonMainSettings.Appearance = System.Windows.Forms.Appearance.Button;
@@ -103,7 +151,7 @@
             this.radioButtonMainSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButtonMainSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.radioButtonMainSettings.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.radioButtonMainSettings.Location = new System.Drawing.Point(247, 4);
+            this.radioButtonMainSettings.Location = new System.Drawing.Point(202, 3);
             this.radioButtonMainSettings.Name = "radioButtonMainSettings";
             this.radioButtonMainSettings.Size = new System.Drawing.Size(23, 23);
             this.radioButtonMainSettings.TabIndex = 7;
@@ -202,6 +250,8 @@
             this.customTabControlMain.Controls.Add(this.tabPageMain);
             this.customTabControlMain.Controls.Add(this.tabPageSecond);
             this.customTabControlMain.Controls.Add(this.tabPageSettings);
+            this.customTabControlMain.Controls.Add(this.tabPageLog);
+            this.customTabControlMain.Controls.Add(this.tabPageAbout);
             this.customTabControlMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.customTabControlMain.Location = new System.Drawing.Point(0, 30);
             this.customTabControlMain.Name = "customTabControlMain";
@@ -619,6 +669,100 @@
             this.btnSetPozition.Visible = false;
             this.btnSetPozition.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // tabPageLog
+            // 
+            this.tabPageLog.BackColor = System.Drawing.Color.Black;
+            this.tabPageLog.Controls.Add(this.textBox1);
+            this.tabPageLog.Location = new System.Drawing.Point(4, 22);
+            this.tabPageLog.Name = "tabPageLog";
+            this.tabPageLog.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageLog.Size = new System.Drawing.Size(279, 560);
+            this.tabPageLog.TabIndex = 3;
+            this.tabPageLog.Text = "L";
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox1.Location = new System.Drawing.Point(3, 3);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(273, 554);
+            this.textBox1.TabIndex = 0;
+            // 
+            // tabPageAbout
+            // 
+            this.tabPageAbout.BackColor = System.Drawing.Color.Black;
+            this.tabPageAbout.Controls.Add(this.label3);
+            this.tabPageAbout.Controls.Add(this.linkLabel1);
+            this.tabPageAbout.Controls.Add(this.labelAboutDate);
+            this.tabPageAbout.Controls.Add(this.labelAboutVer);
+            this.tabPageAbout.Controls.Add(this.label2);
+            this.tabPageAbout.Location = new System.Drawing.Point(4, 22);
+            this.tabPageAbout.Name = "tabPageAbout";
+            this.tabPageAbout.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageAbout.Size = new System.Drawing.Size(279, 560);
+            this.tabPageAbout.TabIndex = 4;
+            this.tabPageAbout.Text = "N";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label3.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.label3.Location = new System.Drawing.Point(22, 157);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(73, 18);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Letöltés:";
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.linkLabel1.LinkColor = System.Drawing.Color.IndianRed;
+            this.linkLabel1.Location = new System.Drawing.Point(23, 185);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(182, 13);
+            this.linkLabel1.TabIndex = 3;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "https://github.com/.../public_release";
+            this.toolTipSettings.SetToolTip(this.linkLabel1, "https://github.com/cskornel/sc/tree/master/public_release");
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // labelAboutDate
+            // 
+            this.labelAboutDate.AutoSize = true;
+            this.labelAboutDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelAboutDate.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.labelAboutDate.Location = new System.Drawing.Point(23, 104);
+            this.labelAboutDate.Name = "labelAboutDate";
+            this.labelAboutDate.Size = new System.Drawing.Size(183, 15);
+            this.labelAboutDate.TabIndex = 2;
+            this.labelAboutDate.Text = "Kiadás dátuma: 2016.01.01";
+            // 
+            // labelAboutVer
+            // 
+            this.labelAboutVer.AutoSize = true;
+            this.labelAboutVer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelAboutVer.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.labelAboutVer.Location = new System.Drawing.Point(23, 79);
+            this.labelAboutVer.Name = "labelAboutVer";
+            this.labelAboutVer.Size = new System.Drawing.Size(99, 15);
+            this.labelAboutVer.TabIndex = 1;
+            this.labelAboutVer.Text = "Verzió: 1.0.0.0";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label2.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.label2.Location = new System.Drawing.Point(20, 20);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(230, 33);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Simple Counter";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -647,6 +791,10 @@
             this.tabPageSecond.ResumeLayout(false);
             this.tabPageSettings.ResumeLayout(false);
             this.tabPageSettings.PerformLayout();
+            this.tabPageLog.ResumeLayout(false);
+            this.tabPageLog.PerformLayout();
+            this.tabPageAbout.ResumeLayout(false);
+            this.tabPageAbout.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -682,6 +830,16 @@
         private System.Windows.Forms.RadioButton radioButtonSecondPage;
         private System.Windows.Forms.RadioButton radioButtonMainPage;
         private System.Windows.Forms.RadioButton radioButtonMainSettings;
+        private System.Windows.Forms.TabPage tabPageLog;
+        private System.Windows.Forms.TabPage tabPageAbout;
+        private System.Windows.Forms.RadioButton radioButtonAbout;
+        private System.Windows.Forms.RadioButton radioButtonLog;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label labelAboutVer;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelAboutDate;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
 
