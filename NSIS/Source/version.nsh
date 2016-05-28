@@ -1,1 +1,1 @@
-!define VERSION 2.2.0.10
+!define VERSION 1.1.0.6
