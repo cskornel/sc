@@ -87,7 +87,8 @@ namespace SimpleCounter
             ucCounterTypeChanger1.UcCounter = ucCounter1;
 
             ucEffectBox1.Counter = _counter;
-            ucEffectBox1.FormTimer = _formTimer1;
+            ucEffectBox1.FormTimer1 = _formTimer1;
+            ucEffectBox1.FormTimer2 = _formTimer2;
 
             // 2-es kimenet
 

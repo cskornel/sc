@@ -17,7 +17,8 @@ namespace SimpleCounter.Controls
 
         //a control használata előtt be kell állítani ezeket a változókat
         private Counter _counter;
-        private FormTimer _formTimer;
+        private FormTimer _formTimer1;
+        private FormTimer _formTimer2;
 
         int _maxHeight = 160;
         int _minHeight = 22;
@@ -34,8 +35,11 @@ namespace SimpleCounter.Controls
             InitializeComponent();
             _counter = new Counter();
 
-            FormTimer = new FormTimer(_counter);
-            FormTimer.Hide();
+            FormTimer1 = new FormTimer(_counter);
+            FormTimer1.Hide();
+
+            FormTimer2 = new FormTimer(_counter);
+            FormTimer2.Hide();
 
             chbEffectBackCounter.Text = "Visszaszámlálásnál figyelmeztetés \r\n( KI )";
             chbFlash.Text = "Villog, ha lejárt az idő  \r\n( KI )";
@@ -47,10 +51,10 @@ namespace SimpleCounter.Controls
             set { _counter = value; }
         }
 
-        public FormTimer FormTimer
+        public FormTimer FormTimer1
         {
-            get { return _formTimer; }
-            set { _formTimer = value; }
+            get { return _formTimer1; }
+            set { _formTimer1 = value; }
         }
 
         public bool Minimized
@@ -63,6 +67,19 @@ namespace SimpleCounter.Controls
         {
             get { return _maximized; }
             set { _maximized = value; }
+        }
+
+        public FormTimer FormTimer2
+        {
+            get
+            {
+                return _formTimer2;
+            }
+
+            set
+            {
+                _formTimer2 = value;
+            }
         }
 
         #endregion
@@ -114,7 +131,8 @@ namespace SimpleCounter.Controls
             {
                 chbFlash.Text = tmpStr + " \r\n( KI )";
                 timerEffect.Enabled = false;
-                _formTimer.ShowText();
+                _formTimer1.ShowText();
+                _formTimer2.ShowText();
             }
         }
 
@@ -127,15 +145,18 @@ namespace SimpleCounter.Controls
         {
             if (_counter.VillogasEffect && _counter.UserTime == 0 && !_counter.Direction && _counter.CounterType == CounterTypeEnum.Counter)
             {
-                _formTimer.SetCounterColor(Color.WhiteSmoke, Color.Red);
+                _formTimer1.SetCounterColor(Color.WhiteSmoke, Color.Red);
+                _formTimer2.SetCounterColor(Color.WhiteSmoke, Color.Red);
 
                 if (_counter.HideText)
                 {
-                    _formTimer.ShowText();
+                    _formTimer1.ShowText();
+                    _formTimer2.ShowText();
                 }
                 else
                 {
-                    _formTimer.HideText();
+                    _formTimer1.HideText();
+                    _formTimer2.HideText();
                 }
             }
         }
