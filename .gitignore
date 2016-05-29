@@ -7,3 +7,4 @@ Release
 /.vs
 /NSIS/Source/setup.exe
 /NSIS/Source/sc_setup.exe
+/NSIS/Source/DATA/Counter.exe
