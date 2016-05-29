@@ -18,7 +18,7 @@ namespace SimpleCounter.Controls
 
         //a control használata előtt be kell állítani ezeket a változókat
         private Counter _counter;
-        private FormTimer _formTimer;
+        private FormTimer _formTimer1;
         private FormTimer _formTimer2;
         private GlobalSettings _globalSettings;
         private UCCounter _ucCounter;
@@ -37,8 +37,8 @@ namespace SimpleCounter.Controls
         {
             InitializeComponent();
             Counter = new Counter();
-            _formTimer = new FormTimer(Counter);
-            _formTimer.Hide();
+            _formTimer1 = new FormTimer(Counter);
+            _formTimer1.Hide();
             _formTimer2 = new FormTimer(Counter);
             _formTimer2.Hide();
             GlobalSettings = new GlobalSettings();
@@ -52,10 +52,10 @@ namespace SimpleCounter.Controls
             set { _counter = value; }
         }
 
-        public FormTimer FormTimer
+        public FormTimer FormTimer1
         {
-            get { return _formTimer; }
-            set { _formTimer = value; }
+            get { return _formTimer1; }
+            set { _formTimer1 = value; }
         }
 
         public GlobalSettings GlobalSettings
@@ -147,7 +147,7 @@ namespace SimpleCounter.Controls
         private void btnAdd_Click(object sender, EventArgs e)
         {
             _counter.UserTime += ((int)nupdTime.Value * 60);
-            _formTimer.TimerUpdate();
+            _formTimer1.TimerUpdate();
             _formTimer2.TimerUpdate();
             _ucCounter.UpdateTime();
         }
@@ -155,8 +155,10 @@ namespace SimpleCounter.Controls
         private void btnSetTime_Click(object sender, EventArgs e)
         {
             _counter.UserTime = ((int)nupdTime.Value * 60);
-            _formTimer.TimerUpdate();
+            _formTimer1.TimerUpdate();
+            _formTimer1.SetCounterDefaultColors();
             _formTimer2.TimerUpdate();
+            _formTimer2.SetCounterDefaultColors();
             _ucCounter.UpdateTime();
         }
 
@@ -165,14 +167,14 @@ namespace SimpleCounter.Controls
             nupdTime.Value = 0;
             //TODO: if a global settings miatt (csak a numericupdawn értéke legyen nulla vagy a számlálóé is?)
             _counter.UserTime = ((int)nupdTime.Value * 60);
-            _formTimer.TimerUpdate();
+            _formTimer1.TimerUpdate();
             _formTimer2.TimerUpdate();
-            _formTimer.SetCounterDefaultColors();
+            _formTimer1.SetCounterDefaultColors();
             _formTimer2.SetCounterDefaultColors();
 
             if (_counter.HideText)
             {
-                _formTimer.HideText();
+                _formTimer1.HideText();
                 _formTimer2.HideText();
             } 
 
@@ -182,7 +184,7 @@ namespace SimpleCounter.Controls
         private void btnMinussz_Click(object sender, EventArgs e)
         {
             _counter.UserTime -= ((int)nupdTime.Value * 60);
-            _formTimer.TimerUpdate();
+            _formTimer1.TimerUpdate();
             _formTimer2.TimerUpdate();
             _ucCounter.UpdateTime();
         }

@@ -137,7 +137,9 @@ namespace SimpleCounter.Controls
             {
                 _counter.CounterType = CounterTypeEnum.Counter;
                 _formTimer1.TimerUpdate();
+                _formTimer1.SetCounterDefaultColors();
                 _formTimer2.TimerUpdate();
+                _formTimer2.SetCounterDefaultColors();
                 _ucCounter.UpdateTime();
                 timer1.Enabled = false;
 
@@ -161,7 +163,7 @@ namespace SimpleCounter.Controls
                 _ucCounter.UpdateTime();
                 _formTimer1.TimerUpdate();
                 _formTimer2.TimerUpdate();
-            }            
+            }
         }
 
     }

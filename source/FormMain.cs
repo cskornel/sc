@@ -12,8 +12,8 @@ namespace SimpleCounter
     {
         #region Declaration
 
-        private FormTimer _timerForm1;
-        private FormTimer _timerForm2;
+        private FormTimer _formTimer1;
+        private FormTimer _formTimer2;
         private Counter _counter;
         private MainFormData formData;
         private const int SnapDist = 200;
@@ -40,10 +40,12 @@ namespace SimpleCounter
 
             myControlInit();
 
-            _timerForm1 = new FormTimer(_counter);
-            _timerForm2 = new FormTimer(_counter);
-            _timerForm2.Formatum = 1;
-            _timerForm1.Hide();
+            _formTimer1 = new FormTimer(_counter);
+            _formTimer1.SetCounterDefaultColors();
+            _formTimer2 = new FormTimer(_counter);
+            _formTimer2.SetCounterDefaultColors();
+            _formTimer2.Formatum = 1;
+            _formTimer1.Hide();
 
             SetCounterData();
         }
@@ -57,21 +59,21 @@ namespace SimpleCounter
             // usercontrols
 
             ucMonitorControlBox1.Counter = _counter;
-            ucMonitorControlBox1.FormTimer = _timerForm1;
+            ucMonitorControlBox1.FormTimer = _formTimer1;
             //ucMonitorControlBox.GlobalSettings = _globalSettings;
 
             ucFontSizeBox1.Counter = _counter;
-            ucFontSizeBox1.FormTimer = _timerForm1;
+            ucFontSizeBox1.FormTimer = _formTimer1;
             ucFontSizeBox1.GlobalSettings = _globalSettings;
 
             ucTimeDirection1.Counter = _counter;
 
             ucCounter1.Counter = _counter;
-            ucCounter1.FormTimer = _timerForm1;
+            ucCounter1.FormTimer = _formTimer1;
 
             ucTimeSettings1.Counter = _counter;
-            ucTimeSettings1.FormTimer = _timerForm1;
-            ucTimeSettings1.FormTimer2 = _timerForm2;
+            ucTimeSettings1.FormTimer1 = _formTimer1;
+            ucTimeSettings1.FormTimer2 = _formTimer2;
             ucTimeSettings1.GlobalSettings = _globalSettings;
             ucTimeSettings1.UcCounter = ucCounter1;
 
@@ -80,12 +82,12 @@ namespace SimpleCounter
             ucMonitorPreviewBox1.StartVideo();
 
             ucCounterTypeChanger1.Counter = _counter;
-            ucCounterTypeChanger1.FormTimer1 = _timerForm1;
-            ucCounterTypeChanger1.FormTimer2 = _timerForm2;
+            ucCounterTypeChanger1.FormTimer1 = _formTimer1;
+            ucCounterTypeChanger1.FormTimer2 = _formTimer2;
             ucCounterTypeChanger1.UcCounter = ucCounter1;
 
             ucEffectBox1.Counter = _counter;
-            ucEffectBox1.FormTimer = _timerForm1;
+            ucEffectBox1.FormTimer = _formTimer1;
 
             // 2-es kimenet
 
@@ -94,10 +96,10 @@ namespace SimpleCounter
             ucMonitorPreviewBox2.StopVideo();
 
             ucMonitorControlBox2.Counter = _counter;
-            ucMonitorControlBox2.FormTimer = _timerForm2;
+            ucMonitorControlBox2.FormTimer = _formTimer2;
 
             ucFontSizeBox2.Counter = _counter;
-            ucFontSizeBox2.FormTimer = _timerForm2;
+            ucFontSizeBox2.FormTimer = _formTimer2;
             ucFontSizeBox2.GlobalSettings = _globalSettings;
 
         }
@@ -271,8 +273,8 @@ namespace SimpleCounter
                 {
                     _counter.Go();
                     ucCounter1.UpdateTime();
-                    _timerForm1.TimerUpdate();
-                    _timerForm2.TimerUpdate();
+                    _formTimer1.TimerUpdate();
+                    _formTimer2.TimerUpdate();
                     start = false;
 
                     if (_counter.CounterType == CounterTypeEnum.Counter && !_counter.HideText)
@@ -286,11 +288,11 @@ namespace SimpleCounter
                             !_counter.Direction
                             )
                         {
-                            _timerForm1.SetCounterColor(Color.Red, Color.Black);
+                            _formTimer1.SetCounterColor(Color.Red, Color.Black);
                         }
                         else
                         {
-                            _timerForm1.SetCounterDefaultColors();
+                            _formTimer1.SetCounterDefaultColors();
                         }
                     }
                 }
@@ -362,6 +364,74 @@ namespace SimpleCounter
         private void buttonMainSettings_Click(object sender, EventArgs e)
         {
             customTabControlMain.SelectedIndex = 2;
+        }
+
+        // A főablak eszköztárán lévő gombok megnyomásakor ez mindig lefut, mert ez vált lapot a tabcontrolon
+        private void radioButtonTabControl_CheckedChanged(object sender, EventArgs e)
+        {
+            int index = 0;
+            index = radioButtonMainPage.Checked ? index + 0 : index;
+            index = radioButtonSecondPage.Checked ? index + 1 : index;
+            index = radioButtonMainSettings.Checked ? index + 2 : index;
+            index = radioButtonLog.Checked ? index + 3 : index;
+            index = radioButtonAbout.Checked ? index + 4 : index;
+
+            customTabControlMain.SelectedIndex = index;
+
+            switch (index)
+            {
+                case 0:
+                    customTabControlMain.SelectedIndex = index;
+                    ucMonitorControlBox1.SetCurrentMonitor();
+                    ucMonitorPreviewBox1.StartVideo();
+                    ucMonitorPreviewBox2.StopVideo();
+                    break;
+                case 1:
+                    customTabControlMain.SelectedIndex = index;
+                    ucMonitorControlBox2.SetCurrentMonitor();
+                    ucMonitorPreviewBox1.StopVideo();
+                    ucMonitorPreviewBox2.StartVideo();
+                    break;
+                case 2:
+                    customTabControlMain.SelectedIndex = index;
+                    ucMonitorPreviewBox1.StopVideo();
+                    ucMonitorPreviewBox2.StopVideo();
+                    break;
+                case 3:
+                    customTabControlMain.SelectedIndex = index;
+                    ucMonitorPreviewBox1.StopVideo();
+                    ucMonitorPreviewBox2.StopVideo();
+                    break;
+                case 4:
+                    customTabControlMain.SelectedIndex = index;
+                    ucMonitorPreviewBox1.StopVideo();
+                    ucMonitorPreviewBox2.StopVideo();
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/cskornel/sc/tree/master/public_release");
+        }
+
+        private void checkBoxMonitorAutostart_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxMonitorAutostart.Checked)
+            {
+                _globalSettings.UCMonitorPreviewBoxAutostrtVideo = true;
+                ucMonitorPreviewBox1.RefreshGlobalSettings();
+                ucMonitorPreviewBox2.RefreshGlobalSettings();
+            }
+            else
+            {
+                _globalSettings.UCMonitorPreviewBoxAutostrtVideo = false;
+                ucMonitorPreviewBox1.RefreshGlobalSettings();
+                ucMonitorPreviewBox2.RefreshGlobalSettings();
+            }
         }
 
         #endregion
@@ -484,72 +554,6 @@ namespace SimpleCounter
 
 
         #endregion
-        
-        private void radioButtonTabControl_CheckedChanged(object sender, EventArgs e)
-        {
-            int index = 0;
-            index = radioButtonMainPage.Checked ? index + 0 : index;
-            index = radioButtonSecondPage.Checked ? index + 1 : index;
-            index = radioButtonMainSettings.Checked ? index + 2 : index;
-            index = radioButtonLog.Checked ? index + 3 : index;
-            index = radioButtonAbout.Checked ? index + 4 : index;
 
-            customTabControlMain.SelectedIndex = index;
-
-            switch (index)
-            {
-                case 0:
-                    customTabControlMain.SelectedIndex = index;
-                    ucMonitorControlBox1.SetCurrentMonitor();
-                    ucMonitorPreviewBox1.StartVideo();
-                    ucMonitorPreviewBox2.StopVideo();
-                    break;
-                case 1:
-                    customTabControlMain.SelectedIndex = index;
-                    ucMonitorControlBox2.SetCurrentMonitor();
-                    ucMonitorPreviewBox1.StopVideo();
-                    ucMonitorPreviewBox2.StartVideo();
-                    break;
-                case 2:
-                    customTabControlMain.SelectedIndex = index;
-                    ucMonitorPreviewBox1.StopVideo();
-                    ucMonitorPreviewBox2.StopVideo();
-                    break;
-                case 3:
-                    customTabControlMain.SelectedIndex = index;
-                    ucMonitorPreviewBox1.StopVideo();
-                    ucMonitorPreviewBox2.StopVideo();
-                    break;
-                case 4:
-                    customTabControlMain.SelectedIndex = index;
-                    ucMonitorPreviewBox1.StopVideo();
-                    ucMonitorPreviewBox2.StopVideo();
-                    break;
-
-                default:
-                    break;
-            }
-        }
-
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://github.com/cskornel/sc/tree/master/public_release");
-        }
-
-        private void checkBoxMonitorAutostart_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBoxMonitorAutostart.Checked)
-            {
-                _globalSettings.UCMonitorPreviewBoxAutostrtVideo = true;
-                ucMonitorPreviewBox1.RefreshGlobalSettings();
-                ucMonitorPreviewBox2.RefreshGlobalSettings();
-            }
-            else
-            {
-                _globalSettings.UCMonitorPreviewBoxAutostrtVideo = false;
-                ucMonitorPreviewBox1.RefreshGlobalSettings();
-                ucMonitorPreviewBox2.RefreshGlobalSettings();
-            }
-        }
     }
 }
