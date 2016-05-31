@@ -187,6 +187,10 @@ namespace SimpleCounter.Controls
             labelMinimizeMaximize.Text = " ˅ ";
         }
 
+        public void Refresh() {
+            chbFlash.Checked = _counter.VillogasEffect;
+        }
+
         #endregion
 
         

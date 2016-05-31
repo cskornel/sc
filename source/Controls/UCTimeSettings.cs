@@ -15,6 +15,7 @@ namespace SimpleCounter.Controls
         private FormTimer _formTimer2;
         private GlobalSettings _globalSettings;
         private UCCounter _ucCounter;
+        private UCEffectBox _ucEffectBox;
 
         int _maxHeight = 137;
         int _minHeight = 22;
@@ -36,7 +37,7 @@ namespace SimpleCounter.Controls
             _formTimer2.Hide();
             GlobalSettings = new GlobalSettings();
             UcCounter = new UCCounter();
-
+            _ucEffectBox = new UCEffectBox();
         }
 
         public Counter Counter
@@ -85,6 +86,19 @@ namespace SimpleCounter.Controls
             set
             {
                 _formTimer2 = value;
+            }
+        }
+
+        public UCEffectBox UcEffectBox
+        {
+            get
+            {
+                return _ucEffectBox;
+            }
+
+            set
+            {
+                _ucEffectBox = value;
             }
         }
 
@@ -148,11 +162,14 @@ namespace SimpleCounter.Controls
         private void btnSetTime_Click(object sender, EventArgs e)
         {
             _counter.UserTime = ((int)nupdTime.Value * 60);
+            _counter.VillogasEffect = false;
+            _ucEffectBox.Refresh();
             _formTimer1.TimerUpdate();
             _formTimer1.SetCounterDefaultColors();
             _formTimer2.TimerUpdate();
             _formTimer2.SetCounterDefaultColors();
             _ucCounter.UpdateTime();
+            
         }
 
         private void btnReset_Click(object sender, EventArgs e)
@@ -160,6 +177,8 @@ namespace SimpleCounter.Controls
             nupdTime.Value = 0;
             //TODO: if a global settings miatt (csak a numericupdawn értéke legyen nulla vagy a számlálóé is?)
             _counter.UserTime = ((int)nupdTime.Value * 60);
+            _counter.VillogasEffect = false;
+            _ucEffectBox.Refresh();
             _formTimer1.TimerUpdate();
             _formTimer2.TimerUpdate();
             _formTimer1.SetCounterDefaultColors();

@@ -71,11 +71,16 @@ namespace SimpleCounter
             ucCounter1.Counter = _counter;
             ucCounter1.FormTimer = _formTimer1;
 
+            ucEffectBox1.Counter = _counter;
+            ucEffectBox1.FormTimer1 = _formTimer1;
+            ucEffectBox1.FormTimer2 = _formTimer2;
+
             ucTimeSettings1.Counter = _counter;
             ucTimeSettings1.FormTimer1 = _formTimer1;
             ucTimeSettings1.FormTimer2 = _formTimer2;
             ucTimeSettings1.GlobalSettings = _globalSettings;
             ucTimeSettings1.UcCounter = ucCounter1;
+            ucTimeSettings1.UcEffectBox = ucEffectBox1;
 
             ucMonitorPreviewBox1.Counter = _counter;
             ucMonitorPreviewBox1.GlobalSettings = _globalSettings;
@@ -86,9 +91,7 @@ namespace SimpleCounter
             ucCounterTypeChanger1.FormTimer2 = _formTimer2;
             ucCounterTypeChanger1.UcCounter = ucCounter1;
 
-            ucEffectBox1.Counter = _counter;
-            ucEffectBox1.FormTimer1 = _formTimer1;
-            ucEffectBox1.FormTimer2 = _formTimer2;
+            
 
             // 2-es kimenet
 
