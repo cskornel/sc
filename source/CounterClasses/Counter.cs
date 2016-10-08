@@ -255,26 +255,46 @@ namespace SimpleCounter.CounterClasses
 
         public override string ToString()
         {
+            string strTime = "";
+
             if (_counterType == CounterTypeEnum.Counter)
             {
-                Hour = (_userTime / 3600);
-                Min = (_userTime / 60) - Hour * 60;
-                Sec = _userTime - (Min * 60) - (Hour * 3600);
+                //Hour = (_userTime / 3600);
+                Min = (_userTime / 60);
+                Sec = _userTime - (Min * 60);
+
+                //string strhour = SzovegesOra ? Math.Abs(Hour).ToString("0") + " óra\r\n" : Math.Abs(Hour).ToString("0");
+                //string strmin = (Hour == 0) ? Math.Abs(Min).ToString("0") : Math.Abs(Min).ToString("00");
+                string strmin = Math.Abs(Min).ToString("0");
+                string strsec = Math.Abs(Sec).ToString("00");
+
+                strTime = strmin + " : " + strsec;
+
+                //strTime = (_userTime < 0 && _counterType == CounterTypeEnum.Counter) ? "- " + strTime : strTime;
+                strTime = (_userTime < 0) ? "- " + strTime : strTime;
             }
             else
             {
                 Hour = DateTime.Now.Hour;
                 Min = DateTime.Now.Minute;
                 Sec = DateTime.Now.Second;
+
+                string strhour = SzovegesOra ? Math.Abs(Hour).ToString("0") + " óra\r\n" : Math.Abs(Hour).ToString("0");
+                string strmin = (Hour == 0) ? Math.Abs(Min).ToString("0") : Math.Abs(Min).ToString("00");
+                string strsec = Math.Abs(Sec).ToString("00");
+
+                strTime = (Hour == 0) ? (strmin + " : " + strsec) : (SzovegesOra ? (strhour + strmin + " : " + strsec) : (strhour + " : " + strmin + " : " + strsec));
+
+                //strTime = (_userTime < 0 && _counterType == CounterTypeEnum.Counter) ? "- " + strTime : strTime;
             }
 
-            string strhour = SzovegesOra ? Math.Abs(Hour).ToString("0") + " óra\r\n" : Math.Abs(Hour).ToString("0");
-            string strmin = (Hour == 0) ? Math.Abs(Min).ToString("0") : Math.Abs(Min).ToString("00");
-            string strsec = Math.Abs(Sec).ToString("00");
+            //string strhour = SzovegesOra ? Math.Abs(Hour).ToString("0") + " óra\r\n" : Math.Abs(Hour).ToString("0");
+            //string strmin = (Hour == 0) ? Math.Abs(Min).ToString("0") : Math.Abs(Min).ToString("00");
+            //string strsec = Math.Abs(Sec).ToString("00");
 
-            string strTime = (Hour == 0) ? (strmin + " : " + strsec) : (SzovegesOra ? (strhour + strmin + " : " + strsec) : (strhour + " : " + strmin + " : " + strsec));
+            //string strTime = (Hour == 0) ? (strmin + " : " + strsec) : (SzovegesOra ? (strhour + strmin + " : " + strsec) : (strhour + " : " + strmin + " : " + strsec));
 
-            strTime = (_userTime < 0 && _counterType == CounterTypeEnum.Counter) ? "- " + strTime : strTime;
+            //strTime = (_userTime < 0 && _counterType == CounterTypeEnum.Counter) ? "- " + strTime : strTime;
 
             return strTime;
         }
