@@ -47,9 +47,13 @@ namespace SimpleCounter.CounterClasses
         //kijelzés módja
         private bool _szovegesOra;
         //visszaszámlálásnál megváltozik a színe a számoknak
-        private bool _figylmeztetVisszaszamlalasnal;
+        private bool _figylmeztetVisszaszamlalasnal1;
+        //visszaszámlálásnál megváltozik a színe a számoknak
+        private bool _figylmeztetVisszaszamlalasnal2;
         //mikor kezdjen figyelmeztetni (ha már csak ennyi dő van hátra)
-        private int _figyelmeztetIdo;
+        private int _figyelmeztetIdo1;
+        //mikor kezdjen figyelmeztetni (ha már csak ennyi dő van hátra)
+        private int _figyelmeztetIdo2;
         //villognak a szamok (ha pl. lejárt az idő)
         private bool _villogasEffect;
         //villogás sebessége
@@ -73,9 +77,13 @@ namespace SimpleCounter.CounterClasses
             _currentMonitor = 0;
             _counterType = CounterTypeEnum.Counter;
             _hideText = false;
-            _figylmeztetVisszaszamlalasnal = false;
+            //_figylmeztetVisszaszamlalasnal = false;
+            _figylmeztetVisszaszamlalasnal1 = false;
+            _figylmeztetVisszaszamlalasnal2 = false;
             _villogasEffect = false;
-            _figyelmeztetIdo = 60;
+            //_figyelmeztetIdo = 60;
+            _figyelmeztetIdo1 = 900; // 15 * 60s
+            _figyelmeztetIdo2 = 60; 
             _villogasEffectSebesseg = 500;
 
         }
@@ -178,22 +186,10 @@ namespace SimpleCounter.CounterClasses
             set { _hideText = value; }
         }
 
-        public bool FigylmeztetVisszaszamlalasnal
-        {
-            get { return _figylmeztetVisszaszamlalasnal; }
-            set { _figylmeztetVisszaszamlalasnal = value; }
-        }
-
         public bool VillogasEffect
         {
             get { return _villogasEffect; }
             set { _villogasEffect = value; }
-        }
-
-        public int FigyelmeztetIdo
-        {
-            get { return _figyelmeztetIdo; }
-            set { _figyelmeztetIdo = value; }
         }
 
         public int VillogasEffectSebesseg
@@ -240,6 +236,11 @@ namespace SimpleCounter.CounterClasses
                 _sec = value;
             }
         }
+
+        public bool FigylmeztetVisszaszamlalasnal1 { get => _figylmeztetVisszaszamlalasnal1; set => _figylmeztetVisszaszamlalasnal1 = value; }
+        public bool FigylmeztetVisszaszamlalasnal2 { get => _figylmeztetVisszaszamlalasnal2; set => _figylmeztetVisszaszamlalasnal2 = value; }
+        public int FigyelmeztetIdo1 { get => _figyelmeztetIdo1; set => _figyelmeztetIdo1 = value; }
+        public int FigyelmeztetIdo2 { get => _figyelmeztetIdo2; set => _figyelmeztetIdo2 = value; }
 
         #endregion
 

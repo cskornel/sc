@@ -75,6 +75,7 @@
             this.ucMonitorControlBox2 = new SimpleCounter.Controls.UCMonitorControlBox();
             this.ucMonitorPreviewBox2 = new SimpleCounter.Controls.UCMonitorPreviewBox();
             this.tabPageSettings = new System.Windows.Forms.TabPage();
+            this.checkBoxMonitorAutostart = new System.Windows.Forms.CheckBox();
             this.checkBoxTopWindow = new System.Windows.Forms.CheckBox();
             this.btnSetPozition = new System.Windows.Forms.Button();
             this.tabPageLog = new System.Windows.Forms.TabPage();
@@ -84,7 +85,6 @@
             this.labelAboutDate = new System.Windows.Forms.Label();
             this.labelAboutVer = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.checkBoxMonitorAutostart = new System.Windows.Forms.CheckBox();
             this.panelTop.SuspendLayout();
             this.panelStopStart.SuspendLayout();
             this.customTabControlMain.SuspendLayout();
@@ -203,7 +203,7 @@
             this.panelStopStart.Controls.Add(this.btnStopStart);
             this.panelStopStart.Controls.Add(this.chbStopZero);
             this.panelStopStart.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelStopStart.Location = new System.Drawing.Point(0, 616);
+            this.panelStopStart.Location = new System.Drawing.Point(0, 674);
             this.panelStopStart.Name = "panelStopStart";
             this.panelStopStart.Size = new System.Drawing.Size(287, 82);
             this.panelStopStart.TabIndex = 1;
@@ -271,7 +271,7 @@
             this.customTabControlMain.Location = new System.Drawing.Point(0, 30);
             this.customTabControlMain.Name = "customTabControlMain";
             this.customTabControlMain.SelectedIndex = 0;
-            this.customTabControlMain.Size = new System.Drawing.Size(287, 586);
+            this.customTabControlMain.Size = new System.Drawing.Size(287, 644);
             this.customTabControlMain.TabIndex = 33;
             // 
             // tabPageMain
@@ -280,7 +280,7 @@
             this.tabPageMain.Location = new System.Drawing.Point(4, 22);
             this.tabPageMain.Name = "tabPageMain";
             this.tabPageMain.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageMain.Size = new System.Drawing.Size(279, 560);
+            this.tabPageMain.Size = new System.Drawing.Size(279, 618);
             this.tabPageMain.TabIndex = 0;
             this.tabPageMain.Text = "1";
             this.tabPageMain.UseVisualStyleBackColor = true;
@@ -306,7 +306,7 @@
             this.panelMainControls.MaximumSize = new System.Drawing.Size(400, 5000);
             this.panelMainControls.MinimumSize = new System.Drawing.Size(50, 50);
             this.panelMainControls.Name = "panelMainControls";
-            this.panelMainControls.Size = new System.Drawing.Size(287, 610);
+            this.panelMainControls.Size = new System.Drawing.Size(287, 668);
             this.panelMainControls.TabIndex = 23;
             this.panelMainControls.Resize += new System.EventHandler(this.panelMainControls_Resize);
             // 
@@ -319,8 +319,10 @@
             counter1.CurrentMonitor = 0;
             counter1.Direction = true;
             counter1.Enabled = false;
-            counter1.FigyelmeztetIdo = 60;
-            counter1.FigylmeztetVisszaszamlalasnal = false;
+            counter1.FigyelmeztetIdo1 = 900;
+            counter1.FigyelmeztetIdo2 = 60;
+            counter1.FigylmeztetVisszaszamlalasnal1 = false;
+            counter1.FigylmeztetVisszaszamlalasnal2 = false;
             counter1.FontColor = System.Drawing.Color.WhiteSmoke;
             counter1.HideText = false;
             counter1.Hour = 0;
@@ -351,8 +353,10 @@
             counter2.CurrentMonitor = 0;
             counter2.Direction = true;
             counter2.Enabled = false;
-            counter2.FigyelmeztetIdo = 60;
-            counter2.FigylmeztetVisszaszamlalasnal = false;
+            counter2.FigyelmeztetIdo1 = 900;
+            counter2.FigyelmeztetIdo2 = 60;
+            counter2.FigylmeztetVisszaszamlalasnal1 = false;
+            counter2.FigylmeztetVisszaszamlalasnal2 = false;
             counter2.FontColor = System.Drawing.Color.WhiteSmoke;
             counter2.HideText = false;
             counter2.Hour = 0;
@@ -381,8 +385,10 @@
             counter3.CurrentMonitor = 0;
             counter3.Direction = true;
             counter3.Enabled = false;
-            counter3.FigyelmeztetIdo = 60;
-            counter3.FigylmeztetVisszaszamlalasnal = false;
+            counter3.FigyelmeztetIdo1 = 900;
+            counter3.FigyelmeztetIdo2 = 60;
+            counter3.FigylmeztetVisszaszamlalasnal1 = false;
+            counter3.FigylmeztetVisszaszamlalasnal2 = false;
             counter3.FontColor = System.Drawing.Color.WhiteSmoke;
             counter3.HideText = false;
             counter3.Hour = 0;
@@ -398,7 +404,7 @@
             this.ucEffectBox1.Maximized = false;
             this.ucEffectBox1.Minimized = false;
             this.ucEffectBox1.Name = "ucEffectBox1";
-            this.ucEffectBox1.Size = new System.Drawing.Size(260, 160);
+            this.ucEffectBox1.Size = new System.Drawing.Size(260, 215);
             this.ucEffectBox1.TabIndex = 32;
             this.ucEffectBox1.ClientSizeChanged += new System.EventHandler(this.uc_ClientSizeChanged);
             // 
@@ -427,8 +433,10 @@
             counter4.CurrentMonitor = 0;
             counter4.Direction = true;
             counter4.Enabled = false;
-            counter4.FigyelmeztetIdo = 60;
-            counter4.FigylmeztetVisszaszamlalasnal = false;
+            counter4.FigyelmeztetIdo1 = 900;
+            counter4.FigyelmeztetIdo2 = 60;
+            counter4.FigylmeztetVisszaszamlalasnal1 = false;
+            counter4.FigylmeztetVisszaszamlalasnal2 = false;
             counter4.FontColor = System.Drawing.Color.WhiteSmoke;
             counter4.HideText = false;
             counter4.Hour = 0;
@@ -457,8 +465,10 @@
             counter5.CurrentMonitor = 0;
             counter5.Direction = true;
             counter5.Enabled = false;
-            counter5.FigyelmeztetIdo = 60;
-            counter5.FigylmeztetVisszaszamlalasnal = false;
+            counter5.FigyelmeztetIdo1 = 900;
+            counter5.FigyelmeztetIdo2 = 60;
+            counter5.FigylmeztetVisszaszamlalasnal1 = false;
+            counter5.FigylmeztetVisszaszamlalasnal2 = false;
             counter5.FontColor = System.Drawing.Color.WhiteSmoke;
             counter5.HideText = false;
             counter5.Hour = 0;
@@ -491,8 +501,10 @@
             counter6.CurrentMonitor = 0;
             counter6.Direction = true;
             counter6.Enabled = false;
-            counter6.FigyelmeztetIdo = 60;
-            counter6.FigylmeztetVisszaszamlalasnal = false;
+            counter6.FigyelmeztetIdo1 = 900;
+            counter6.FigyelmeztetIdo2 = 60;
+            counter6.FigylmeztetVisszaszamlalasnal1 = false;
+            counter6.FigylmeztetVisszaszamlalasnal2 = false;
             counter6.FontColor = System.Drawing.Color.WhiteSmoke;
             counter6.HideText = false;
             counter6.Hour = 0;
@@ -524,8 +536,10 @@
             counter7.CurrentMonitor = 0;
             counter7.Direction = true;
             counter7.Enabled = false;
-            counter7.FigyelmeztetIdo = 60;
-            counter7.FigylmeztetVisszaszamlalasnal = false;
+            counter7.FigyelmeztetIdo1 = 900;
+            counter7.FigyelmeztetIdo2 = 60;
+            counter7.FigylmeztetVisszaszamlalasnal1 = false;
+            counter7.FigylmeztetVisszaszamlalasnal2 = false;
             counter7.FontColor = System.Drawing.Color.WhiteSmoke;
             counter7.HideText = false;
             counter7.Hour = 0;
@@ -579,8 +593,10 @@
             counter8.CurrentMonitor = 0;
             counter8.Direction = true;
             counter8.Enabled = false;
-            counter8.FigyelmeztetIdo = 60;
-            counter8.FigylmeztetVisszaszamlalasnal = false;
+            counter8.FigyelmeztetIdo1 = 900;
+            counter8.FigyelmeztetIdo2 = 60;
+            counter8.FigylmeztetVisszaszamlalasnal1 = false;
+            counter8.FigylmeztetVisszaszamlalasnal2 = false;
             counter8.FontColor = System.Drawing.Color.WhiteSmoke;
             counter8.HideText = false;
             counter8.Hour = 0;
@@ -623,8 +639,10 @@
             counter9.CurrentMonitor = 0;
             counter9.Direction = true;
             counter9.Enabled = false;
-            counter9.FigyelmeztetIdo = 60;
-            counter9.FigylmeztetVisszaszamlalasnal = false;
+            counter9.FigyelmeztetIdo1 = 900;
+            counter9.FigyelmeztetIdo2 = 60;
+            counter9.FigylmeztetVisszaszamlalasnal1 = false;
+            counter9.FigylmeztetVisszaszamlalasnal2 = false;
             counter9.FontColor = System.Drawing.Color.WhiteSmoke;
             counter9.HideText = false;
             counter9.Hour = 0;
@@ -657,6 +675,19 @@
             this.tabPageSettings.Size = new System.Drawing.Size(279, 560);
             this.tabPageSettings.TabIndex = 2;
             this.tabPageSettings.Text = "?";
+            // 
+            // checkBoxMonitorAutostart
+            // 
+            this.checkBoxMonitorAutostart.AutoSize = true;
+            this.checkBoxMonitorAutostart.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.checkBoxMonitorAutostart.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.checkBoxMonitorAutostart.Location = new System.Drawing.Point(6, 31);
+            this.checkBoxMonitorAutostart.Name = "checkBoxMonitorAutostart";
+            this.checkBoxMonitorAutostart.Size = new System.Drawing.Size(242, 17);
+            this.checkBoxMonitorAutostart.TabIndex = 6;
+            this.checkBoxMonitorAutostart.Text = "Monitor előnézet automatikus indítása";
+            this.checkBoxMonitorAutostart.UseVisualStyleBackColor = true;
+            this.checkBoxMonitorAutostart.CheckedChanged += new System.EventHandler(this.checkBoxMonitorAutostart_CheckedChanged);
             // 
             // checkBoxTopWindow
             // 
@@ -766,25 +797,12 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Simple Counter";
             // 
-            // checkBoxMonitorAutostart
-            // 
-            this.checkBoxMonitorAutostart.AutoSize = true;
-            this.checkBoxMonitorAutostart.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.checkBoxMonitorAutostart.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.checkBoxMonitorAutostart.Location = new System.Drawing.Point(6, 31);
-            this.checkBoxMonitorAutostart.Name = "checkBoxMonitorAutostart";
-            this.checkBoxMonitorAutostart.Size = new System.Drawing.Size(242, 17);
-            this.checkBoxMonitorAutostart.TabIndex = 6;
-            this.checkBoxMonitorAutostart.Text = "Monitor előnézet automatikus indítása";
-            this.checkBoxMonitorAutostart.UseVisualStyleBackColor = true;
-            this.checkBoxMonitorAutostart.CheckedChanged += new System.EventHandler(this.checkBoxMonitorAutostart_CheckedChanged);
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(287, 698);
+            this.ClientSize = new System.Drawing.Size(287, 756);
             this.Controls.Add(this.customTabControlMain);
             this.Controls.Add(this.panelTop);
             this.Controls.Add(this.panelStopStart);
