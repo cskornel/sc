@@ -286,13 +286,21 @@ namespace SimpleCounter
                         //effekt
 
                         //ha a számok elérik a megadott időkorlátot, pirosra változik a színük
-                        if (_counter.FigylmeztetVisszaszamlalasnal &&
-                            _counter.UserTime < _counter.FigyelmeztetIdo &&
+                        if (_counter.FigylmeztetVisszaszamlalasnal2 &&
+                            _counter.UserTime < _counter.FigyelmeztetIdo2 &&
                             _counter.UserTime >= 0 &&
                             !_counter.Direction
                             )
                         {
                             _formTimer1.SetCounterColor(Color.Red, Color.Black);
+                        }
+                        else if (_counter.FigylmeztetVisszaszamlalasnal1 &&
+                            _counter.UserTime < _counter.FigyelmeztetIdo1 &&
+                            _counter.UserTime >= 0 &&
+                            !_counter.Direction
+                            )
+                        {
+                            _formTimer1.SetCounterColor(Color.Orange, Color.Black);
                         }
                         else
                         {
@@ -559,5 +567,9 @@ namespace SimpleCounter
 
         #endregion
 
+        private void ucEffectBox1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

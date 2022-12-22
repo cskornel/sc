@@ -41,7 +41,7 @@ namespace SimpleCounter.Controls
             FormTimer2 = new FormTimer(_counter);
             FormTimer2.Hide();
 
-            chbEffectBackCounter.Text = "Visszaszámlálásnál figyelmeztetés \r\n( KI )";
+            //chbEffectBackCounter2.Text = "Visszaszámlálásnál figyelmeztetés ( KI )";
             chbFlash.Text = "Villog, ha lejárt az idő  \r\n( KI )";
         }
 
@@ -99,19 +99,35 @@ namespace SimpleCounter.Controls
             }
         }
 
-        private void chbEffectBackCounter_CheckedChanged(object sender, EventArgs e)
+        private void chbEffectBackCounter1_CheckedChanged(object sender, EventArgs e)
         {
-            _counter.FigylmeztetVisszaszamlalasnal = chbEffectBackCounter.Checked;
-            _counter.FigyelmeztetIdo = (int)nupdColorEffectTime.Value * 60;
+            _counter.FigylmeztetVisszaszamlalasnal1 = chbEffectBackCounter1.Checked;
+            _counter.FigyelmeztetIdo1 = (int)nupdColor1EffectTime.Value * 60;
 
-            string tmpStr = "Visszaszámlálásnál figyelmeztetés ";
-            if (chbEffectBackCounter.Checked)
+            string tmpStr = "Figyelmeztetés 1 ";
+            if (chbEffectBackCounter1.Checked)
             {
-                chbEffectBackCounter.Text = tmpStr + " \r\n( BE )";
+                chbEffectBackCounter1.Text = tmpStr + "( BE )";
             }
             else
             {
-                chbEffectBackCounter.Text = tmpStr + " \r\n( KI )";
+                chbEffectBackCounter1.Text = tmpStr + "( KI )";
+            }
+        }
+
+        private void chbEffectBackCounter2_CheckedChanged(object sender, EventArgs e)
+        {
+            _counter.FigylmeztetVisszaszamlalasnal2 = chbEffectBackCounter2.Checked;
+            _counter.FigyelmeztetIdo2 = (int)nupdColor2EffectTime.Value * 60;
+
+            string tmpStr = "Figyelmeztetés 2 ";
+            if (chbEffectBackCounter2.Checked)
+            {
+                chbEffectBackCounter2.Text = tmpStr + "( BE )";
+            }
+            else
+            {
+                chbEffectBackCounter2.Text = tmpStr + "( KI )";
             }
         }
 
@@ -134,11 +150,6 @@ namespace SimpleCounter.Controls
                 _formTimer1.ShowText();
                 _formTimer2.ShowText();
             }
-        }
-
-        private void nupdColorEffectTime_ValueChanged(object sender, EventArgs e)
-        {
-            _counter.FigyelmeztetIdo = (int)nupdColorEffectTime.Value * 60;
         }
 
         private void timerEffect_Tick(object sender, EventArgs e)
@@ -191,9 +202,33 @@ namespace SimpleCounter.Controls
             chbFlash.Checked = _counter.VillogasEffect;
         }
 
+
+
         #endregion
 
-        
+        private void label3_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void nupdColorEffectTime2_ValueChanged(object sender, EventArgs e)
+        {
+            _counter.FigyelmeztetIdo2 = (int)nupdColor2EffectTime.Value * 60;
+        }
+
+        private void nupdColorEffectTime1_ValueChanged(object sender, EventArgs e)
+        {
+            _counter.FigyelmeztetIdo1 = (int)nupdColor1EffectTime.Value * 60;
+        }
     }
 }
